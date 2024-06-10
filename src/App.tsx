@@ -1,15 +1,20 @@
-import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { useState } from "react";
 import DataTable from "./components/DataTable";
+import useTheme from "./hooks/useTheme";
+import ToggleThemeMode from "./components/UI/ToggleThemeMode";
 
-let theme = createTheme();
-theme = responsiveFontSizes(theme);
+const App: React.FC = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const theme = useTheme(darkMode);
 
-function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ToggleThemeMode darkMode={darkMode} setDarkMode={setDarkMode} />
       <DataTable />
     </ThemeProvider>
   );
-}
+};
 
 export default App;
