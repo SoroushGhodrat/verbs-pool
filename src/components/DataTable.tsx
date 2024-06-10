@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import ArrowUpward from "@mui/icons-material/ArrowUpward";
 import { goToTop, randonColor } from "../util/helper";
 
@@ -164,33 +164,33 @@ function DataTable() {
 
   console.log("filteredVerbs", filteredVerbs);
 
-return (
-  <Box display="flex" flexDirection="column" justifyContent="center">
-    <Grid container justifyContent="center" mb={5}>
-    <Grid item xs={isMobile ? 12 : 7} justifyContent="center">
-    <DataTableAlphabetsBox />
+  return (
+    <Box display="flex" flexDirection="column" justifyContent="center">
+      <Grid container justifyContent="center" mb={5}>
+        <Grid item xs={isMobile ? 12 : 7} justifyContent="center">
+          <DataTableAlphabetsBox />
 
-        <DataTableSearchBox onSearch={handleSearch} />
+          <DataTableSearchBox onSearch={handleSearch} />
 
-        {filteredVerbs.length > 0 &&
-          renderTable(
-            filteredVerbs,
-            `Jeg har funnet ${filteredVerbs.length} ${
-              filteredVerbs.length === 1 ? "resultat" : "resultater"
-            } 🥳`
+          {filteredVerbs.length > 0 &&
+            renderTable(
+              filteredVerbs,
+              `Jeg har funnet ${filteredVerbs.length} ${
+                filteredVerbs.length === 1 ? "resultat" : "resultater"
+              } 🥳`
+            )}
+
+          {inputValue.length > 0 && filteredVerbs.length === 0 && (
+            <Typography textAlign="center" variant="h5" gutterBottom mt={5} mb={5}>
+              Jeg fant ikke noe for <span style={{ color: "#ff5722" }}>" {inputValue} "</span> 🥸
+            </Typography>
           )}
 
-        {inputValue.length > 0 && filteredVerbs.length === 0 && (
-          <Typography textAlign="center" variant="h5" gutterBottom mt={5} mb={5}>
-            Jeg fant ikke noe for "{inputValue}" 🥸
-          </Typography>
-        )}
-
-        {inputValue.length === 0 && groups.map((group) => renderTable(group.data, group.label))}
+          {inputValue.length === 0 && groups.map((group) => renderTable(group.data, group.label))}
+        </Grid>
       </Grid>
-    </Grid>
-  </Box>
-);
+    </Box>
+  );
 }
 
 export default DataTable;
