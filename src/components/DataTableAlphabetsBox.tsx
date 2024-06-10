@@ -8,9 +8,9 @@ const DataTableAlphabetsBox = () => {
   ]);
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-<Typography align='center' m={5} variant="h3" sx={{ textTransform: "capitalize" }}>
-  mest brukte norske verbene
-</Typography>
+      <Typography align="center" m={5} variant="h3" sx={{ textTransform: "capitalize" }}>
+        mest brukte norske verbene
+      </Typography>
 
       <Box sx={{ borderRadius: "10px", backgroundColor: "#d7e8f4" }} p={2}>
         <Typography pb={2} variant="h6" textAlign="center">
