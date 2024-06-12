@@ -1,4 +1,10 @@
-import { Box, TextField, InputAdornment, IconButton, Zoom } from "@mui/material";
+import {
+  Box,
+  TextField,
+  InputAdornment,
+  IconButton,
+  Zoom,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { verbs } from "../data/no"; // import your Verb type
@@ -17,7 +23,9 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
     setSearchValue(value);
 
     const filtered = verbs.filter((verb) => {
-      return Object.values(verb).some((val) => val.toLowerCase().includes(value.toLowerCase()));
+      return Object.values(verb).some((val) =>
+        val.toLowerCase().includes(value.toLowerCase()),
+      );
     });
 
     console.log("filtered", filtered);
@@ -42,7 +50,11 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
       onChange={handleInputChange}
       InputProps={{
         endAdornment: (
-          <HtmlTooltip title="Fjern søk " placement="left" TransitionComponent={Zoom}>
+          <HtmlTooltip
+            title="Fjern søk "
+            placement="left"
+            TransitionComponent={Zoom}
+          >
             <InputAdornment position="end">
               <IconButton edge="end" onClick={handleClearInput}>
                 <CloseIcon />
