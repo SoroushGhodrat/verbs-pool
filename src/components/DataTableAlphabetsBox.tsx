@@ -1,14 +1,17 @@
 import { Box, ListItemButton, ListItemText, Typography } from "@mui/material";
 
 const DataTableAlphabetsBox = () => {
-  const letters = Array.from({ length: 26 }, (_, i) => String.fromCharCode(i + 65)).concat([
-    "Æ",
-    "Ø",
-    "Å",
-  ]);
+  const letters = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(i + 65),
+  ).concat(["Æ", "Ø", "Å"]);
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
-      <Typography align="center" m={5} variant="h3" sx={{ textTransform: "capitalize" }}>
+      <Typography
+        align="center"
+        m={5}
+        variant="h3"
+        sx={{ textTransform: "capitalize" }}
+      >
         mest brukte norske verbene
       </Typography>
 
