@@ -1,17 +1,25 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { useState } from "react";
+import { useEffect } from "react";
 import DataTable from "./components/DataTable";
 import useTheme from "./hooks/useTheme";
-import ToggleThemeMode from "./components/UI/ToggleThemeMode";
+
+import Navbar from "./components/Navbar";
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const theme = useTheme(darkMode);
+  const theme = useTheme();
+
+  useEffect(() => {
+    // Check if the language is not already set in localStorage
+    if (!localStorage.getItem("language")) {
+      // Set language to Norwegian if not set
+      localStorage.setItem("language", "norwegian");
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <ToggleThemeMode darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar />
       <DataTable />
     </ThemeProvider>
   );
