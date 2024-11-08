@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://gitname.github.io/verbs-pool",
+  "homepage": "https://soroushghodrat.github.io/verbs-pool",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
