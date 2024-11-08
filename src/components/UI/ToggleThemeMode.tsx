@@ -21,7 +21,7 @@ interface ToggleThemeModeProps {
  */
 
 const ToggleThemeMode: React.FC<ToggleThemeModeProps> = ({ darkMode, setDarkMode }) => {
-  const theme = useTheme(darkMode);
+  const theme = useTheme();
   const handleThemeChange = () => {
     setDarkMode(!darkMode);
   };
