@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Verbs Project
 
-Currently, two official plugins are available:
+This project is a comprehensive table of verb forms in English and Norwegian. It aims to provide an easy reference for language learners and educators.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- List of common verbs in English and their Norwegian equivalents
+- Conjugation of verbs in various tenses
+- Examples of usage in sentences
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Usage
 
-- Configure the top-level `parserOptions` property like this:
+You can use this table to:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Learn the correct verb forms in both languages
+- Practice conjugation and sentence formation
+- Enhance your bilingual vocabulary
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contributions
+
+Contributions are welcome! If you have suggestions or improvements, please submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
