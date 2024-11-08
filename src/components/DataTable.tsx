@@ -87,18 +87,18 @@ import { useLanguage } from "../context/LanguageContext";
 
 type Verb = {
   infinitiv: string;
-  presens: string;
-  preteritum: string;
-  perfektum: string;
-  meaning: string;
+  presens?: string;
+  preteritum?: string;
+  perfektum?: string;
+  meaning?: string;
 };
 
 type VerbEN = {
   infinitiv: string;
-  past: string;
-  past_participle: string;
-  s_es_ies: string;
-  ing: string;
+  past?: string;
+  past_participle?: string;
+  s_es_ies?: string;
+  ing?: string;
 };
 
 type Headers = {
@@ -199,7 +199,8 @@ const DataTable = () => {
     { data: EnglishZ, label: "Z" },
   ];
 
-  const handleSearch = (filtered: Verb[], value: string) => {
+  // const handleSearch = (filtered: Verb[], value: string) => {
+  const handleSearch = (filtered: any, value: string) => {
     setFilteredVerbs(filtered);
     setInputValue(value);
   };
@@ -248,7 +249,7 @@ const DataTable = () => {
               </TableHead>
 
               <TableBody>
-                {verbs.map((row) => {
+                {verbs.map((row: Verb | VerbEN) => {
                   return _.isEmpty(row.infinitiv) ? (
                     <StyledTableRow key={uuidv4()}>
                       <TableCell colSpan={5}>
@@ -266,7 +267,7 @@ const DataTable = () => {
                             gutterBottom
                             sx={{ textTransform: "capitalize" }}
                           >
-                            {row[key as keyof Verb | keyof VerbEN]}
+                            {row[key as keyof typeof row]}
                           </Typography>
                         </TableCell>
                       ))}
