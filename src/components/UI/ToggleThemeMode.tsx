@@ -20,10 +20,7 @@ interface ToggleThemeModeProps {
  * @returns A button that toggles the theme between light and dark modes.
  */
 
-const ToggleThemeMode: React.FC<ToggleThemeModeProps> = ({
-  darkMode,
-  setDarkMode,
-}) => {
+const ToggleThemeMode: React.FC<ToggleThemeModeProps> = ({ darkMode, setDarkMode }) => {
   const theme = useTheme(darkMode);
   const handleThemeChange = () => {
     setDarkMode(!darkMode);
@@ -32,11 +29,7 @@ const ToggleThemeMode: React.FC<ToggleThemeModeProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <IconButton onClick={handleThemeChange} color="inherit">
-        {theme.palette.mode === "dark" ? (
-          <Brightness7Icon />
-        ) : (
-          <Brightness4Icon />
-        )}
+        {theme.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </ThemeProvider>
   );

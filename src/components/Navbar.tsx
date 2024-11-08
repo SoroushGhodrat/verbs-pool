@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import icon from "../../public/icon.svg";
+import { useLanguage } from "../context/LanguageContext";
 
 const pages = ["Norsk", "English"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -20,6 +21,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const { setLanguage } = useLanguage();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -28,16 +30,15 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu =
-    (page: string) => (event: React.MouseEvent<HTMLButtonElement>) => {
-      if (page === "English") {
-        localStorage.setItem("language", "english");
-      }
-      if (page === "Norsk") {
-        localStorage.setItem("language", "norwegian");
-      }
-      setAnchorElNav(null);
-    };
+  const handleCloseNavMenu = (page: string) => () => {
+    if (page === "English") {
+      setLanguage(page);
+    }
+    if (page === "Norsk") {
+      setLanguage(page);
+    }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);

@@ -1,10 +1,17 @@
-const A = [
+type Verb = {
+  infinitiv: string;
+  presens: string;
+  preteritum: string;
+  perfektum: string;
+  meaning: string;
+};
+
+const A: Verb[] = [
   {
     infinitiv: "å adlyde",
     presens: "adlyder",
     preteritum: "adlød",
     perfektum: "har adlydt",
-    imperative: "",
     meaning: "Obey",
   },
   {
@@ -12,7 +19,6 @@ const A = [
     presens: "anbefaler",
     preteritum: "anbefalte",
     perfektum: "har anbefalt",
-    imperative: "",
     meaning: "Recommend",
   },
   {
@@ -20,7 +26,6 @@ const A = [
     presens: "ansetter",
     preteritum: "ansatte",
     perfektum: "har ansatt",
-    imperative: "",
     meaning: "Employ",
   },
   {
@@ -28,7 +33,6 @@ const A = [
     presens: "arbeider",
     preteritum: "arbeidet",
     perfektum: "har arbeidet",
-    imperative: "arbeid",
     meaning: "Work",
   },
   {
@@ -36,7 +40,6 @@ const A = [
     presens: "avslår",
     preteritum: "avslo",
     perfektum: "har avslått",
-    imperative: "",
     meaning: "Repulse",
   },
   {
@@ -44,18 +47,17 @@ const A = [
     presens: "avstår",
     preteritum: "avstod",
     perfektum: "har avstatt",
-    imperative: "",
+
     meaning: "Cede",
   },
 ];
 
-const B = [
+const B: Verb[] = [
   {
     infinitiv: "å bade",
     presens: "bader",
     preteritum: "badet",
     perfektum: "har badet",
-    imperative: "bad",
     meaning: "Bath",
   },
   {
@@ -63,7 +65,7 @@ const B = [
     presens: "banker",
     preteritum: "banket",
     perfektum: "har banket",
-    imperative: "",
+
     meaning: "Beat, Hit",
   },
   {
@@ -71,7 +73,7 @@ const B = [
     presens: "barberer",
     preteritum: "barberte",
     perfektum: "har barbert",
-    imperative: "",
+
     meaning: "Shave",
   },
   {
@@ -79,7 +81,6 @@ const B = [
     presens: "ber",
     preteritum: "ba(d)",
     perfektum: "har bedt",
-    imperative: "be",
     meaning: "Ask",
   },
   {
@@ -87,7 +88,7 @@ const B = [
     presens: "bearbeider",
     preteritum: "bearbeidet",
     perfektum: "har bearbeidet",
-    imperative: "",
+
     meaning: "Adapt",
   },
   {
@@ -95,7 +96,7 @@ const B = [
     presens: "bedrar",
     preteritum: "bedro",
     perfektum: "har bedratt",
-    imperative: "",
+
     meaning: "Cheat",
   },
   {
@@ -103,7 +104,7 @@ const B = [
     presens: "bedøver",
     preteritum: "bedøvet",
     perfektum: "har bedøvet",
-    imperative: "",
+
     meaning: "Drug",
   },
   {
@@ -111,7 +112,7 @@ const B = [
     presens: "bedøver",
     preteritum: "bedøvde",
     perfektum: "har bedøvd",
-    imperative: "",
+
     meaning: "Anaesthetise",
   },
   {
@@ -119,7 +120,7 @@ const B = [
     presens: "begynner",
     preteritum: "begynte",
     perfektum: "har begynt",
-    imperative: "",
+
     meaning: "Begin",
   },
   {
@@ -127,7 +128,7 @@ const B = [
     presens: "behandler",
     preteritum: "behandlet",
     perfektum: "har behandlet",
-    imperative: "",
+
     meaning: "Handle",
   },
   {
@@ -135,7 +136,7 @@ const B = [
     presens: "beiter",
     preteritum: "beitet",
     perfektum: "har beitet",
-    imperative: "",
+
     meaning: "Graze",
   },
   {
@@ -143,7 +144,6 @@ const B = [
     presens: "beskriver",
     preteritum: "beskrev",
     perfektum: "har beskrevet",
-    imperative: "beskriv",
     meaning: "Describe",
   },
   {
@@ -151,7 +151,7 @@ const B = [
     presens: "bestemmer",
     preteritum: "bestemte",
     perfektum: "har bestemt",
-    imperative: "",
+
     meaning: "Decide",
   },
   {
@@ -159,7 +159,7 @@ const B = [
     presens: "beslår",
     preteritum: "beslo",
     perfektum: "har beslått",
-    imperative: "",
+
     meaning: "Mount",
   },
   {
@@ -167,7 +167,7 @@ const B = [
     presens: "bestiller",
     preteritum: "bestilte",
     perfektum: "har bestilt",
-    imperative: "",
+
     meaning: "Do, Order",
   },
   {
@@ -175,7 +175,7 @@ const B = [
     presens: "består",
     preteritum: "besto(d)",
     perfektum: "har bestått",
-    imperative: "",
+
     meaning: "Pass (as in exam)",
   },
   {
@@ -183,7 +183,7 @@ const B = [
     presens: "besøker",
     preteritum: "besøkte",
     perfektum: "har besøkt",
-    imperative: "",
+
     meaning: "Visit",
   },
   {
@@ -191,7 +191,7 @@ const B = [
     presens: "betaler",
     preteritum: "betalte",
     perfektum: "har betalt",
-    imperative: "",
+
     meaning: "Pay",
   },
   {
@@ -199,7 +199,7 @@ const B = [
     presens: "betyr",
     preteritum: "betydde",
     perfektum: "har betydd",
-    imperative: "",
+
     meaning: "Mean, Signify",
   },
   {
@@ -207,7 +207,7 @@ const B = [
     presens: "binder",
     preteritum: "bandt",
     perfektum: "har bundet",
-    imperative: "",
+
     meaning: "Bind",
   },
   {
@@ -215,7 +215,7 @@ const B = [
     presens: "biter",
     preteritum: "betalte",
     perfektum: "har bit",
-    imperative: "",
+
     meaning: "Bite",
   },
   {
@@ -223,7 +223,7 @@ const B = [
     presens: "bjeffer",
     preteritum: "bjeffet",
     perfektum: "har bjeffet",
-    imperative: "",
+
     meaning: "Bark, Yap",
   },
   {
@@ -231,7 +231,7 @@ const B = [
     presens: "blander",
     preteritum: "blandet",
     perfektum: "har blandet",
-    imperative: "",
+
     meaning: "Blend, Mix",
   },
   {
@@ -239,7 +239,6 @@ const B = [
     presens: "blir",
     preteritum: "ble",
     perfektum: "har blitt",
-    imperative: "bli",
     meaning: "Be",
   },
   {
@@ -247,7 +246,6 @@ const B = [
     presens: "blør",
     preteritum: "blødde",
     perfektum: "har blødd",
-    imperative: "blø",
     meaning: "Bleed",
   },
   {
@@ -255,7 +253,7 @@ const B = [
     presens: "blåser",
     preteritum: "blåste",
     perfektum: "har blåst",
-    imperative: "",
+
     meaning: "Blow",
   },
   {
@@ -263,7 +261,6 @@ const B = [
     presens: "bor",
     preteritum: "bordde",
     perfektum: "har bordd",
-    imperative: "bo",
     meaning: "Live, Reside",
   },
   {
@@ -271,7 +268,7 @@ const B = [
     presens: "brekker",
     preteritum: "brakk",
     perfektum: "har brukket",
-    imperative: "",
+
     meaning: "Break",
   },
   {
@@ -279,7 +276,7 @@ const B = [
     presens: "brenner",
     preteritum: "brente",
     perfektum: "har brent",
-    imperative: "",
+
     meaning: "Burn",
   },
   {
@@ -287,7 +284,7 @@ const B = [
     presens: "bringer",
     preteritum: "brakte",
     perfektum: "har brakt",
-    imperative: "",
+
     meaning: "Bring",
   },
   {
@@ -295,7 +292,7 @@ const B = [
     presens: "brister",
     preteritum: "brast",
     perfektum: "har bristet",
-    imperative: "",
+
     meaning: "Burst",
   },
   {
@@ -303,7 +300,6 @@ const B = [
     presens: "bruker",
     preteritum: "brukte",
     perfektum: "har brukt",
-    imperative: "bruk",
     meaning: "Use",
   },
   {
@@ -311,7 +307,7 @@ const B = [
     presens: "bryr",
     preteritum: "brydde",
     perfektum: "har brydd",
-    imperative: "",
+
     meaning: "Bother",
   },
   {
@@ -319,7 +315,7 @@ const B = [
     presens: "bryter",
     preteritum: "brøt",
     perfektum: "har brutt",
-    imperative: "",
+
     meaning: "Violate, Break",
   },
   {
@@ -327,7 +323,7 @@ const B = [
     presens: "bør",
     preteritum: "burde",
     perfektum: "har burdet",
-    imperative: "",
+
     meaning: "Ought to",
   },
   {
@@ -335,7 +331,7 @@ const B = [
     presens: "byr",
     preteritum: "bød",
     perfektum: "har budt",
-    imperative: "",
+
     meaning: "Offer, Bid",
   },
   {
@@ -343,7 +339,7 @@ const B = [
     presens: "bygger",
     preteritum: "bygde",
     perfektum: "har bygd",
-    imperative: "",
+
     meaning: "Build",
   },
   {
@@ -351,7 +347,7 @@ const B = [
     presens: "bytter",
     preteritum: "byttet",
     perfektum: "har byttet",
-    imperative: "",
+
     meaning: "Change, Exchange",
   },
   {
@@ -359,20 +355,28 @@ const B = [
     presens: "bærer",
     preteritum: "bar",
     perfektum: "har båret",
-    imperative: "",
+
     meaning: "Bear, Endure",
   },
 ];
 
-const C = [{}];
+const C: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
 
-const D = [
+    meaning: "",
+  },
+];
+
+const D: Verb[] = [
   {
     infinitiv: "å danse",
     presens: "danser",
     preteritum: "danset",
     perfektum: "har danset",
-    imperativ: "dans",
     meaning: "Dance",
   },
   {
@@ -380,7 +384,7 @@ const D = [
     presens: "deler",
     preteritum: "delte",
     perfektum: "har delt",
-    imperativ: "",
+
     meaning: "Divide",
   },
   {
@@ -388,7 +392,7 @@ const D = [
     presens: "demokratiserer",
     preteritum: "demokratiserte",
     perfektum: "har demokratisert",
-    imperativ: "",
+
     meaning: "Democratize",
   },
   {
@@ -396,7 +400,7 @@ const D = [
     presens: "diskuterer",
     preteritum: "diskuterte",
     perfektum: "har diskutert",
-    imperativ: "",
+
     meaning: "Discuss",
   },
   {
@@ -404,7 +408,7 @@ const D = [
     presens: "drar",
     preteritum: "drog",
     perfektum: "har dradd/dratt",
-    imperativ: "",
+
     meaning: "Go / Drag",
   },
   {
@@ -412,7 +416,6 @@ const D = [
     presens: "drikker",
     preteritum: "drakk",
     perfektum: "har drukket",
-    imperativ: "drikk",
     meaning: "Drink",
   },
   {
@@ -420,7 +423,7 @@ const D = [
     presens: "driver",
     preteritum: "drev",
     perfektum: "har drevet",
-    imperativ: "",
+
     meaning: "Drive, Operate",
   },
   {
@@ -428,7 +431,7 @@ const D = [
     presens: "drømmer",
     preteritum: "drømte",
     perfektum: "har drømt",
-    imperativ: "",
+
     meaning: "Dream",
   },
   {
@@ -436,7 +439,7 @@ const D = [
     presens: "dusjer",
     preteritum: "dusjet",
     perfektum: "har dusjet",
-    imperativ: "",
+
     meaning: "Shower",
   },
   {
@@ -444,7 +447,7 @@ const D = [
     presens: "dyrker",
     preteritum: "dyrket",
     perfektum: "har dyrket",
-    imperativ: "",
+
     meaning: "Cultivate",
   },
   {
@@ -452,18 +455,17 @@ const D = [
     presens: "dytter",
     preteritum: "dyttet",
     perfektum: "har dyttet",
-    imperativ: "dytt",
     meaning: "Push",
   },
 ];
 
-const E = [
+const E: Verb[] = [
   {
     infinitiv: "å eie",
     presens: "eier",
     preteritum: "eide",
     perfektum: "har eid",
-    imperativ: "",
+
     meaning: "Possess",
   },
   {
@@ -471,7 +473,7 @@ const E = [
     presens: "eser",
     preteritum: "este",
     perfektum: "har est",
-    imperativ: "",
+
     meaning: "Rise",
   },
   {
@@ -479,7 +481,7 @@ const E = [
     presens: "eter",
     preteritum: "åt",
     perfektum: "har ett",
-    imperativ: "",
+
     meaning: "Eat Greedily",
   },
   {
@@ -487,18 +489,18 @@ const E = [
     presens: "evangeliserer",
     preteritum: "evangeliserte",
     perfektum: "har evangelisert",
-    imperativ: "",
+
     meaning: "Evangelize",
   },
 ];
 
-const F = [
+const F: Verb[] = [
   {
     infinitiv: "å falle",
     presens: "faller",
     preteritum: "falt",
     perfektum: "har falt",
-    imperativ: "",
+
     meaning: "Fall",
   },
   {
@@ -506,7 +508,7 @@ const F = [
     presens: "feirer",
     preteritum: "feiret",
     perfektum: "har feiret",
-    imperativ: "",
+
     meaning: "Celebrate",
   },
   {
@@ -514,7 +516,6 @@ const F = [
     presens: "finner",
     preteritum: "fant",
     perfektum: "har funnet",
-    imperativ: "finn",
     meaning: "Find",
   },
   {
@@ -522,7 +523,7 @@ const F = [
     presens: "fisker",
     preteritum: "fisket",
     perfektum: "har fisket",
-    imperativ: "",
+
     meaning: "Fish",
   },
   {
@@ -530,7 +531,7 @@ const F = [
     presens: "fleiper",
     preteritum: "fleipte",
     perfektum: "har fleipt",
-    imperativ: "",
+
     meaning: "Joke",
   },
   {
@@ -538,7 +539,7 @@ const F = [
     presens: "flyr",
     preteritum: "fløy",
     perfektum: "har fløyet",
-    imperativ: "",
+
     meaning: "Fly",
   },
   {
@@ -546,7 +547,7 @@ const F = [
     presens: "flykter",
     preteritum: "flyktet",
     perfektum: "har flyktet",
-    imperativ: "",
+
     meaning: "Flee",
   },
   {
@@ -554,7 +555,7 @@ const F = [
     presens: "flyter",
     preteritum: "fløt",
     perfektum: "har flytt",
-    imperativ: "",
+
     meaning: "Float",
   },
   {
@@ -562,7 +563,7 @@ const F = [
     presens: "flytter",
     preteritum: "flyttet",
     perfektum: "har flyttet",
-    imperativ: "",
+
     meaning: "Move",
   },
   {
@@ -570,7 +571,7 @@ const F = [
     presens: "forener",
     preteritum: "forente",
     perfektum: "har forent",
-    imperativ: "",
+
     meaning: "Unite",
   },
   {
@@ -578,7 +579,7 @@ const F = [
     presens: "foreslår",
     preteritum: "foreslo",
     perfektum: "har foreslått",
-    imperativ: "",
+
     meaning: "Suggest",
   },
   {
@@ -586,7 +587,7 @@ const F = [
     presens: "foretar",
     preteritum: "foretok",
     perfektum: "har foretatt",
-    imperativ: "",
+
     meaning: "Undertake",
   },
   {
@@ -594,7 +595,7 @@ const F = [
     presens: "forkjøler seg",
     preteritum: "forkjølet seg",
     perfektum: "har forkjølt seg",
-    imperativ: "",
+
     meaning: "Catch a Cold",
   },
   {
@@ -602,7 +603,7 @@ const F = [
     presens: "forklarer",
     preteritum: "forklarte",
     perfektum: "har forklart",
-    imperativ: "",
+
     meaning: "Explain",
   },
   {
@@ -610,7 +611,7 @@ const F = [
     presens: "forlater",
     preteritum: "forlot",
     perfektum: "har forlatt",
-    imperativ: "",
+
     meaning: "Forgive",
   },
   {
@@ -618,7 +619,7 @@ const F = [
     presens: "fornyer",
     preteritum: "fornyet",
     perfektum: "har fornyet",
-    imperativ: "",
+
     meaning: "Renew",
   },
   {
@@ -626,7 +627,7 @@ const F = [
     presens: "forstår",
     preteritum: "forstod",
     perfektum: "har forstått",
-    imperativ: "",
+
     meaning: "Understand",
   },
   {
@@ -634,7 +635,7 @@ const F = [
     presens: "forsvinner",
     preteritum: "forsvant",
     perfektum: "har forsvunnet",
-    imperativ: "",
+
     meaning: "Disappear",
   },
   {
@@ -642,7 +643,7 @@ const F = [
     presens: "forteller",
     preteritum: "fortalte",
     perfektum: "har fortalt",
-    imperativ: "",
+
     meaning: "Tell",
   },
   {
@@ -650,7 +651,7 @@ const F = [
     presens: "fortsetter",
     preteritum: "fortsatte",
     perfektum: "har fortsatt",
-    imperativ: "",
+
     meaning: "Continue",
   },
   {
@@ -658,7 +659,7 @@ const F = [
     presens: "fosser",
     preteritum: "fosset",
     perfektum: "har fosset",
-    imperativ: "",
+
     meaning: "Gush",
   },
   {
@@ -666,7 +667,7 @@ const F = [
     presens: "fotograferer",
     preteritum: "fotograferte",
     perfektum: "har fotografert",
-    imperativ: "",
+
     meaning: "Photograph",
   },
   {
@@ -674,7 +675,7 @@ const F = [
     presens: "fryser",
     preteritum: "frøs",
     perfektum: "har frosset",
-    imperativ: "",
+
     meaning: "Freeze",
   },
   {
@@ -682,7 +683,7 @@ const F = [
     presens: "fyller",
     preteritum: "fylte",
     perfektum: "har fylt",
-    imperativ: "",
+
     meaning: "Fill",
   },
   {
@@ -690,7 +691,7 @@ const F = [
     presens: "føder",
     preteritum: "fødte",
     perfektum: "har født",
-    imperativ: "",
+
     meaning: "Bear, Give birth to",
   },
   {
@@ -698,7 +699,7 @@ const F = [
     presens: "føler seg",
     preteritum: "følte seg",
     perfektum: "har følt seg",
-    imperativ: "",
+
     meaning: "Be, Feel",
   },
   {
@@ -706,7 +707,6 @@ const F = [
     presens: "følger",
     preteritum: "fulgte",
     perfektum: "har fulgt",
-    imperativ: "følg",
     meaning: "Follow",
   },
   {
@@ -714,7 +714,7 @@ const F = [
     presens: "føner",
     preteritum: "fønte",
     perfektum: "har fønt",
-    imperativ: "",
+
     meaning: "Blow Dry",
   },
   {
@@ -722,18 +722,17 @@ const F = [
     presens: "får",
     preteritum: "fikk",
     perfektum: "har fått",
-    imperativ: "få",
     meaning: "Get",
   },
 ];
 
-const G = [
+const G: Verb[] = [
   {
     infinitiv: "å gale",
     presens: "galer",
     preteritum: "gol",
     perfektum: "har galt",
-    imperativ: "",
+
     meaning: "Crow",
   },
   {
@@ -741,7 +740,7 @@ const G = [
     presens: "gaper",
     preteritum: "gapte",
     perfektum: "har gapt",
-    imperativ: "",
+
     meaning: "Gape",
   },
   {
@@ -749,7 +748,6 @@ const G = [
     presens: "gir",
     preteritum: "gav",
     perfektum: "har gitt",
-    imperativ: "gi",
     meaning: "Give",
   },
   {
@@ -757,7 +755,7 @@ const G = [
     presens: "gidder",
     preteritum: "gadd",
     perfektum: "har giddet",
-    imperativ: "",
+
     meaning: "Take the trouble",
   },
   {
@@ -765,7 +763,7 @@ const G = [
     presens: "gifter",
     preteritum: "giftet",
     perfektum: "har giftet",
-    imperativ: "",
+
     meaning: "Marry",
   },
   {
@@ -773,7 +771,7 @@ const G = [
     presens: "gjelder",
     preteritum: "gjaldt",
     perfektum: "har gjeldt",
-    imperativ: "",
+
     meaning: "To be worth",
   },
   {
@@ -781,7 +779,7 @@ const G = [
     presens: "gjentar",
     preteritum: "gjentok",
     perfektum: "har gjentatt",
-    imperativ: "",
+
     meaning: "Repeat",
   },
   {
@@ -789,7 +787,7 @@ const G = [
     presens: "gjetter",
     preteritum: "gjettet",
     perfektum: "har gjettet",
-    imperativ: "",
+
     meaning: "Guess",
   },
   {
@@ -797,7 +795,6 @@ const G = [
     presens: "gjør",
     preteritum: "gjorde",
     perfektum: "har gjort",
-    imperativ: "gjør",
     meaning: "Do",
   },
   {
@@ -805,7 +802,7 @@ const G = [
     presens: "gleder seg",
     preteritum: "gledet seg",
     perfektum: "har gledet seg",
-    imperativ: "",
+
     meaning: "Look forward",
   },
   {
@@ -813,7 +810,6 @@ const G = [
     presens: "glemmer",
     preteritum: "glemte",
     perfektum: "har glemt",
-    imperativ: "glem",
     meaning: "Forget",
   },
   {
@@ -821,7 +817,7 @@ const G = [
     presens: "glir",
     preteritum: "glei/gled",
     perfektum: "har glidd",
-    imperativ: "",
+
     meaning: "Slide, Glide",
   },
   {
@@ -829,7 +825,7 @@ const G = [
     presens: "gnager",
     preteritum: "gnog",
     perfektum: "har gnaget",
-    imperativ: "",
+
     meaning: "Gnaw",
   },
   {
@@ -837,7 +833,7 @@ const G = [
     presens: "gnir",
     preteritum: "gned",
     perfektum: "har gnidd",
-    imperativ: "",
+
     meaning: "Rub",
   },
   {
@@ -845,7 +841,7 @@ const G = [
     presens: "gratulerer",
     preteritum: "gratulerte",
     perfektum: "har gratulert",
-    imperativ: "",
+
     meaning: "Congratulate",
   },
   {
@@ -853,7 +849,7 @@ const G = [
     presens: "graver",
     preteritum: "grov",
     perfektum: "har gravd",
-    imperativ: "",
+
     meaning: "Dig",
   },
   {
@@ -861,7 +857,6 @@ const G = [
     presens: "grer",
     preteritum: "gredde",
     perfektum: "har gredd",
-    imperativ: "gre",
     meaning: "Comb",
   },
   {
@@ -869,7 +864,7 @@ const G = [
     presens: "greier",
     preteritum: "greide",
     perfektum: "har greid",
-    imperativ: "",
+
     meaning: "Manage, Cope with",
   },
   {
@@ -877,7 +872,7 @@ const G = [
     presens: "grenser",
     preteritum: "grenset",
     perfektum: "har grenset",
-    imperativ: "",
+
     meaning: "Border",
   },
   {
@@ -885,7 +880,7 @@ const G = [
     presens: "griller",
     preteritum: "grillet",
     perfektum: "har grillet",
-    imperativ: "",
+
     meaning: "Grill",
   },
   {
@@ -893,7 +888,7 @@ const G = [
     presens: "griner",
     preteritum: "grein",
     perfektum: "har grint",
-    imperativ: "",
+
     meaning: "Fret",
   },
   {
@@ -901,7 +896,7 @@ const G = [
     presens: "griper",
     preteritum: "grep",
     perfektum: "har grepet",
-    imperativ: "",
+
     meaning: "Grip",
   },
   {
@@ -909,7 +904,7 @@ const G = [
     presens: "gruer seg",
     preteritum: "grudde seg",
     perfektum: "har gruet",
-    imperativ: "",
+
     meaning: "Dread",
   },
   {
@@ -917,7 +912,7 @@ const G = [
     presens: "gråter",
     preteritum: "gråt",
     perfektum: "har grått",
-    imperativ: "",
+
     meaning: "Cry",
   },
   {
@@ -925,7 +920,7 @@ const G = [
     presens: "gyser",
     preteritum: "gjøs",
     perfektum: "har gyst",
-    imperativ: "",
+
     meaning: "Shudder",
   },
   {
@@ -933,7 +928,7 @@ const G = [
     presens: "gyter",
     preteritum: "gjøt",
     perfektum: "har gytt",
-    imperativ: "",
+
     meaning: "Spawn",
   },
   {
@@ -941,7 +936,7 @@ const G = [
     presens: "gyver",
     preteritum: "gjøv",
     perfektum: "har gjøvet",
-    imperativ: "",
+
     meaning: "Fly",
   },
   {
@@ -949,18 +944,16 @@ const G = [
     presens: "går",
     preteritum: "gikk",
     perfektum: "har gått",
-    imperativ: "gå",
     meaning: "Go, Walk",
   },
 ];
 
-const H = [
+const H: Verb[] = [
   {
     infinitiv: "å ha",
     presens: "har",
     preteritum: "hadde",
     perfektum: "har hatt",
-    imperativ: "ha",
     meaning: "Have",
   },
   {
@@ -968,7 +961,7 @@ const H = [
     presens: "handler",
     preteritum: "handlet",
     perfektum: "har handlet",
-    imperativ: "",
+
     meaning: "Deal, Act",
   },
   {
@@ -976,7 +969,7 @@ const H = [
     presens: "hender",
     preteritum: "hendte",
     perfektum: "har hendt",
-    imperativ: "",
+
     meaning: "Occur",
   },
   {
@@ -984,7 +977,7 @@ const H = [
     presens: "henger",
     preteritum: "hang/hengte",
     perfektum: "har hengt",
-    imperativ: "",
+
     meaning: "Hang",
   },
   {
@@ -992,7 +985,6 @@ const H = [
     presens: "henter",
     preteritum: "hentet",
     perfektum: "har hentet",
-    imperativ: "hent",
     meaning: "Get",
   },
   {
@@ -1000,7 +992,7 @@ const H = [
     presens: "heter",
     preteritum: "het",
     perfektum: "har hett",
-    imperativ: "",
+
     meaning: "Name",
   },
   {
@@ -1008,7 +1000,7 @@ const H = [
     presens: "hilser",
     preteritum: "hilste",
     perfektum: "har hilst",
-    imperativ: "",
+
     meaning: "Greet",
   },
   {
@@ -1016,7 +1008,7 @@ const H = [
     presens: "hindrer",
     preteritum: "hindret",
     perfektum: "har hindret",
-    imperativ: "",
+
     meaning: "Prevent",
   },
   {
@@ -1024,7 +1016,7 @@ const H = [
     presens: "hiver",
     preteritum: "hev",
     perfektum: "har hevet",
-    imperativ: "",
+
     meaning: "Heave",
   },
   {
@@ -1032,7 +1024,6 @@ const H = [
     presens: "hjelper",
     preteritum: "hjalp",
     perfektum: "har hjulpet",
-    imperativ: "hjelp",
     meaning: "Help",
   },
   {
@@ -1040,7 +1031,7 @@ const H = [
     presens: "holder",
     preteritum: "holdt",
     perfektum: "har holdt",
-    imperativ: "",
+
     meaning: "Hold",
   },
   {
@@ -1048,7 +1039,7 @@ const H = [
     presens: "hogger",
     preteritum: "hogg",
     perfektum: "har hogd",
-    imperativ: "",
+
     meaning: "Cut, Chop",
   },
   {
@@ -1056,7 +1047,7 @@ const H = [
     presens: "hopper",
     preteritum: "hoppet",
     perfektum: "har hoppet",
-    imperativ: "",
+
     meaning: "Jump",
   },
   {
@@ -1064,7 +1055,7 @@ const H = [
     presens: "hoster",
     preteritum: "hostet",
     perfektum: "har hostet",
-    imperativ: "",
+
     meaning: "Cough",
   },
   {
@@ -1072,7 +1063,7 @@ const H = [
     presens: "husker",
     preteritum: "husket",
     perfektum: "har husket",
-    imperativ: "",
+
     meaning: "Remember",
   },
   {
@@ -1080,7 +1071,7 @@ const H = [
     presens: "hviler",
     preteritum: "hvilte",
     perfektum: "har hvilt",
-    imperativ: "",
+
     meaning: "Rest",
   },
   {
@@ -1088,7 +1079,7 @@ const H = [
     presens: "hygger",
     preteritum: "hygget",
     perfektum: "har hygget",
-    imperativ: "",
+
     meaning: "Comfort",
   },
   {
@@ -1096,7 +1087,6 @@ const H = [
     presens: "hører",
     preteritum: "hørte",
     perfektum: "har hørt",
-    imperativ: "hør",
     meaning: "Hear",
   },
   {
@@ -1104,7 +1094,7 @@ const H = [
     presens: "høster",
     preteritum: "høstet",
     perfektum: "har høstet",
-    imperativ: "",
+
     meaning: "Harvest",
   },
   {
@@ -1112,40 +1102,40 @@ const H = [
     presens: "håper",
     preteritum: "håpet",
     perfektum: "har håpet",
-    imperativ: "",
+
     meaning: "Hope",
   },
 ];
 
-const I = [
+const I: Verb[] = [
   {
     infinitiv: "å invitere",
     presens: "inviterer",
     preteritum: "inviterte",
     perfektum: "har invitert",
-    imperativ: "",
+
     meaning: "Invite",
   },
 ];
 
-const J = [
+const J: Verb[] = [
   {
     infinitiv: "å jobbe",
     presens: "jobber",
     preteritum: "jobbet",
     perfektum: "har jobbet",
-    imperativ: "",
+
     meaning: "Work",
   },
 ];
 
-const K = [
+const K: Verb[] = [
   {
     infinitiv: "å kalkulere",
     presens: "kalkulerer",
     preteritum: "kalkulerte",
     perfektum: "har kalkulert",
-    imperativ: "",
+
     meaning: "Calculate",
   },
   {
@@ -1153,7 +1143,7 @@ const K = [
     presens: "kaster",
     preteritum: "kastet",
     perfektum: "har kastet",
-    imperativ: "",
+
     meaning: "Cast",
   },
   {
@@ -1161,7 +1151,7 @@ const K = [
     presens: "kjenner",
     preteritum: "kjente",
     perfektum: "har kjent",
-    imperativ: "",
+
     meaning: "Feel",
   },
   {
@@ -1169,7 +1159,6 @@ const K = [
     presens: "kjøper",
     preteritum: "kjøpte",
     perfektum: "har kjøpt",
-    imperativ: "kjøp",
     meaning: "Buy",
   },
   {
@@ -1177,7 +1166,6 @@ const K = [
     presens: "kjører",
     preteritum: "kjørte",
     perfektum: "har kjørt",
-    imperativ: "kjør",
     meaning: "Drive",
   },
   {
@@ -1185,7 +1173,7 @@ const K = [
     presens: "klapper",
     preteritum: "klappet",
     perfektum: "har klappet",
-    imperativ: "",
+
     meaning: "Clap",
   },
   {
@@ -1193,7 +1181,6 @@ const K = [
     presens: "klarer",
     preteritum: "klarte",
     perfektum: "har klart",
-    imperativ: "klar",
     meaning: "Manage",
   },
   {
@@ -1201,7 +1188,6 @@ const K = [
     presens: "kler",
     preteritum: "kledde",
     perfektum: "har kledd",
-    imperativ: "kle",
     meaning: "Dress, Clothe",
   },
   {
@@ -1209,7 +1195,7 @@ const K = [
     presens: "klinger",
     preteritum: "klingte",
     perfektum: "har klingt",
-    imperativ: "",
+
     meaning: "Sound",
   },
   {
@@ -1217,7 +1203,6 @@ const K = [
     presens: "klipper",
     preteritum: "klipte",
     perfektum: "har klipt",
-    imperativ: "klipp",
     meaning: "Cut, Clip",
   },
   {
@@ -1225,7 +1210,7 @@ const K = [
     presens: "klyper",
     preteritum: "kløp",
     perfektum: "har kløpet",
-    imperativ: "",
+
     meaning: "Pinch",
   },
   {
@@ -1233,7 +1218,7 @@ const K = [
     presens: "klyver",
     preteritum: "kløv",
     perfektum: "har kløvet",
-    imperativ: "",
+
     meaning: "Climb",
   },
   {
@@ -1241,7 +1226,7 @@ const K = [
     presens: "knekker",
     preteritum: "knakk",
     perfektum: "har knekt",
-    imperativ: "",
+
     meaning: "Crack",
   },
   {
@@ -1249,7 +1234,7 @@ const K = [
     presens: "kniper",
     preteritum: "knep",
     perfektum: "har knepet",
-    imperativ: "",
+
     meaning: "Pinch",
   },
   {
@@ -1257,7 +1242,7 @@ const K = [
     presens: "knyter",
     preteritum: "knytet/knøt",
     perfektum: "har knytet/knytt",
-    imperativ: "",
+
     meaning: "Tie",
   },
   {
@@ -1265,7 +1250,6 @@ const K = [
     presens: "koker",
     preteritum: "kokte",
     perfektum: "har kokt",
-    imperativ: "kok",
     meaning: "Cook",
   },
   {
@@ -1273,7 +1257,6 @@ const K = [
     presens: "kommer",
     preteritum: "kom",
     perfektum: "har kommet",
-    imperativ: "kom",
     meaning: "Come",
   },
   {
@@ -1281,7 +1264,7 @@ const K = [
     presens: "kontakter",
     preteritum: "kontakterte",
     perfektum: "har kontaktert",
-    imperativ: "",
+
     meaning: "Contact",
   },
   {
@@ -1289,7 +1272,7 @@ const K = [
     presens: "kontrollerer",
     preteritum: "kontrollerte",
     perfektum: "har kontrollert",
-    imperativ: "",
+
     meaning: "Control",
   },
   {
@@ -1297,7 +1280,7 @@ const K = [
     presens: "kopierer",
     preteritum: "kopierte",
     perfektum: "har kopiert",
-    imperativ: "",
+
     meaning: "Copy",
   },
   {
@@ -1305,7 +1288,7 @@ const K = [
     presens: "korrigerer",
     preteritum: "korrigerte",
     perfektum: "har korrigert",
-    imperativ: "",
+
     meaning: "Correct",
   },
   {
@@ -1313,7 +1296,7 @@ const K = [
     presens: "koser seg",
     preteritum: "koste seg",
     perfektum: "har kost seg",
-    imperativ: "",
+
     meaning: "Enjoy yourself",
   },
   {
@@ -1321,7 +1304,7 @@ const K = [
     presens: "koster",
     preteritum: "kostet",
     perfektum: "har kostet",
-    imperativ: "",
+
     meaning: "Cost",
   },
   {
@@ -1329,7 +1312,7 @@ const K = [
     presens: "kan",
     preteritum: "kunne",
     perfektum: "har kunnet",
-    imperativ: "",
+
     meaning: "Could",
   },
   {
@@ -1337,7 +1320,7 @@ const K = [
     presens: "kryper",
     preteritum: "krøp",
     perfektum: "har krøpet",
-    imperativ: "",
+
     meaning: "Creep",
   },
   {
@@ -1345,18 +1328,18 @@ const K = [
     presens: "kveler",
     preteritum: "kvalte",
     perfektum: "har kvalt",
-    imperativ: "",
+
     meaning: "Choke, Strangle",
   },
 ];
 
-const L = [
+const L: Verb[] = [
   {
     infinitiv: "å la",
     presens: "lar",
     preteritum: "lot",
     perfektum: "har latt",
-    imperativ: "",
+
     meaning: "Let, Allow",
   },
   {
@@ -1364,7 +1347,7 @@ const L = [
     presens: "lager",
     preteritum: "laget",
     perfektum: "har laget",
-    imperativ: "",
+
     meaning: "Prepare",
   },
   {
@@ -1372,7 +1355,6 @@ const L = [
     presens: "ler",
     preteritum: "lot",
     perfektum: "har ledd",
-    imperativ: "le",
     meaning: "Laugh",
   },
   {
@@ -1380,7 +1362,7 @@ const L = [
     presens: "legger",
     preteritum: "la",
     perfektum: "har lagt",
-    imperativ: "",
+
     meaning: "Lay",
   },
   {
@@ -1388,7 +1370,7 @@ const L = [
     presens: "leier",
     preteritum: "leide",
     perfektum: "har leid",
-    imperativ: "",
+
     meaning: "Hire",
   },
   {
@@ -1396,7 +1378,6 @@ const L = [
     presens: "leker",
     preteritum: "lekte",
     perfektum: "har lekt",
-    imperativ: "lek",
     meaning: "Play",
   },
   {
@@ -1404,7 +1385,7 @@ const L = [
     presens: "leser",
     preteritum: "leste",
     perfektum: "har lest",
-    imperativ: "",
+
     meaning: "Read",
   },
   {
@@ -1412,7 +1393,6 @@ const L = [
     presens: "leter",
     preteritum: "lette",
     perfektum: "har lett",
-    imperativ: "let",
     meaning: "Search",
   },
   {
@@ -1420,7 +1400,7 @@ const L = [
     presens: "lever",
     preteritum: "levde",
     perfektum: "har levd",
-    imperativ: "",
+
     meaning: "Live, Be alive",
   },
   {
@@ -1428,7 +1408,7 @@ const L = [
     presens: "leverer",
     preteritum: "leverte",
     perfektum: "har levert",
-    imperativ: "",
+
     meaning: "Give up",
   },
   {
@@ -1436,7 +1416,7 @@ const L = [
     presens: "lider",
     preteritum: "led",
     perfektum: "har lidd",
-    imperativ: "",
+
     meaning: "Suffer",
   },
   {
@@ -1444,7 +1424,7 @@ const L = [
     presens: "ligger",
     preteritum: "lå",
     perfektum: "har ligget",
-    imperativ: "",
+
     meaning: "Lie",
   },
   {
@@ -1452,7 +1432,7 @@ const L = [
     presens: "liker",
     preteritum: "likte",
     perfektum: "har likt",
-    imperativ: "",
+
     meaning: "Like",
   },
   {
@@ -1460,7 +1440,7 @@ const L = [
     presens: "lover",
     preteritum: "lovet",
     perfektum: "har lovet",
-    imperativ: "",
+
     meaning: "Promise",
   },
   {
@@ -1468,7 +1448,7 @@ const L = [
     presens: "lufter",
     preteritum: "luftet",
     perfektum: "har luftet",
-    imperativ: "",
+
     meaning: "Air",
   },
   {
@@ -1476,7 +1456,7 @@ const L = [
     presens: "lukter",
     preteritum: "luktet",
     perfektum: "har luktet",
-    imperativ: "",
+
     meaning: "Smell",
   },
   {
@@ -1484,7 +1464,7 @@ const L = [
     presens: "lyder",
     preteritum: "lød",
     perfektum: "har lydt",
-    imperativ: "",
+
     meaning: "Sound",
   },
   {
@@ -1492,7 +1472,7 @@ const L = [
     presens: "lyger",
     preteritum: "løy",
     perfektum: "har løyet",
-    imperativ: "",
+
     meaning: "Tell a lie",
   },
   {
@@ -1500,7 +1480,7 @@ const L = [
     presens: "lytter",
     preteritum: "lyttet",
     perfektum: "har lyttet",
-    imperativ: "",
+
     meaning: "Listen",
   },
   {
@@ -1508,7 +1488,7 @@ const L = [
     presens: "lyver",
     preteritum: "løy",
     perfektum: "har løyet",
-    imperativ: "",
+
     meaning: "Tell a lie",
   },
   {
@@ -1516,7 +1496,7 @@ const L = [
     presens: "lærer",
     preteritum: "lærte",
     perfektum: "har lært",
-    imperativ: "",
+
     meaning: "Teach, Learn",
   },
   {
@@ -1524,7 +1504,7 @@ const L = [
     presens: "løfter",
     preteritum: "løftet",
     perfektum: "har løftet",
-    imperativ: "",
+
     meaning: "Lift",
   },
   {
@@ -1532,7 +1512,7 @@ const L = [
     presens: "løper",
     preteritum: "løp",
     perfektum: "har løpt",
-    imperativ: "",
+
     meaning: "Run",
   },
 
@@ -1541,7 +1521,6 @@ const L = [
     presens: "løser",
     preteritum: "løste",
     perfektum: "har løst",
-    imperativ: "løs",
     meaning: "Loosen",
   },
   {
@@ -1549,7 +1528,7 @@ const L = [
     presens: "låner",
     preteritum: "lånte",
     perfektum: "har lånt",
-    imperativ: "",
+
     meaning: "Loan",
   },
   {
@@ -1557,18 +1536,17 @@ const L = [
     presens: "låser",
     preteritum: "låste",
     perfektum: "har låst",
-    imperativ: "",
+
     meaning: "Lock",
   },
 ];
 
-const M = [
+const M: Verb[] = [
   {
     infinitiv: "å mase",
     presens: "maser",
     preteritum: "maste",
     perfektum: "har mast",
-    imperativ: "mas",
     meaning: "Bother",
   },
   {
@@ -1576,7 +1554,7 @@ const M = [
     presens: "merker",
     preteritum: "merket",
     perfektum: "har merket",
-    imperativ: "",
+
     meaning: "Mark",
   },
   {
@@ -1584,7 +1562,7 @@ const M = [
     presens: "minker",
     preteritum: "minket",
     perfektum: "har minket",
-    imperativ: "",
+
     meaning: "Decrease",
   },
   {
@@ -1592,7 +1570,7 @@ const M = [
     presens: "mister",
     preteritum: "mistet",
     perfektum: "har mistet",
-    imperativ: "",
+
     meaning: "Lose",
   },
   {
@@ -1600,7 +1578,7 @@ const M = [
     presens: "møter",
     preteritum: "møtte",
     perfektum: "har møtt",
-    imperativ: "",
+
     meaning: "Meet",
   },
   {
@@ -1608,17 +1586,17 @@ const M = [
     presens: "måler",
     preteritum: "målte",
     perfektum: "har målt",
-    imperativ: "",
+
     meaning: "Measure",
   },
 ];
-const N = [
+const N: Verb[] = [
   {
     infinitiv: "å neke",
     presens: "neker",
     preteritum: "nekte",
     perfektum: "har nekt",
-    imperativ: "",
+
     meaning: "",
   },
   {
@@ -1626,7 +1604,7 @@ const N = [
     presens: "nekter",
     preteritum: "nektet",
     perfektum: "har nektet",
-    imperativ: "",
+
     meaning: "Deny",
   },
   {
@@ -1634,7 +1612,7 @@ const N = [
     presens: "nyser",
     preteritum: "nøs",
     perfektum: "har nyst",
-    imperativ: "",
+
     meaning: "Sneeze",
   },
   {
@@ -1642,17 +1620,17 @@ const N = [
     presens: "nyter",
     preteritum: "nøt",
     perfektum: "har nytt",
-    imperativ: "",
+
     meaning: "",
   },
 ];
-const O = [
+const O: Verb[] = [
   {
     infinitiv: "å omarbeide",
     presens: "omarbeider",
     preteritum: "omarbeidet",
     perfektum: "har omarbeidet",
-    imperativ: "",
+
     meaning: "Revise",
   },
   {
@@ -1660,7 +1638,7 @@ const O = [
     presens: "oppsøker",
     preteritum: "oppsøkte",
     perfektum: "har oppsøkt",
-    imperativ: "",
+
     meaning: "Look up",
   },
   {
@@ -1668,7 +1646,7 @@ const O = [
     presens: "overdriver",
     preteritum: "overdrev",
     perfektum: "har overdrevet",
-    imperativ: "",
+
     meaning: "Exaggerate",
   },
   {
@@ -1676,7 +1654,7 @@ const O = [
     presens: "overnatter",
     preteritum: "overnattet",
     perfektum: "har overnattet",
-    imperativ: "",
+
     meaning: "Spend the night",
   },
   {
@@ -1684,7 +1662,7 @@ const O = [
     presens: "overskriver",
     preteritum: "overskrev",
     perfektum: "har overskrevet",
-    imperativ: "",
+
     meaning: "Sign",
   },
   {
@@ -1692,7 +1670,7 @@ const O = [
     presens: "overtar",
     preteritum: "overtok",
     perfektum: "har overtatt",
-    imperativ: "",
+
     meaning: "Take over",
   },
   {
@@ -1700,18 +1678,18 @@ const O = [
     presens: "overtaler",
     preteritum: "overtalte",
     perfektum: "har overtalt",
-    imperativ: "",
+
     meaning: "Persuade",
   },
 ];
 
-const P = [
+const P: Verb[] = [
   {
     infinitiv: "å pakke",
     presens: "pakker",
     preteritum: "pakket",
     perfektum: "har pakket",
-    imperativ: "",
+
     meaning: "Pack",
   },
   {
@@ -1719,7 +1697,6 @@ const P = [
     presens: "parkerer",
     preteritum: "parkerte",
     perfektum: "har parkert",
-    imperativ: "parker",
     meaning: "Park",
   },
   {
@@ -1727,7 +1704,7 @@ const P = [
     presens: "passer",
     preteritum: "passert",
     perfektum: "har passert",
-    imperativ: "",
+
     meaning: "Fit",
   },
   {
@@ -1735,7 +1712,7 @@ const P = [
     presens: "peker",
     preteritum: "pekte",
     perfektum: "har pekt",
-    imperativ: "",
+
     meaning: "Point",
   },
   {
@@ -1743,7 +1720,7 @@ const P = [
     presens: "piper",
     preteritum: "pe(i)p",
     perfektum: "har pepet",
-    imperativ: "",
+
     meaning: "Wheeze",
   },
   {
@@ -1751,7 +1728,7 @@ const P = [
     presens: "pleier",
     preteritum: "pleide",
     perfektum: "har pleid",
-    imperativ: "",
+
     meaning: "Look after",
   },
   {
@@ -1759,7 +1736,7 @@ const P = [
     presens: "plomberer",
     preteritum: "plomberte",
     perfektum: "har plombert",
-    imperativ: "",
+
     meaning: "Stop, Seal",
   },
   {
@@ -1767,7 +1744,7 @@ const P = [
     presens: "plystrer",
     preteritum: "plystret",
     perfektum: "har plystret",
-    imperativ: "",
+
     meaning: "Whistle",
   },
   {
@@ -1775,7 +1752,7 @@ const P = [
     presens: "preker",
     preteritum: "prekte",
     perfektum: "har prekt",
-    imperativ: "",
+
     meaning: "Preach",
   },
   {
@@ -1783,7 +1760,7 @@ const P = [
     presens: "prøver",
     preteritum: "prøvde",
     perfektum: "har prøvd",
-    imperativ: "",
+
     meaning: "Try, Test",
   },
   {
@@ -1791,7 +1768,7 @@ const P = [
     presens: "pusser",
     preteritum: "pusset",
     perfektum: "har pusset",
-    imperativ: "",
+
     meaning: "Clean, Polish",
   },
   {
@@ -1799,7 +1776,7 @@ const P = [
     presens: "putter",
     preteritum: "puttet",
     perfektum: "har puttet",
-    imperativ: "",
+
     meaning: "Put",
   },
   {
@@ -1807,7 +1784,7 @@ const P = [
     presens: "pynter",
     preteritum: "pyntet",
     perfektum: "har pyntet",
-    imperativ: "",
+
     meaning: "Decorate, Trim",
   },
   {
@@ -1815,20 +1792,29 @@ const P = [
     presens: "pågriper",
     preteritum: "pågripet",
     perfektum: "har pågripet",
-    imperativ: "",
+
     meaning: "Arrest",
   },
 ];
 
-const Q = [{}];
+const Q: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
 
-const R = [
+    meaning: "",
+  },
+];
+
+const R: Verb[] = [
   {
     infinitiv: "å regne",
     presens: "regner",
     preteritum: "regnet",
     perfektum: "har renget",
-    imperativ: "",
+
     meaning: "Rain",
   },
   {
@@ -1836,7 +1822,7 @@ const R = [
     presens: "reiser",
     preteritum: "reiste",
     perfektum: "har reist",
-    imperativ: "",
+
     meaning: "Travel",
   },
   {
@@ -1844,7 +1830,7 @@ const R = [
     presens: "rekker",
     preteritum: "rakk",
     perfektum: "har rukket",
-    imperativ: "",
+
     meaning: "Reach",
   },
   {
@@ -1852,7 +1838,7 @@ const R = [
     presens: "rekommanderer",
     preteritum: "rekommanderte",
     perfektum: "har rekommandert",
-    imperativ: "",
+
     meaning: "Register",
   },
   {
@@ -1860,7 +1846,7 @@ const R = [
     presens: "renser",
     preteritum: "renset",
     perfektum: "har renset",
-    imperativ: "",
+
     meaning: "Clean",
   },
   {
@@ -1868,7 +1854,7 @@ const R = [
     presens: "reparerer",
     preteritum: "reparerte",
     perfektum: "har reparert",
-    imperativ: "",
+
     meaning: "Repair",
   },
   {
@@ -1876,7 +1862,7 @@ const R = [
     presens: "repeterer",
     preteritum: "repeterte",
     perfektum: "har repetert",
-    imperativ: "",
+
     meaning: "Repeat, Revise",
   },
   {
@@ -1884,7 +1870,7 @@ const R = [
     presens: "representerer",
     preteritum: "representerte",
     perfektum: "har representert",
-    imperativ: "",
+
     meaning: "Represent",
   },
   {
@@ -1892,7 +1878,7 @@ const R = [
     presens: "retter",
     preteritum: "rettet",
     perfektum: "har rettet",
-    imperativ: "",
+
     meaning: "Straighten, Align",
   },
   {
@@ -1900,7 +1886,7 @@ const R = [
     presens: "rir",
     preteritum: "red",
     perfektum: "har ridd",
-    imperativ: "",
+
     meaning: "Ride",
   },
   {
@@ -1908,7 +1894,6 @@ const R = [
     presens: "ringer",
     preteritum: "ringte",
     perfektum: "har ringt",
-    imperativ: "ring",
     meaning: "Ring",
   },
   {
@@ -1916,7 +1901,7 @@ const R = [
     presens: "river",
     preteritum: "rev",
     perfektum: "har revet",
-    imperativ: "",
+
     meaning: "Grate",
   },
   {
@@ -1924,7 +1909,6 @@ const R = [
     presens: "ror",
     preteritum: "rodde",
     perfektum: "har rodd",
-    imperativ: "ro",
     meaning: "Row",
   },
   {
@@ -1932,7 +1916,6 @@ const R = [
     presens: "roper",
     preteritum: "ropte",
     perfektum: "har ropt",
-    imperativ: "rop",
     meaning: "Call, Shout",
   },
   {
@@ -1940,7 +1923,7 @@ const R = [
     presens: "rusker",
     preteritum: "rusket",
     perfektum: "har rusket",
-    imperativ: "",
+
     meaning: "Pull",
   },
   {
@@ -1948,7 +1931,7 @@ const R = [
     presens: "rydder",
     preteritum: "ryddet",
     perfektum: "har ryddet",
-    imperativ: "",
+
     meaning: "Tidy",
   },
   {
@@ -1956,7 +1939,7 @@ const R = [
     presens: "rydder av",
     preteritum: "ryddet av",
     perfektum: "har ryddet av",
-    imperativ: "",
+
     meaning: "Clear away, Remove",
   },
   {
@@ -1964,7 +1947,7 @@ const R = [
     presens: "ryker",
     preteritum: "røk",
     perfektum: "har røket",
-    imperativ: "",
+
     meaning: "Smoke",
   },
   {
@@ -1972,7 +1955,6 @@ const R = [
     presens: "rører",
     preteritum: "rørte",
     perfektum: "har rørt",
-    imperativ: "rør",
     meaning: "Stir",
   },
   {
@@ -1980,7 +1962,7 @@ const R = [
     presens: "røyker",
     preteritum: "røykte",
     perfektum: "har røykt",
-    imperativ: "",
+
     meaning: "Smoke",
   },
   {
@@ -1988,18 +1970,17 @@ const R = [
     presens: "råder",
     preteritum: "rådet",
     perfektum: "har rådet",
-    imperativ: "",
+
     meaning: "Recommend",
   },
 ];
 
-const S = [
+const S: Verb[] = [
   {
     infinitiv: "å sage",
     presens: "sager",
     preteritum: "saget",
     perfektum: "har saget",
-    imperativ: "sag",
     meaning: "Saw",
   },
   {
@@ -2007,7 +1988,7 @@ const S = [
     presens: "samarbeider",
     preteritum: "samarbeidet",
     perfektum: "har samarbeidet",
-    imperativ: "",
+
     meaning: "Work together",
   },
   {
@@ -2015,7 +1996,7 @@ const S = [
     presens: "sammenlikner",
     preteritum: "sammenliknet",
     perfektum: "har sammenliknet",
-    imperativ: "",
+
     meaning: "Compare",
   },
   {
@@ -2023,7 +2004,7 @@ const S = [
     presens: "savner",
     preteritum: "savnet",
     perfektum: "har savnet",
-    imperativ: "",
+
     meaning: "Lack",
   },
   {
@@ -2031,7 +2012,6 @@ const S = [
     presens: "ser",
     preteritum: "så",
     perfektum: "har sett",
-    imperativ: "se",
     meaning: "See, Look",
   },
   {
@@ -2039,7 +2019,7 @@ const S = [
     presens: "selger",
     preteritum: "solgte",
     perfektum: "har solgt",
-    imperativ: "",
+
     meaning: "Sell",
   },
   {
@@ -2047,7 +2027,7 @@ const S = [
     presens: "sender",
     preteritum: "sendte",
     perfektum: "har sendt",
-    imperativ: "",
+
     meaning: "Send",
   },
   {
@@ -2055,7 +2035,7 @@ const S = [
     presens: "serverer",
     preteritum: "serverte",
     perfektum: "har servert",
-    imperativ: "",
+
     meaning: "Serve",
   },
   {
@@ -2063,7 +2043,6 @@ const S = [
     presens: "setter",
     preteritum: "satte",
     perfektum: "har satt",
-    imperativ: "sett",
     meaning: "Set",
   },
   {
@@ -2071,7 +2050,7 @@ const S = [
     presens: "sier",
     preteritum: "sa",
     perfektum: "har sagt",
-    imperativ: "",
+
     meaning: "Say",
   },
   {
@@ -2079,7 +2058,7 @@ const S = [
     presens: "siger",
     preteritum: "seg",
     perfektum: "har seget",
-    imperativ: "",
+
     meaning: "Ooze, Seep",
   },
   {
@@ -2087,7 +2066,6 @@ const S = [
     presens: "sikter",
     preteritum: "siktet",
     perfektum: "har siktet",
-    imperativ: "sikt",
     meaning: "Aim",
   },
   {
@@ -2095,7 +2073,7 @@ const S = [
     presens: "sitter",
     preteritum: "satt",
     perfektum: "har sittet",
-    imperativ: "",
+
     meaning: "Sit",
   },
   {
@@ -2103,7 +2081,7 @@ const S = [
     presens: "skifter",
     preteritum: "skiftet",
     perfektum: "har skiftet",
-    imperativ: "",
+
     meaning: "Change, Switch",
   },
   {
@@ -2111,7 +2089,7 @@ const S = [
     presens: "skjer",
     preteritum: "skjedde",
     perfektum: "har skjedd",
-    imperativ: "",
+
     meaning: "Happen",
   },
   {
@@ -2119,7 +2097,7 @@ const S = [
     presens: "skjelver",
     preteritum: "skalv",
     perfektum: "har skjelvet",
-    imperativ: "",
+
     meaning: "Tremble",
   },
   {
@@ -2127,7 +2105,7 @@ const S = [
     presens: "skjærer",
     preteritum: "skar",
     perfektum: "har skåret",
-    imperativ: "",
+
     meaning: "Cut",
   },
   {
@@ -2135,7 +2113,7 @@ const S = [
     presens: "skjønner",
     preteritum: "skjønte",
     perfektum: "har skjønt",
-    imperativ: "",
+
     meaning: "Understand",
   },
   {
@@ -2143,7 +2121,7 @@ const S = [
     presens: "skrider",
     preteritum: "skred",
     perfektum: "har skredet",
-    imperativ: "",
+
     meaning: "Proceed",
   },
   {
@@ -2151,7 +2129,6 @@ const S = [
     presens: "skriver",
     preteritum: "skrev",
     perfektum: "har skrevet",
-    imperativ: "skriv",
     meaning: "Write",
   },
   {
@@ -2159,7 +2136,6 @@ const S = [
     presens: "skrur",
     preteritum: "skrudde",
     perfektum: "har skrudd",
-    imperativ: "skru",
     meaning: "Screw",
   },
   {
@@ -2167,7 +2143,7 @@ const S = [
     presens: "skryter",
     preteritum: "skrøt",
     perfektum: "har skrytt",
-    imperativ: "",
+
     meaning: "Boast",
   },
   {
@@ -2175,7 +2151,7 @@ const S = [
     presens: "skal",
     preteritum: "skulle",
     perfektum: "har skullet",
-    imperativ: "",
+
     meaning: "Shall, Have to",
   },
   {
@@ -2183,7 +2159,7 @@ const S = [
     presens: "skvetter",
     preteritum: "skvettet",
     perfektum: "har skvettet",
-    imperativ: "",
+
     meaning: "Splash",
   },
   {
@@ -2191,7 +2167,7 @@ const S = [
     presens: "skyller",
     preteritum: "skylte",
     perfektum: "har skylt",
-    imperativ: "",
+
     meaning: "Wash",
   },
   {
@@ -2199,7 +2175,7 @@ const S = [
     presens: "skynder",
     preteritum: "skyndte",
     perfektum: "har skyndet",
-    imperativ: "",
+
     meaning: "Hasten",
   },
   {
@@ -2207,7 +2183,7 @@ const S = [
     presens: "skyter",
     preteritum: "skjøt",
     perfektum: "har skutt",
-    imperativ: "",
+
     meaning: "Shoot",
   },
   {
@@ -2215,7 +2191,7 @@ const S = [
     presens: "skyver",
     preteritum: "skøv",
     perfektum: "har skutt",
-    imperativ: "",
+
     meaning: "Push, Shove",
   },
   {
@@ -2223,7 +2199,7 @@ const S = [
     presens: "slenger",
     preteritum: "slengte",
     perfektum: "har slengt",
-    imperativ: "",
+
     meaning: "Throw",
   },
   {
@@ -2231,7 +2207,7 @@ const S = [
     presens: "slipper",
     preteritum: "slapp",
     perfektum: "har sluppet",
-    imperativ: "",
+
     meaning: "Drop",
   },
   {
@@ -2239,7 +2215,7 @@ const S = [
     presens: "sliter",
     preteritum: "slet",
     perfektum: "har slitt",
-    imperativ: "",
+
     meaning: "Toil",
   },
   {
@@ -2247,7 +2223,7 @@ const S = [
     presens: "slutter",
     preteritum: "sluttet",
     perfektum: "har sluttet",
-    imperativ: "",
+
     meaning: "End, Close",
   },
   {
@@ -2255,7 +2231,7 @@ const S = [
     presens: "slår",
     preteritum: "slo",
     perfektum: "har slått",
-    imperativ: "",
+
     meaning: "Hit",
   },
   {
@@ -2263,7 +2239,7 @@ const S = [
     presens: "slåss",
     preteritum: "sloss",
     perfektum: "har slåss",
-    imperativ: "",
+
     meaning: "Fight",
   },
   {
@@ -2271,7 +2247,6 @@ const S = [
     presens: "smaker",
     preteritum: "smaket",
     perfektum: "har smaket",
-    imperativ: "smak",
     meaning: "Taste",
   },
   {
@@ -2279,7 +2254,7 @@ const S = [
     presens: "smeller",
     preteritum: "smelte",
     perfektum: "har smelt",
-    imperativ: "",
+
     meaning: "Bang, Smack",
   },
   {
@@ -2287,7 +2262,7 @@ const S = [
     presens: "smiler",
     preteritum: "smilte",
     perfektum: "har smilt",
-    imperativ: "",
+
     meaning: "Smile",
   },
   {
@@ -2295,7 +2270,7 @@ const S = [
     presens: "smitter",
     preteritum: "smittet",
     perfektum: "har smittet",
-    imperativ: "",
+
     meaning: "Infect",
   },
   {
@@ -2303,7 +2278,7 @@ const S = [
     presens: "sminker",
     preteritum: "sminket",
     perfektum: "har sminket",
-    imperativ: "",
+
     meaning: "Apply make up",
   },
   {
@@ -2311,7 +2286,7 @@ const S = [
     presens: "smører",
     preteritum: "smurte",
     perfektum: "har smurt",
-    imperativ: "",
+
     meaning: "Oil, Lubricate",
   },
   {
@@ -2319,7 +2294,6 @@ const S = [
     presens: "snakker",
     preteritum: "snakket",
     perfektum: "har snakket",
-    imperativ: "snakk",
     meaning: "Speak, Talk",
   },
   {
@@ -2327,7 +2301,7 @@ const S = [
     presens: "snegler",
     preteritum: "sneglet",
     perfektum: "har sneglet",
-    imperativ: "",
+
     meaning: "Move slowly",
   },
   {
@@ -2335,7 +2309,7 @@ const S = [
     presens: "sniker",
     preteritum: "snek",
     perfektum: "har sneket",
-    imperativ: "",
+
     meaning: "Sneak",
   },
   {
@@ -2343,7 +2317,7 @@ const S = [
     presens: "snyter",
     preteritum: "snøt",
     perfektum: "har snytt",
-    imperativ: "",
+
     meaning: "Cheat",
   },
   {
@@ -2351,7 +2325,7 @@ const S = [
     presens: "snør",
     preteritum: "snødde",
     perfektum: "har snødd",
-    imperativ: "",
+
     meaning: "Snow",
   },
   {
@@ -2359,7 +2333,7 @@ const S = [
     presens: "sover",
     preteritum: "sov",
     perfektum: "har sovet",
-    imperativ: "",
+
     meaning: "Sleep",
   },
   {
@@ -2367,7 +2341,7 @@ const S = [
     presens: "sovner",
     preteritum: "sovnet",
     perfektum: "har sovnet",
-    imperativ: "",
+
     meaning: "Fall asleep",
   },
   {
@@ -2375,7 +2349,6 @@ const S = [
     presens: "spanderer",
     preteritum: "spanderte",
     perfektum: "har spandert",
-    imperativ: "spander",
     meaning: "Spend",
   },
   {
@@ -2383,7 +2356,6 @@ const S = [
     presens: "sparer",
     preteritum: "sparte",
     perfektum: "har spart",
-    imperativ: "spar",
     meaning: "Save, Be economical",
   },
   {
@@ -2391,7 +2363,6 @@ const S = [
     presens: "sparker",
     preteritum: "sparket",
     perfektum: "har sparket",
-    imperativ: "spark",
     meaning: "Kick",
   },
   {
@@ -2399,7 +2370,6 @@ const S = [
     presens: "spikrer",
     preteritum: "spikret",
     perfektum: "har spikret",
-    imperativ: "spikre",
     meaning: "Nail",
   },
   {
@@ -2407,7 +2377,7 @@ const S = [
     presens: "spiller",
     preteritum: "spilte",
     perfektum: "har spilt",
-    imperativ: "",
+
     meaning: "Play",
   },
   {
@@ -2415,7 +2385,7 @@ const S = [
     presens: "spinner",
     preteritum: "spant",
     perfektum: "har spunnet",
-    imperativ: "",
+
     meaning: "Spin",
   },
   {
@@ -2423,7 +2393,7 @@ const S = [
     presens: "spiser",
     preteritum: "spiste",
     perfektum: "har spist",
-    imperativ: "",
+
     meaning: "Eat",
   },
   {
@@ -2431,7 +2401,7 @@ const S = [
     presens: "sprekker",
     preteritum: "sprakk",
     perfektum: "har sprukket",
-    imperativ: "",
+
     meaning: "Crack, Burst",
   },
   {
@@ -2439,7 +2409,7 @@ const S = [
     presens: "spretter",
     preteritum: "spratt",
     perfektum: "har sprettet",
-    imperativ: "",
+
     meaning: "Bounce",
   },
   {
@@ -2447,7 +2417,7 @@ const S = [
     presens: "springer",
     preteritum: "sprang",
     perfektum: "har sprunget",
-    imperativ: "",
+
     meaning: "Spring, Leap",
   },
   {
@@ -2455,7 +2425,7 @@ const S = [
     presens: "spør",
     preteritum: "spurte",
     perfektum: "har spurt",
-    imperativ: "",
+
     meaning: "Ask",
   },
   {
@@ -2463,7 +2433,7 @@ const S = [
     presens: "starter",
     preteritum: "startet",
     perfektum: "har startet",
-    imperativ: "",
+
     meaning: "Start",
   },
   {
@@ -2471,7 +2441,7 @@ const S = [
     presens: "steker",
     preteritum: "stekte",
     perfektum: "har stekt",
-    imperativ: "",
+
     meaning: "Roast, Fry, Bake",
   },
   {
@@ -2479,7 +2449,7 @@ const S = [
     presens: "steller",
     preteritum: "stelte",
     perfektum: "har stelt",
-    imperativ: "",
+
     meaning: "Manage",
   },
   {
@@ -2487,7 +2457,7 @@ const S = [
     presens: "stemmer",
     preteritum: "stemte",
     perfektum: "har stemt",
-    imperativ: "",
+
     meaning: "Vote, Agree",
   },
   {
@@ -2495,7 +2465,7 @@ const S = [
     presens: "stevner",
     preteritum: "stevnet",
     perfektum: "har stevnet",
-    imperativ: "",
+
     meaning: "Summon",
   },
   {
@@ -2503,7 +2473,7 @@ const S = [
     presens: "stiger",
     preteritum: "steg",
     perfektum: "har steget",
-    imperativ: "",
+
     meaning: "Climb",
   },
   {
@@ -2511,7 +2481,7 @@ const S = [
     presens: "stikker",
     preteritum: "stakk",
     perfektum: "har stukket",
-    imperativ: "",
+
     meaning: "Stick",
   },
   {
@@ -2519,7 +2489,7 @@ const S = [
     presens: "stiller",
     preteritum: "stilte",
     perfektum: "har stilt",
-    imperativ: "",
+
     meaning: "Put, Place",
   },
   {
@@ -2527,7 +2497,7 @@ const S = [
     presens: "stjeler",
     preteritum: "stjal",
     perfektum: "har stjålet",
-    imperativ: "",
+
     meaning: "Steal",
   },
   {
@@ -2535,7 +2505,6 @@ const S = [
     presens: "stopper",
     preteritum: "stoppet",
     perfektum: "har stoppet",
-    imperativ: "stopp",
     meaning: "Stop",
   },
   {
@@ -2543,7 +2512,7 @@ const S = [
     presens: "strekker",
     preteritum: "strakk",
     perfektum: "har strukket",
-    imperativ: "",
+
     meaning: "Stretch",
   },
   {
@@ -2551,7 +2520,7 @@ const S = [
     presens: "strir",
     preteritum: "stred",
     perfektum: "har stridd",
-    imperativ: "",
+
     meaning: "Struggle",
   },
   {
@@ -2559,7 +2528,7 @@ const S = [
     presens: "strikker",
     preteritum: "strikket",
     perfektum: "har strikket",
-    imperativ: "",
+
     meaning: "Knit",
   },
   {
@@ -2567,7 +2536,7 @@ const S = [
     presens: "stryker",
     preteritum: "strøk",
     perfektum: "har strøket",
-    imperativ: "",
+
     meaning: "Stroke",
   },
   {
@@ -2575,7 +2544,7 @@ const S = [
     presens: "studerer",
     preteritum: "studerte",
     perfektum: "har studert",
-    imperativ: "",
+
     meaning: "Study",
   },
   {
@@ -2583,7 +2552,6 @@ const S = [
     presens: "står",
     preteritum: "stod",
     perfektum: "har stått",
-    imperativ: "stå",
     meaning: "Stand",
   },
   {
@@ -2591,7 +2559,7 @@ const S = [
     presens: "svarer",
     preteritum: "svarte",
     perfektum: "har svart",
-    imperativ: "",
+
     meaning: "Answer, Reply",
   },
   {
@@ -2599,7 +2567,7 @@ const S = [
     presens: "sverger",
     preteritum: "sverget",
     perfektum: "har sverget",
-    imperativ: "",
+
     meaning: "Swear",
   },
   {
@@ -2607,7 +2575,7 @@ const S = [
     presens: "svir",
     preteritum: "sved",
     perfektum: "har svidd",
-    imperativ: "",
+
     meaning: "Burn",
   },
   {
@@ -2615,7 +2583,7 @@ const S = [
     presens: "sviker",
     preteritum: "svek",
     perfektum: "har sveket",
-    imperativ: "",
+
     meaning: "Defraud, Deceive",
   },
   {
@@ -2623,7 +2591,7 @@ const S = [
     presens: "svinger",
     preteritum: "svingte",
     perfektum: "har svingt",
-    imperativ: "",
+
     meaning: "Swing, Brandish",
   },
   {
@@ -2631,7 +2599,7 @@ const S = [
     presens: "svømmer",
     preteritum: "svømte",
     perfektum: "har svømt",
-    imperativ: "",
+
     meaning: "Swim",
   },
   {
@@ -2639,7 +2607,7 @@ const S = [
     presens: "syr",
     preteritum: "sydde",
     perfektum: "har sydd",
-    imperativ: "",
+
     meaning: "Sew, Make",
   },
   {
@@ -2647,7 +2615,6 @@ const S = [
     presens: "sykler",
     preteritum: "syklet",
     perfektum: "har syklet",
-    imperativ: "sykle",
     meaning: "Cycle",
   },
   {
@@ -2655,7 +2622,7 @@ const S = [
     presens: "syn(e)s",
     preteritum: "syntes",
     perfektum: "har syn(e)s",
-    imperativ: "",
+
     meaning: "Think",
   },
   {
@@ -2663,7 +2630,7 @@ const S = [
     presens: "synger",
     preteritum: "sang",
     perfektum: "har sunget",
-    imperativ: "",
+
     meaning: "Sing",
   },
   {
@@ -2671,7 +2638,7 @@ const S = [
     presens: "synker",
     preteritum: "sank",
     perfektum: "har sunket",
-    imperativ: "",
+
     meaning: "Sink",
   },
   {
@@ -2679,18 +2646,17 @@ const S = [
     presens: "søker",
     preteritum: "søkte",
     perfektum: "har søkt",
-    imperativ: "",
+
     meaning: "Apply, Seek",
   },
 ];
 
-const T = [
+const T: Verb[] = [
   {
     infinitiv: "å ta",
     presens: "tar",
     preteritum: "tok",
     perfektum: "har tatt",
-    imperativ: "ta",
     meaning: "Take",
   },
   {
@@ -2698,7 +2664,7 @@ const T = [
     presens: "takker",
     preteritum: "takket",
     perfektum: "har takket",
-    imperativ: "",
+
     meaning: "Thank",
   },
   {
@@ -2706,7 +2672,7 @@ const T = [
     presens: "taper",
     preteritum: "tapte",
     perfektum: "har tapt",
-    imperativ: "",
+
     meaning: "Lose",
   },
   {
@@ -2714,7 +2680,7 @@ const T = [
     presens: "tapper",
     preteritum: "tappet",
     perfektum: "har tappet",
-    imperativ: "",
+
     meaning: "Tap, Draw",
   },
   {
@@ -2722,7 +2688,7 @@ const T = [
     presens: "teller",
     preteritum: "talte",
     perfektum: "har talt",
-    imperativ: "",
+
     meaning: "Count",
   },
   {
@@ -2730,7 +2696,7 @@ const T = [
     presens: "tenker",
     preteritum: "tenkte",
     perfektum: "har tenkt",
-    imperativ: "",
+
     meaning: "Think",
   },
   {
@@ -2738,7 +2704,7 @@ const T = [
     presens: "tenner",
     preteritum: "tente",
     perfektum: "har tent",
-    imperativ: "",
+
     meaning: "Light, Ignite",
   },
   {
@@ -2746,7 +2712,7 @@ const T = [
     presens: "tigger",
     preteritum: "tagg",
     perfektum: "har tigget",
-    imperativ: "",
+
     meaning: "Beg",
   },
   {
@@ -2754,7 +2720,7 @@ const T = [
     presens: "tilbyr",
     preteritum: "tilbød",
     perfektum: "har tilbudt",
-    imperativ: "",
+
     meaning: "Offer",
   },
   {
@@ -2762,7 +2728,7 @@ const T = [
     presens: "tjener",
     preteritum: "tjente",
     perfektum: "har tjent",
-    imperativ: "",
+
     meaning: "Earn",
   },
   {
@@ -2770,7 +2736,7 @@ const T = [
     presens: "tør",
     preteritum: "tord",
     perfektum: "har tort",
-    imperativ: "",
+
     meaning: "Dare",
   },
   {
@@ -2778,7 +2744,7 @@ const T = [
     presens: "torturerer",
     preteritum: "torturerte",
     perfektum: "har torturert",
-    imperativ: "",
+
     meaning: "Torture",
   },
   {
@@ -2786,7 +2752,7 @@ const T = [
     presens: "trer",
     preteritum: "trådte",
     perfektum: "har trådt",
-    imperativ: "",
+
     meaning: "Tread, Step",
   },
   {
@@ -2794,7 +2760,7 @@ const T = [
     presens: "treffer",
     preteritum: "traff",
     perfektum: "har truffet",
-    imperativ: "",
+
     meaning: "Meet",
   },
   {
@@ -2802,7 +2768,7 @@ const T = [
     presens: "trener",
     preteritum: "trente",
     perfektum: "har trent",
-    imperativ: "",
+
     meaning: "Train, Work out",
   },
   {
@@ -2810,7 +2776,7 @@ const T = [
     presens: "trenger",
     preteritum: "trengte",
     perfektum: "har trengt",
-    imperativ: "",
+
     meaning: "Need",
   },
   {
@@ -2818,7 +2784,7 @@ const T = [
     presens: "triver",
     preteritum: "treiv",
     perfektum: "har trevet",
-    imperativ: "",
+
     meaning: "Catch up, Grab",
   },
   {
@@ -2826,7 +2792,7 @@ const T = [
     presens: "triv(e)s",
     preteritum: "trivdes",
     perfektum: "har triv(e)s",
-    imperativ: "",
+
     meaning: "Thrive, Happy",
   },
   {
@@ -2834,7 +2800,7 @@ const T = [
     presens: "tror",
     preteritum: "trodde",
     perfektum: "har trodd",
-    imperativ: "",
+
     meaning: "Think",
   },
   {
@@ -2842,7 +2808,7 @@ const T = [
     presens: "tvinger",
     preteritum: "tvang",
     perfektum: "har tvunget",
-    imperativ: "",
+
     meaning: "Force, Compel",
   },
   {
@@ -2850,18 +2816,18 @@ const T = [
     presens: "tørker",
     preteritum: "tørket",
     perfektum: "har tørket",
-    imperativ: "",
+
     meaning: "Dry",
   },
 ];
 
-const U = [
+const U: Verb[] = [
   {
     infinitiv: "å underskrive",
     presens: "underskriver",
     preteritum: "underskrev",
     perfektum: "har underskrevet",
-    imperativ: "",
+
     meaning: "Sign",
   },
   {
@@ -2869,7 +2835,7 @@ const U = [
     presens: "undersøker",
     preteritum: "undersøkte",
     perfektum: "har undersøkt",
-    imperativ: "",
+
     meaning: "Examine",
   },
   {
@@ -2877,7 +2843,7 @@ const U = [
     presens: "unnskylder",
     preteritum: "unnskyldte",
     perfektum: "har unnskyldt",
-    imperativ: "",
+
     meaning: "Excuse",
   },
   {
@@ -2885,7 +2851,7 @@ const U = [
     presens: "utarbeider",
     preteritum: "utarbeidet",
     perfektum: "har utarbeidet",
-    imperativ: "",
+
     meaning: "Prepare, Work out",
   },
   {
@@ -2893,7 +2859,7 @@ const U = [
     presens: "utfører",
     preteritum: "utførte",
     perfektum: "har utført",
-    imperativ: "",
+
     meaning: "Export, Perform",
   },
   {
@@ -2901,18 +2867,18 @@ const U = [
     presens: "utslår",
     preteritum: "utslo",
     perfektum: "har utslått",
-    imperativ: "",
+
     meaning: "Hanging down, Down",
   },
 ];
 
-const V = [
+const V: Verb[] = [
   {
     infinitiv: "å varme",
     presens: "varmer",
     preteritum: "varmet",
     perfektum: "har varmet",
-    imperative: "",
+
     meaning: "Warm",
   },
   {
@@ -2920,7 +2886,6 @@ const V = [
     presens: "vasker",
     preteritum: "vasket",
     perfektum: "har vasket",
-    imperative: "vask",
     meaning: "Wash",
   },
   {
@@ -2928,7 +2893,7 @@ const V = [
     presens: "veier",
     preteritum: "veide",
     perfektum: "har veid",
-    imperative: "",
+
     meaning: "Weigh",
   },
   {
@@ -2936,7 +2901,7 @@ const V = [
     presens: "vekker",
     preteritum: "vekket",
     perfektum: "har vekket",
-    imperative: "",
+
     meaning: "Wake",
   },
   {
@@ -2944,7 +2909,7 @@ const V = [
     presens: "velger",
     preteritum: "valgte",
     perfektum: "har valgt",
-    imperative: "",
+
     meaning: "Select",
   },
   {
@@ -2952,7 +2917,6 @@ const V = [
     presens: "venter",
     preteritum: "ventet",
     perfektum: "har ventet",
-    imperative: "vent",
     meaning: "Wait",
   },
   {
@@ -2960,7 +2924,7 @@ const V = [
     presens: "verner",
     preteritum: "vernet",
     perfektum: "har vernet",
-    imperative: "",
+
     meaning: "Preserve, Defend",
   },
   {
@@ -2968,7 +2932,7 @@ const V = [
     presens: "viker",
     preteritum: "vekket",
     perfektum: "har veket",
-    imperative: "",
+
     meaning: "Yield",
   },
   {
@@ -2976,7 +2940,7 @@ const V = [
     presens: "vil",
     preteritum: "ville",
     perfektum: "har villet",
-    imperative: "",
+
     meaning: "Want to, Will",
   },
   {
@@ -2984,7 +2948,7 @@ const V = [
     presens: "vinker",
     preteritum: "vinket",
     perfektum: "har vinket",
-    imperative: "",
+
     meaning: "Wave",
   },
   {
@@ -2992,7 +2956,7 @@ const V = [
     presens: "vinner",
     preteritum: "vant",
     perfektum: "har vunnet",
-    imperative: "",
+
     meaning: "Win",
   },
   {
@@ -3000,7 +2964,6 @@ const V = [
     presens: "viser",
     preteritum: "viste",
     perfektum: "har vist",
-    imperative: "",
     meaning: "Indicate, Point out",
   },
   {
@@ -3008,7 +2971,6 @@ const V = [
     presens: "vet",
     preteritum: "visste",
     perfektum: "har visst",
-    imperative: "",
     meaning: "Know",
   },
   {
@@ -3016,7 +2978,6 @@ const V = [
     presens: "vokser",
     preteritum: "vokste",
     perfektum: "har vokst",
-    imperative: "",
     meaning: "Grow, Increase",
   },
   {
@@ -3024,7 +2985,6 @@ const V = [
     presens: "voldtar",
     preteritum: "voldtok",
     perfektum: "har voldtatt",
-    imperative: "",
     meaning: "Rape",
   },
   {
@@ -3032,7 +2992,6 @@ const V = [
     presens: "vrir",
     preteritum: "vred",
     perfektum: "har vridd",
-    imperative: "",
     meaning: "Twist",
   },
   {
@@ -3040,7 +2999,6 @@ const V = [
     presens: "er",
     preteritum: "varmet",
     perfektum: "har vært",
-    imperative: "",
     meaning: "Be, Exist",
   },
   {
@@ -3048,23 +3006,56 @@ const V = [
     presens: "våkner",
     preteritum: "våknet",
     perfektum: "har våknet",
-    imperative: "",
     meaning: "Wake, Awaken",
   },
 ];
 
-const W = [{}];
-const X = [{}];
-const Y = [{}];
-const Z = [{}];
+const W: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
+    meaning: "",
+  },
+];
 
-const Ø = [
+const X: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
+    meaning: "",
+  },
+];
+
+const Y: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
+    meaning: "",
+  },
+];
+
+const Z: Verb[] = [
+  {
+    infinitiv: "",
+    presens: "",
+    preteritum: "",
+    perfektum: "",
+    meaning: "",
+  },
+];
+
+const Ø: Verb[] = [
   {
     infinitiv: "å øke",
     presens: "øker",
     preteritum: "økte",
     perfektum: "har økt",
-    imperativ: "",
     meaning: "Increase",
   },
   {
@@ -3072,7 +3063,6 @@ const Ø = [
     presens: "ønsker",
     preteritum: "ønsket",
     perfektum: "har ønsket",
-    imperativ: "",
     meaning: "Wish",
   },
   {
@@ -3080,41 +3070,12 @@ const Ø = [
     presens: "øver",
     preteritum: "øvde",
     perfektum: "har øvd",
-    imperativ: "",
     meaning: "Practice",
   },
 ];
 
-export {
-  A,
-  B,
-  C,
-  D,
-  E,
-  F,
-  G,
-  H,
-  I,
-  J,
-  K,
-  L,
-  M,
-  N,
-  O,
-  P,
-  Q,
-  R,
-  S,
-  T,
-  U,
-  V,
-  W,
-  X,
-  Y,
-  Z,
-  Ø,
-};
-export const verbs = [
+export { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Ø };
+export const no_verbs = [
   ...A,
   ...B,
   ...C,
