@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import ArrowUpward from '@mui/icons-material/ArrowUpward';
 import { goToTop } from '../util/helper';
 import { useTheme } from '@mui/material/styles';
 import { StyledTableRow } from '../styled/Styled';
-import _ from 'lodash';
 
 import {
   Table,
@@ -176,7 +174,7 @@ const NorwegianVerbsDataTable = () => {
                 {/* Table headers present, past, ... */}
                 <TableRow>
                   {tableHeaders?.map((header: string) => (
-                    <TableCell key={uuidv4()}>
+                    <TableCell key={header}>
                       <Typography variant="h6">{header}</Typography>
                     </TableCell>
                   ))}
@@ -184,9 +182,9 @@ const NorwegianVerbsDataTable = () => {
               </TableHead>
 
               <TableBody>
-                {verbs.map((row: VerbNO) =>
-                  _.isEmpty(row.infinitivForm) ? (
-                    <StyledTableRow key={uuidv4()}>
+                {verbs.map((row: VerbNO, index: number) =>
+                  !row.infinitivForm ? (
+                    <StyledTableRow key={`empty-${index}`}>
                       <TableCell colSpan={5}>
                         <Typography
                           variant="body2"
@@ -198,7 +196,7 @@ const NorwegianVerbsDataTable = () => {
                       </TableCell>
                     </StyledTableRow>
                   ) : (
-                    <StyledTableRow key={uuidv4()}>
+                    <StyledTableRow key={`${row.infinitivForm}-${index}`}>
                       {tableCells.map(({ key }) => (
                         <TableCell key={key}>
                           <Typography

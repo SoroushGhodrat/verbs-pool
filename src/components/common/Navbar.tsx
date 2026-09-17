@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,7 +16,12 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
 
-const pages = ['Norwegian Verbs', 'English Verbs', 'English Grammar'];
+const pages = [
+  'Norwegian Verbs',
+  'English Verbs',
+  'English Grammar',
+  'Useful Sentences',
+];
 const settings = ['About'];
 
 function ResponsiveAppBar() {
@@ -50,6 +54,9 @@ function ResponsiveAppBar() {
         break;
       case 'About':
         navigate('/about');
+        break;
+      case 'Useful Sentences':
+        navigate('/useful-sentences');
         break;
       default:
         break;
