@@ -1,4 +1,13 @@
 {
+  "nav": {
+    "norwegianVerbs": "Norwegian Verbs",
+    "englishVerbs": "English Verbs",
+    "englishGrammar": "English Grammar",
+    "usefulSentences": "Useful Sentences",
+    "about": "About",
+    "openMenu": "Open navigation menu",
+    "openSettings": "Open settings"
+  },
   "alphabets": {
     "title": "Common English verbs",
     "hint": "Press a letter to jump to the group"
@@ -14,5 +23,56 @@
     "group": "Group",
     "emptyGroup": "This group has no verb!",
     "scrollTop": "Scroll to top"
+  },
+  "grammar": {
+    "title": "English and Norwegian Tenses",
+    "subtitle": "A guide to understanding tenses in English and Norwegian with examples.",
+    "formula": "Formula",
+    "passiveFormula": "Passive formula",
+    "signs": "Signs",
+    "headers": {
+      "type": "Type",
+      "english": "Example in English",
+      "norwegian": "Example in Norwegian",
+      "farsi": "Example in Farsi"
+    },
+    "rowKinds": {
+      "normal": "Normal Sentence",
+      "negative": "Negative Sentence",
+      "question": "Question",
+      "passive": "Passive Form"
+    }
+  },
+  "sentences": {
+    "title": "Useful Sentences",
+    "intro": "Here are some useful sentences to help you practice your English and Norwegian skills in a variety of common situations.",
+    "opinions": "Talk about opinions",
+    "close": "Close"
+  },
+  "about": {
+    "title": "About This App",
+    "beta": "Welcome to the Verbs Pool app! This application is currently in beta version and may contain potential mistakes in grammar or definitions. We are continuously working to improve the app and appreciate your understanding and feedback.",
+    "purpose": "The Verbs Pool app aims to help users learn and practice verbs in both English and Norwegian. You can explore different verb forms, their meanings, and examples of usage in sentences.",
+    "contact": "If you encounter any issues or have suggestions for improvement, please feel free to contact us. Your feedback is valuable in making this app better for everyone.",
+    "feedbackType": "Feedback Type",
+    "types": {
+      "englishVerb": "English Verb",
+      "norskVerb": "Norsk Verb",
+      "grammar": "Grammar"
+    },
+    "message": "Message",
+    "submit": "Submit Feedback",
+    "errorType": "Please choose a feedback type.",
+    "errorMessage": "Please write at least 10 characters so we can act on it.",
+    "notConnected": "Your feedback is valid, but submission is not connected to a server yet - nothing was sent."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "That page does not exist. It may have moved, or the link may be wrong.",
+    "back": "Back to verbs"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "retry": "Try again"
   }
 }

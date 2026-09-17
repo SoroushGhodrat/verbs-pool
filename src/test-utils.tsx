@@ -5,17 +5,18 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { LanguageProvider } from './context/LanguageContext';
+import enGlobal from '../public/locales/en/global.json';
 
 // A synchronous i18n instance for tests: the app's real config loads
-// translations over HTTP, which jsdom cannot serve. Keys fall through to
-// themselves, which is enough for smoke assertions.
+// translations over HTTP, which jsdom cannot serve. The real English bundle
+// is imported directly so tests assert the text users actually see.
 const testI18n = i18n.createInstance();
 testI18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
   ns: ['global'],
   defaultNS: 'global',
-  resources: { en: { global: {} } },
+  resources: { en: { global: enGlobal } },
   interpolation: { escapeValue: false },
 });
 

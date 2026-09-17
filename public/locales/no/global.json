@@ -1,4 +1,13 @@
 {
+  "nav": {
+    "norwegianVerbs": "Norske verb",
+    "englishVerbs": "Engelske verb",
+    "englishGrammar": "Engelsk grammatikk",
+    "usefulSentences": "Nyttige setninger",
+    "about": "Om appen",
+    "openMenu": "Åpne navigasjonsmenyen",
+    "openSettings": "Åpne innstillinger"
+  },
   "alphabets": {
     "title": "Vanlige norske verb",
     "hint": "Trykk på en bokstav for å hoppe til gruppen"
@@ -14,5 +23,56 @@
     "group": "Gruppe",
     "emptyGroup": "Denne gruppen har ingen verb!",
     "scrollTop": "Rull til toppen"
+  },
+  "grammar": {
+    "title": "Engelske og norske tider",
+    "subtitle": "En guide til å forstå tider på engelsk og norsk, med eksempler.",
+    "formula": "Formel",
+    "passiveFormula": "Passiv formel",
+    "signs": "Kjennetegn",
+    "headers": {
+      "type": "Type",
+      "english": "Eksempel på engelsk",
+      "norwegian": "Eksempel på norsk",
+      "farsi": "Eksempel på farsi"
+    },
+    "rowKinds": {
+      "normal": "Vanlig setning",
+      "negative": "Nektende setning",
+      "question": "Spørsmål",
+      "passive": "Passiv form"
+    }
+  },
+  "sentences": {
+    "title": "Nyttige setninger",
+    "intro": "Her er noen nyttige setninger som hjelper deg å øve på engelsk og norsk i vanlige situasjoner.",
+    "opinions": "Snakk om meninger",
+    "close": "Lukk"
+  },
+  "about": {
+    "title": "Om denne appen",
+    "beta": "Velkommen til Verbs Pool! Appen er i betaversjon og kan inneholde feil i grammatikk eller forklaringer. Vi jobber kontinuerlig med å forbedre den, og setter pris på forståelsen og tilbakemeldingene dine.",
+    "purpose": "Verbs Pool skal hjelpe deg å lære og øve på verb på både engelsk og norsk. Du kan utforske ulike verbformer, betydningene deres og eksempler på bruk i setninger.",
+    "contact": "Hvis du støter på problemer eller har forslag til forbedringer, er du velkommen til å ta kontakt. Tilbakemeldingen din gjør appen bedre for alle.",
+    "feedbackType": "Type tilbakemelding",
+    "types": {
+      "englishVerb": "Engelsk verb",
+      "norskVerb": "Norsk verb",
+      "grammar": "Grammatikk"
+    },
+    "message": "Melding",
+    "submit": "Send tilbakemelding",
+    "errorType": "Velg en type tilbakemelding.",
+    "errorMessage": "Skriv minst 10 tegn så vi kan følge opp.",
+    "notConnected": "Tilbakemeldingen er gyldig, men innsending er ikke koblet til en server ennå – ingenting ble sendt."
+  },
+  "notFound": {
+    "title": "Fant ikke siden",
+    "body": "Denne siden finnes ikke. Den kan ha blitt flyttet, eller lenken kan være feil.",
+    "back": "Tilbake til verbene"
+  },
+  "error": {
+    "title": "Noe gikk galt",
+    "retry": "Prøv igjen"
   }
 }
