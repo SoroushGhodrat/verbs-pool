@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import LetterFilter from './LetterFilter';
 import DataTableSearchBox from './DataTableSearchBox';
 import { useIsDesktop } from '../hooks/useMediaQuery';
+import { useElementHeight } from '../hooks/useElementHeight';
 import { VerbEN, VerbNO } from '../types/types';
 
 type UnionVerbs = VerbNO | VerbEN;
@@ -38,6 +39,8 @@ const VerbsTable = <T extends UnionVerbs>({
 }: VerbsTableProps<T>) => {
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
+  const filterBarRef = useRef<HTMLDivElement>(null);
+  const filterBarHeight = useElementHeight(filterBarRef);
   const [activeLetter, setActiveLetter] = useState(groups[0]?.label ?? '');
   const [filteredVerbs, setFilteredVerbs] = useState<T[]>([]);
   const [searchValue, setSearchValue] = useState('');
@@ -75,7 +78,10 @@ const VerbsTable = <T extends UnionVerbs>({
       </h1>
 
       {/* Search and letters stay reachable while scrolling a long group. */}
-      <div className="sticky top-0 z-30 -mx-4 border-b border-black/10 bg-surface px-4 pb-3 pt-2">
+      <div
+        ref={filterBarRef}
+        className="sticky top-0 z-30 -mx-4 border-b border-black/10 bg-surface px-4 pb-3 pt-2"
+      >
         <DataTableSearchBox onSearch={handleSearch} />
         <LetterFilter
           letters={groups.map((group) => group.label)}
@@ -130,7 +136,7 @@ const VerbsTable = <T extends UnionVerbs>({
 
           {/* Desktop: the table earns its place for comparing across rows. */}
           {isDesktop && (
-            <div className="overflow-hidden rounded-lg bg-white shadow-sm">
+            <div className="rounded-lg bg-white shadow-sm">
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">{heading}</caption>
                 <thead>
@@ -139,7 +145,8 @@ const VerbsTable = <T extends UnionVerbs>({
                       <th
                         key={column.id}
                         scope="col"
-                        className="sticky top-[7.5rem] z-20 border-b border-black/10 bg-table-head px-4 py-3 text-sm font-semibold"
+                        style={{ top: filterBarHeight }}
+                        className="sticky z-20 border-b border-black/10 bg-table-head px-4 py-3 text-sm font-semibold first:rounded-tl-lg last:rounded-tr-lg"
                       >
                         {column.header}
                       </th>
