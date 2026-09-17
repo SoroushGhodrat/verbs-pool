@@ -21,11 +21,11 @@ const levelClass: Record<CefrLevel, string> = {
 const SentenceRow = ({ sentence }: { sentence: SentencePair }) => (
   <li className="rounded-lg bg-alphabet-box/40 px-4 py-3">
     <div className="flex items-start gap-2">
-      <NoFlag className="mt-1.5 shrink-0" />
+      <NoFlag className="mt-0.5" />
       <p className="text-base">{sentence.no}</p>
     </div>
     <div className="flex items-start gap-2">
-      <UkFlag className="mt-1.5 shrink-0" />
+      <UkFlag className="mt-0.5" />
       <p className="text-base text-black/70">{sentence.en}</p>
     </div>
     {sentence.note && (
