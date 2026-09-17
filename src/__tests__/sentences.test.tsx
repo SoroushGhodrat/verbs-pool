@@ -59,6 +59,21 @@ describe('Useful sentences page', () => {
   });
 });
 
+describe('flag icons', () => {
+  it('keeps its size when the caller passes a className', async () => {
+    const user = userEvent.setup();
+    renderWithProviders(<UsefulSentencesdescription />);
+    await user.click(screen.getByText('Greetings & politeness'));
+
+    // Spreading props over className used to drop the sizing classes, which
+    // rendered the source image at its natural 64x46.
+    for (const flag of screen.getAllByAltText(/Flag/)) {
+      expect(flag.className).toContain('h-5');
+      expect(flag.className).toContain('w-5');
+    }
+  });
+});
+
 describe('sentence data', () => {
   it('has no duplicate Norwegian sentences', () => {
     const all = sentenceCategories.flatMap((c) => c.sentences.map((s) => s.no));
