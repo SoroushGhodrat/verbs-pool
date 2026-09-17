@@ -80,7 +80,7 @@ const VerbsTable = <T extends UnionVerbs>({
       {/* Search and letters stay reachable while scrolling a long group. */}
       <div
         ref={filterBarRef}
-        className="sticky top-0 z-30 -mx-4 border-b border-black/10 bg-surface px-4 pb-3 pt-2"
+        className="sticky top-0 z-30 -mx-4 border-b border-line bg-surface px-4 pb-3 pt-2"
       >
         <DataTableSearchBox onSearch={handleSearch} />
         <LetterFilter
@@ -102,7 +102,7 @@ const VerbsTable = <T extends UnionVerbs>({
       </p>
 
       {visibleVerbs.length === 0 && !isSearching && (
-        <p className="rounded bg-white p-6 text-center text-sm shadow-sm">
+        <p className="rounded bg-card p-6 text-center text-sm shadow-sm">
           {t('table.emptyGroup')}
         </p>
       )}
@@ -116,7 +116,7 @@ const VerbsTable = <T extends UnionVerbs>({
               {visibleVerbs.map((row, index) => (
                 <li
                   key={`${identity(row)}-${index}`}
-                  className="rounded-lg bg-white p-4 shadow-sm"
+                  className="rounded-lg bg-card p-4 shadow-sm"
                 >
                   <h2 className="mb-3 text-lg font-semibold capitalize">
                     {value(row, titleColumn)}
@@ -124,7 +124,7 @@ const VerbsTable = <T extends UnionVerbs>({
                   <dl className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-x-4 gap-y-2 text-sm">
                     {detailColumns.map((column) => (
                       <div key={column.id} className="contents">
-                        <dt className="text-black/60">{column.header}</dt>
+                        <dt className="text-muted">{column.header}</dt>
                         <dd className="capitalize">{value(row, column)}</dd>
                       </div>
                     ))}
@@ -136,7 +136,7 @@ const VerbsTable = <T extends UnionVerbs>({
 
           {/* Desktop: the table earns its place for comparing across rows. */}
           {isDesktop && (
-            <div className="rounded-lg bg-white shadow-sm">
+            <div className="rounded-lg bg-card shadow-sm">
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">{heading}</caption>
                 <thead>
@@ -146,7 +146,7 @@ const VerbsTable = <T extends UnionVerbs>({
                         key={column.id}
                         scope="col"
                         style={{ top: filterBarHeight }}
-                        className="sticky z-20 border-b border-black/10 bg-table-head px-4 py-3 text-sm font-semibold first:rounded-tl-lg last:rounded-tr-lg"
+                        className="sticky z-20 border-b border-line bg-surface px-4 py-3 text-sm font-semibold first:rounded-tl-lg last:rounded-tr-lg"
                       >
                         {column.header}
                       </th>
@@ -157,7 +157,7 @@ const VerbsTable = <T extends UnionVerbs>({
                   {visibleVerbs.map((row, index) => (
                     <tr
                       key={`${identity(row)}-${index}`}
-                      className="border-b border-black/5 transition-colors last:border-0 hover:bg-primary/5"
+                      className="border-b border-line transition-colors last:border-0 hover:bg-primary/5"
                     >
                       {columns.map((column) => (
                         <td

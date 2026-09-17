@@ -28,7 +28,7 @@ const LetterFilter = ({ letters, active, onSelect }: LetterFilterProps) => {
                 aria-current={isActive ? 'true' : undefined}
                 className={`min-w-9 rounded px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   isActive
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary text-on-primary'
                     : 'text-ink hover:bg-primary/10'
                 }`}
               >

@@ -10,11 +10,9 @@ import { TenseSection } from '../types/types';
 export const tenseSections: TenseSection[] = [
   {
     title: 'Simple Present',
-    sectionColor: '#eceff1',
     languages: [
       {
         label: 'English',
-        color: '#78909c',
         lines: [
           { kind: 'formula', value: 'Subject + base verb' },
           { kind: 'passive', value: 'Subject + am/is/are + past participle' },
@@ -22,7 +20,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#607d8b',
         lines: [
           { kind: 'formula', value: 'Subjekt + verb (presens)' },
           { kind: 'passive', value: 'Subjekt + er + partisipp av verb' },
@@ -30,11 +27,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#546e7a',
       en: 'Habitual actions, routines, facts, general truths.',
       no: 'Vanehandlinger, rutiner, fakta og allmenne sannheter.',
     },
-    tableHeadColor: '#263238',
     rows: [
       {
         kind: 'normal',
@@ -64,11 +59,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Present Continuous',
-    sectionColor: '#c8e6c9',
     languages: [
       {
         label: 'English',
-        color: '#66bb6a',
         lines: [
           { kind: 'formula', value: 'Subject + am/is/are + verb-ing' },
           {
@@ -79,7 +72,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#4caf50',
         lines: [
           { kind: 'formula', value: 'Subjekt + er + verb-ing' },
           { kind: 'passive', value: 'Subjekt + er + partisipp av verb' },
@@ -87,11 +79,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#43a047',
       en: 'Actions happening now or around the present moment.',
       no: 'Handlinger som skjer nå eller rundt nåtidspunktet.',
     },
-    tableHeadColor: '#1b5e20',
     rows: [
       {
         kind: 'normal',
@@ -121,11 +111,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Present Perfect',
-    sectionColor: '#e0f7fa',
     languages: [
       {
         label: 'English',
-        color: '#26c6da',
         lines: [
           { kind: 'formula', value: 'Subject + has/have + past participle' },
           {
@@ -136,7 +124,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#00bcd4',
         lines: [
           { kind: 'formula', value: 'Subjekt + har + partisipp av verb' },
           {
@@ -147,11 +134,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#00acc1',
       en: 'Actions that have been completed at some point in the past but are relevant to the present.',
       no: 'Handlinger som er fullført på et tidspunkt i fortiden, men som er relevante for nåtiden.',
     },
-    tableHeadColor: '#006064',
     rows: [
       {
         kind: 'normal',
@@ -181,11 +166,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Simple Past',
-    sectionColor: '#e0f2f1',
     languages: [
       {
         label: 'English',
-        color: '#26a69a',
         lines: [
           { kind: 'formula', value: 'Subject + past verb' },
           { kind: 'passive', value: 'Subject + was/were + past participle' },
@@ -193,7 +176,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#009688',
         lines: [
           { kind: 'formula', value: 'Subjekt + verb (preteritum)' },
           { kind: 'passive', value: 'Subjekt + ble + partisipp av verb' },
@@ -201,11 +183,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#00897b',
       en: 'Actions that were completed in the past.',
       no: 'Handlinger som ble fullført i fortiden.',
     },
-    tableHeadColor: '#004d40',
     rows: [
       {
         kind: 'normal',
@@ -235,11 +215,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Past Continuous',
-    sectionColor: '#e3f2fd',
     languages: [
       {
         label: 'English',
-        color: '#42a5f5',
         lines: [
           { kind: 'formula', value: 'Subject + was/were + verb-ing' },
           {
@@ -250,7 +228,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#2196f3',
         lines: [
           {
             kind: 'note',
@@ -261,11 +238,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#1e88e5',
       en: 'Actions that were ongoing in the past.',
       no: 'Handlinger som pågikk i fortiden.',
     },
-    tableHeadColor: '#0d47a1',
     rows: [
       {
         kind: 'normal',
@@ -295,11 +270,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Past Perfect',
-    sectionColor: '#ede7f6',
     languages: [
       {
         label: 'English',
-        color: '#7e57c2',
         lines: [
           { kind: 'formula', value: 'Subject + had + past participle' },
           { kind: 'passive', value: 'Subject + had + been + past participle' },
@@ -307,7 +280,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#673ab7',
         lines: [
           { kind: 'formula', value: 'Subjekt + hadde + partisipp av verb' },
           {
@@ -318,11 +290,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#5e35b1',
       en: 'Actions that were completed before another action in the past.',
       no: 'Handlinger som ble fullført før en annen handling i fortiden.',
     },
-    tableHeadColor: '#311b92',
     rows: [
       {
         kind: 'normal',
@@ -352,11 +322,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Future Tense',
-    sectionColor: '#ffebee',
     languages: [
       {
         label: 'English',
-        color: '#ef5350',
         lines: [
           { kind: 'formula', value: 'Subject + will + base verb' },
           { kind: 'passive', value: 'Subject + will + be + past participle' },
@@ -364,7 +332,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#f44336',
         lines: [
           { kind: 'formula', value: 'Subjekt + skal + verb (infinitiv)' },
           {
@@ -375,11 +342,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#e53935',
       en: 'Actions that will happen in the future.',
       no: 'Handlinger som vil skje i framtiden.',
     },
-    tableHeadColor: '#b71c1c',
     rows: [
       {
         kind: 'normal',
@@ -409,11 +374,9 @@ export const tenseSections: TenseSection[] = [
   },
   {
     title: 'Future Perfect',
-    sectionColor: '#e8eaf6',
     languages: [
       {
         label: 'English',
-        color: '#5c6bc0',
         lines: [
           { kind: 'formula', value: 'Subject + will have + past participle' },
           {
@@ -424,7 +387,6 @@ export const tenseSections: TenseSection[] = [
       },
       {
         label: 'Norsk',
-        color: '#3f51b5',
         lines: [
           { kind: 'formula', value: 'Subjekt + skal ha + partisipp av verb' },
           {
@@ -435,11 +397,9 @@ export const tenseSections: TenseSection[] = [
       },
     ],
     signs: {
-      color: '#3949ab',
       en: 'Actions that will be completed before a specific point in the future.',
       no: 'Handlinger som vil være fullført før et bestemt tidspunkt i framtiden.',
     },
-    tableHeadColor: '#1a237e',
     rows: [
       {
         kind: 'normal',

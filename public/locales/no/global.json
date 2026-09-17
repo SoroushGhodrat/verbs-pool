@@ -93,5 +93,9 @@
   "error": {
     "title": "Noe gikk galt",
     "retry": "Prøv igjen"
+  },
+  "theme": {
+    "toDark": "Bytt til mørkt tema",
+    "toLight": "Bytt til lyst tema"
   }
 }

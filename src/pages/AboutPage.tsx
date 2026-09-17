@@ -61,7 +61,7 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="mx-auto my-4 max-w-3xl px-4">
-      <div className="rounded bg-white shadow-md">
+      <div className="rounded bg-card shadow-md">
         <div className="p-4">
           <h1 className="mb-2 text-4xl">{t('about.title')}</h1>
           <p className="mb-4 text-base">{t('about.beta')}</p>
@@ -71,22 +71,22 @@ const AboutPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="mt-8">
             <Field className="relative mb-4 block">
               <Listbox value={feedbackType} onChange={setFeedbackType}>
-                <Label className="mb-1 block text-sm text-black/60">
+                <Label className="mb-1 block text-sm text-muted">
                   {t('about.feedbackType')}
                 </Label>
-                <ListboxButton className="flex w-full items-center justify-between rounded border border-black/25 px-3 py-4 text-left transition-colors hover:border-black/60 focus:border-primary focus:outline-none">
+                <ListboxButton className="flex w-full items-center justify-between rounded border border-line px-3 py-4 text-left transition-colors hover:border-ink/60 focus:border-primary focus:outline-none">
                   <span>{selectedLabel || '\u00A0'}</span>
                   <ExpandMoreIcon className="h-5 w-5" />
                 </ListboxButton>
                 <ListboxOptions
                   anchor="bottom"
-                  className="z-50 w-[var(--button-width)] rounded bg-white py-2 shadow-lg focus:outline-none"
+                  className="z-50 w-[var(--button-width)] rounded bg-card py-2 shadow-lg focus:outline-none"
                 >
                   {feedbackTypes.map((type) => (
                     <ListboxOption
                       key={type.value}
                       value={type.value}
-                      className="cursor-pointer px-4 py-2 data-[focus]:bg-black/5 data-[selected]:font-semibold"
+                      className="cursor-pointer px-4 py-2 data-[focus]:bg-hover data-[selected]:font-semibold"
                     >
                       {t(type.labelKey)}
                     </ListboxOption>
@@ -98,7 +98,7 @@ const AboutPage: React.FC = () => {
             <div className="mb-4">
               <label
                 htmlFor="message"
-                className="mb-1 block text-sm text-black/60"
+                className="mb-1 block text-sm text-muted"
               >
                 {t('about.message')}
               </label>
@@ -107,7 +107,7 @@ const AboutPage: React.FC = () => {
                 rows={4}
                 value={message}
                 onChange={handleMessageChange}
-                className="w-full rounded border border-black/25 px-3 py-2 transition-colors hover:border-black/60 focus:border-primary focus:outline-none"
+                className="w-full rounded border border-line px-3 py-2 transition-colors hover:border-ink/60 focus:border-primary focus:outline-none"
               />
             </div>
 
@@ -123,7 +123,7 @@ const AboutPage: React.FC = () => {
 
             <button
               type="submit"
-              className="rounded bg-primary px-4 py-1.5 text-sm uppercase text-white shadow transition-colors hover:bg-primary/90"
+              className="rounded bg-primary px-4 py-1.5 text-sm uppercase text-on-primary shadow transition-colors hover:bg-primary/90"
             >
               {t('about.submit')}
             </button>

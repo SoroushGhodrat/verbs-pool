@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import icon from '../../assets/icon-128.png';
 import { useLanguage } from '../../context/LanguageContext';
-import { MenuIcon, SettingsSuggestIcon } from '../UI/icons';
+import { MenuIcon, MoonIcon, SettingsSuggestIcon, SunIcon } from '../UI/icons';
+import { useThemePreference } from '../../hooks/useThemePreference';
 
 /** `key` drives navigation and stays stable; `labelKey` is what the user sees. */
 const pages = [
@@ -18,6 +19,7 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { setLanguage } = useLanguage();
+  const { isDark, toggle } = useThemePreference();
 
   const handleNavigate = (page: string) => () => {
     switch (page) {
@@ -44,7 +46,7 @@ function ResponsiveAppBar() {
   };
 
   const menuItemClass =
-    'block w-full px-4 py-2 text-center text-base text-ink data-[focus]:bg-black/5';
+    'block w-full px-4 py-2 text-center text-base text-ink data-[focus]:bg-hover';
 
   return (
     <header className="bg-primary text-white shadow-md">
@@ -77,7 +79,7 @@ function ResponsiveAppBar() {
               </MenuButton>
               <MenuItems
                 anchor="bottom start"
-                className="z-50 mt-1 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
+                className="z-50 mt-1 min-w-40 rounded bg-card py-2 shadow-lg focus:outline-none"
               >
                 {pages.map((page) => (
                   <MenuItem key={page.key}>
@@ -116,6 +118,20 @@ function ResponsiveAppBar() {
             ))}
           </nav>
 
+          {/* Theme toggle */}
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={isDark ? t('theme.toLight') : t('theme.toDark')}
+            className="mr-1 shrink-0 rounded-full p-2 transition-colors hover:bg-white/10"
+          >
+            {isDark ? (
+              <SunIcon className="h-5 w-5 text-white" />
+            ) : (
+              <MoonIcon className="h-5 w-5 text-white" />
+            )}
+          </button>
+
           {/* Settings menu */}
           <div className="shrink-0">
             <Menu as="div" className="relative">
@@ -127,7 +143,7 @@ function ResponsiveAppBar() {
               </MenuButton>
               <MenuItems
                 anchor="bottom end"
-                className="z-50 mt-3 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
+                className="z-50 mt-3 min-w-40 rounded bg-card py-2 shadow-lg focus:outline-none"
               >
                 {settings.map((page) => (
                   <MenuItem key={page.key}>
