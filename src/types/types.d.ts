@@ -14,3 +14,23 @@ export interface VerbNO {
   perfektumForm: string;
   betydning: string;
 }
+
+export interface GrammarCell {
+  text: string;
+  rtl: boolean;
+}
+
+export interface TenseLanguageCard {
+  label: string;
+  color: string;
+  lines: string[];
+}
+
+export interface TenseSection {
+  title: string;
+  sectionColor: string;
+  languages: TenseLanguageCard[];
+  signs: { color: string; text: string };
+  tableHeadColor: string;
+  rows: GrammarCell[][];
+}

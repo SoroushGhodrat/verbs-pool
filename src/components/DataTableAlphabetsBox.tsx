@@ -1,4 +1,3 @@
-import { Box, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { generateAlphabet } from '../util/helper';
 import { useEffect, useMemo, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
@@ -25,29 +24,28 @@ const DataTableAlphabetsBox = () => {
   }, [language, englishLetters, norwegianLetters]);
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      <Typography
-        align="center"
-        m={5}
-        variant="h3"
-        sx={{ textTransform: 'capitalize' }}
-      >
+    <div className="flex flex-col items-center">
+      <h1 className="m-10 text-center text-4xl capitalize">
         {t('common english verbs')}
-      </Typography>
+      </h1>
 
-      <Box sx={{ borderRadius: '10px', backgroundColor: '#d7e8f4' }} p={2}>
-        <Typography pb={2} variant="h6" textAlign="center">
+      <div className="rounded-[10px] bg-alphabet-box p-4">
+        <h6 className="pb-4 text-center text-xl">
           {t('press a letter to jump to the group')}
-        </Typography>
-        <Box display="flex" flexWrap="wrap" gap={2}>
+        </h6>
+        <div className="flex flex-wrap gap-4">
           {currentLanguageLetters.map((letter) => (
-            <ListItemButton key={letter} component="a" href={`#${letter}`}>
-              <ListItemText primary={letter} />
-            </ListItemButton>
+            <a
+              key={letter}
+              href={`#${letter}`}
+              className="rounded px-4 py-2 transition-colors hover:bg-black/5"
+            >
+              {letter}
+            </a>
           ))}
-        </Box>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

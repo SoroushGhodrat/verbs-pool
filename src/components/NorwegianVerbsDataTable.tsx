@@ -1,26 +1,6 @@
 import { useState } from 'react';
-import ArrowUpward from '@mui/icons-material/ArrowUpward';
 import { goToTop } from '../util/helper';
-import { useTheme } from '@mui/material/styles';
-import { StyledTableRow } from '../styled/Styled';
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Typography,
-  Zoom,
-  useMediaQuery,
-  Theme,
-  IconButton,
-  Box,
-  Grid,
-} from '@mui/material';
-// import Grid from "@mui/material/Grid2";
+import { ArrowUpwardIcon } from './UI/icons';
 
 import {
   A as NorskA,
@@ -53,7 +33,7 @@ import {
 } from '../data/no';
 
 import DataTableAlphabetsBox from './DataTableAlphabetsBox';
-import { HtmlTooltip } from '../styled/Styled';
+import Tooltip from './UI/Tooltip';
 import DataTableSearchBox from './DataTableSearchBox';
 
 import { useTranslation } from 'react-i18next';
@@ -113,11 +93,6 @@ const NorwegianVerbsDataTable = () => {
     { data: NorskØ, label: 'Ø' },
   ];
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down('sm')
-  );
-
   const handleSearch = (filtered: UnionVerbs[], value: string) => {
     const filteredNO = filtered.filter((verb): verb is VerbNO => {
       return (verb as VerbNO).infinitivForm !== undefined;
@@ -130,99 +105,82 @@ const NorwegianVerbsDataTable = () => {
     return (
       <>
         {/* Letters group header */}
-        <Box display="flex" alignItems="center" justifyContent="center" gap={2}>
-          <Typography
-            textAlign="center"
-            textTransform={'capitalize'}
-            variant="h5"
-            gutterBottom
-            mt={5}
-            mb={5}
+        <div className="flex items-center justify-center gap-4">
+          <h5
             id={letter}
+            className="mb-10 mt-10 text-center text-2xl capitalize"
           >
             {`${t('group')} ${letter}`}
-          </Typography>
+          </h5>
 
           {/* Go-to-top arrow icon */}
-          <HtmlTooltip
-            title={t('scroll to top')}
-            placement="right"
-            TransitionComponent={Zoom}
-          >
-            {/* <HtmlTooltip title="gå til toppen" placement="right" TransitionComponent={Zoom}> */}
-            <IconButton onClick={goToTop}>
-              <ArrowUpward
-                sx={{
-                  cursor: 'pointer',
-                  transition: 'transform 0.5s, color 1s',
-                  '&:hover': {
-                    transform: 'scale(1.2)',
-                    color: '#00bfff',
-                  },
-                }}
-              />
-            </IconButton>
-          </HtmlTooltip>
-        </Box>
+          <Tooltip title={t('scroll to top')} placement="right">
+            <button
+              type="button"
+              onClick={goToTop}
+              aria-label={t('scroll to top')}
+              className="rounded-full p-2 transition-colors hover:bg-black/5"
+            >
+              <ArrowUpwardIcon className="h-6 w-6 transition-transform duration-500 hover:scale-110 hover:text-accent" />
+            </button>
+          </Tooltip>
+        </div>
 
-        <Paper>
-          <TableContainer>
-            <Table>
-              <TableHead
-                sx={{ backgroundColor: '#7cb3da', textTransform: 'capitalize' }}
-              >
+        <div className="overflow-hidden rounded bg-white shadow-md">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left">
+              <thead className="bg-table-head capitalize">
                 {/* Table headers present, past, ... */}
-                <TableRow>
+                <tr>
                   {tableHeaders?.map((header: string) => (
-                    <TableCell key={header}>
-                      <Typography variant="h6">{header}</Typography>
-                    </TableCell>
+                    <th
+                      key={header}
+                      className="border-b border-black/10 px-4 py-4 text-xl font-medium"
+                    >
+                      {header}
+                    </th>
                   ))}
-                </TableRow>
-              </TableHead>
+                </tr>
+              </thead>
 
-              <TableBody>
+              <tbody>
                 {verbs.map((row: VerbNO, index: number) =>
                   !row.infinitivForm ? (
-                    <StyledTableRow key={`empty-${index}`}>
-                      <TableCell colSpan={5}>
-                        <Typography
-                          variant="body2"
-                          textAlign="center"
-                          gutterBottom
-                        >
+                    <tr key={`empty-${index}`} className="odd:bg-black/[0.04]">
+                      <td colSpan={tableHeaders.length} className="px-4 py-4">
+                        <p className="text-center text-sm">
                           {t('this group has no verb!')}
-                        </Typography>
-                      </TableCell>
-                    </StyledTableRow>
+                        </p>
+                      </td>
+                    </tr>
                   ) : (
-                    <StyledTableRow key={`${row.infinitivForm}-${index}`}>
+                    <tr
+                      key={`${row.infinitivForm}-${index}`}
+                      className="odd:bg-black/[0.04]"
+                    >
                       {tableCells.map(({ key }) => (
-                        <TableCell key={key}>
-                          <Typography
-                            variant="subtitle1"
-                            gutterBottom
-                            sx={{ textTransform: 'capitalize' }}
-                          >
-                            {row[key as keyof VerbNO]}
-                          </Typography>
-                        </TableCell>
+                        <td
+                          key={key}
+                          className="border-b border-black/10 px-4 py-4 text-base capitalize last:border-0"
+                        >
+                          {row[key as keyof VerbNO]}
+                        </td>
                       ))}
-                    </StyledTableRow>
+                    </tr>
                   )
                 )}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </>
     );
   };
 
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center">
-      <Grid container justifyContent="center" mb={5}>
-        <Grid item xs={isMobile ? 11 : 7} sx={{ justifyContent: 'center' }}>
+    <div className="flex flex-col justify-center">
+      <div className="mb-10 flex justify-center">
+        <div className="w-11/12 sm:w-7/12">
           <DataTableAlphabetsBox />
           <DataTableSearchBox onSearch={handleSearch} />
           {inputValue.length === 0
@@ -237,23 +195,15 @@ const NorwegianVerbsDataTable = () => {
                 } 🥳`
               )}
           {inputValue.length !== 0 && filteredVerbs.length === 0 && (
-            <Typography
-              textAlign="center"
-              variant="h5"
-              gutterBottom
-              mt={5}
-              mb={5}
-            >
+            <h5 className="mb-10 mt-10 text-center text-2xl">
               Jeg fant ikke noe for
-              <span style={{ color: theme.palette.error.main }}>
-                " {inputValue} "
-              </span>
+              <span className="text-error"> " {inputValue} " </span>
               🥸
-            </Typography>
+            </h5>
           )}
-        </Grid>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </div>
   );
 };
 

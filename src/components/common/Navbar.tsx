@@ -1,20 +1,8 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Link, useNavigate } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import { useLanguage } from '../../context/LanguageContext';
-import { useNavigate } from 'react-router-dom';
-import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import { MenuIcon, SettingsSuggestIcon } from '../UI/icons';
 
 const pages = [
   'Norwegian Verbs',
@@ -26,20 +14,9 @@ const settings = ['About'];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
-
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const { setLanguage } = useLanguage();
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = (page: string) => () => {
+  const handleNavigate = (page: string) => () => {
     switch (page) {
       case 'English Verbs':
         setLanguage('English');
@@ -61,145 +38,111 @@ function ResponsiveAppBar() {
       default:
         break;
     }
-    setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const menuItemClass =
+    'block w-full px-4 py-2 text-center text-base text-ink data-[focus]:bg-black/5';
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ width: 50, height: 50, borderRadius: '50%' }}>
+    <header className="bg-primary text-white shadow-md">
+      <div className="mx-auto max-w-screen-xl px-4">
+        <div className="flex min-h-16 items-center">
+          <div className="h-[50px] w-[50px] shrink-0 rounded-full">
             <img
               src={icon}
               alt="Verbs Logo"
-              style={{ width: '100%', height: '100%', borderRadius: '50%' }}
+              className="h-full w-full rounded-full"
             />
-          </Box>
+          </div>
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              ml: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          {/* Desktop brand */}
+          <Link
+            to="/"
+            className="mx-2 hidden font-mono text-xl font-bold tracking-[.1rem] text-inherit no-underline md:flex"
           >
             Verbs Pool
-          </Typography>
+          </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu('')}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+          {/* Mobile menu */}
+          <div className="flex grow md:hidden">
+            <Menu as="div" className="relative">
+              <MenuButton
+                aria-label="open navigation menu"
+                className="rounded-full p-3 text-inherit transition-colors hover:bg-white/10"
+              >
+                <MenuIcon />
+              </MenuButton>
+              <MenuItems
+                anchor="bottom start"
+                className="z-50 mt-1 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page}>
+                    <button
+                      type="button"
+                      onClick={handleNavigate(page)}
+                      className={menuItemClass}
+                    >
+                      {page}
+                    </button>
+                  </MenuItem>
+                ))}
+              </MenuItems>
             </Menu>
-          </Box>
+          </div>
 
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          {/* Mobile brand */}
+          <Link
+            to="/"
+            className="mr-2 flex grow font-mono text-2xl font-bold tracking-[.1rem] text-inherit no-underline md:hidden"
           >
             Verbs Pool
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden grow md:flex">
             {pages.map((page) => (
-              <Button
+              <button
                 key={page}
-                onClick={handleCloseNavMenu(page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                type="button"
+                onClick={handleNavigate(page)}
+                className="my-4 block rounded px-3 py-2 text-sm uppercase text-white transition-colors hover:bg-white/10"
               >
                 {page}
-              </Button>
+              </button>
             ))}
-          </Box>
+          </nav>
 
-          {/* Settings and profile options in the navbar */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Setting" src={SettingsSuggestIcon} /> */}
-                <SettingsSuggestIcon sx={{ color: 'white' }} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+          {/* Settings menu */}
+          <div className="shrink-0">
+            <Menu as="div" className="relative">
+              <MenuButton
+                aria-label="open settings"
+                className="rounded-full p-1 transition-colors hover:bg-white/10"
+              >
+                <SettingsSuggestIcon className="text-white" />
+              </MenuButton>
+              <MenuItems
+                anchor="bottom end"
+                className="z-50 mt-3 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
+              >
+                {settings.map((page) => (
+                  <MenuItem key={page}>
+                    <button
+                      type="button"
+                      onClick={handleNavigate(page)}
+                      className={menuItemClass}
+                    >
+                      {page}
+                    </button>
+                  </MenuItem>
+                ))}
+              </MenuItems>
             </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }
 

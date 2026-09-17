@@ -24,8 +24,5 @@
       "vitest/globals"
     ]
   },
-  "include": [
-    "src",
-    "vite.config.ts"
-  ]
+  "include": ["src"]
 }
