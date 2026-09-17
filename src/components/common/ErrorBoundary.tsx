@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import i18n from '../../i18n';
 
 interface Props {
   children: ReactNode;
@@ -32,7 +33,7 @@ class ErrorBoundary extends Component<Props, State> {
 
     return (
       <div role="alert" className="mx-auto max-w-2xl px-4 py-16 text-center">
-        <h1 className="mb-2 text-3xl">Something went wrong</h1>
+        <h1 className="mb-2 text-3xl">{i18n.t('error.title')}</h1>
         <p className="mb-6 text-base text-black/60">
           {this.state.error.message}
         </p>
@@ -41,7 +42,7 @@ class ErrorBoundary extends Component<Props, State> {
           onClick={this.handleReset}
           className="rounded bg-primary px-4 py-2 text-sm uppercase text-white shadow transition-colors hover:bg-primary/90"
         >
-          Try again
+          {i18n.t('error.retry')}
         </button>
       </div>
     );

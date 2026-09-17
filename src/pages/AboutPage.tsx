@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Field,
   Label,
@@ -10,12 +11,13 @@ import {
 import { ExpandMoreIcon } from '../components/UI/icons';
 
 const feedbackTypes = [
-  { value: 'english-verb', label: 'English Verb' },
-  { value: 'norsk-verb', label: 'Norsk Verb' },
-  { value: 'grammar', label: 'Grammar' },
+  { value: 'english-verb', labelKey: 'about.types.englishVerb' },
+  { value: 'norsk-verb', labelKey: 'about.types.norskVerb' },
+  { value: 'grammar', labelKey: 'about.types.grammar' },
 ];
 
 const AboutPage: React.FC = () => {
+  const { t } = useTranslation();
   const [feedbackType, setFeedbackType] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState<{
@@ -33,13 +35,13 @@ const AboutPage: React.FC = () => {
     event.preventDefault();
 
     if (!feedbackType) {
-      setStatus({ kind: 'error', text: 'Please choose a feedback type.' });
+      setStatus({ kind: 'error', text: t('about.errorType') });
       return;
     }
     if (message.trim().length < 10) {
       setStatus({
         kind: 'error',
-        text: 'Please write at least 10 characters so we can act on it.',
+        text: t('about.errorMessage'),
       });
       return;
     }
@@ -48,40 +50,29 @@ const AboutPage: React.FC = () => {
     // claiming the feedback was sent.
     setStatus({
       kind: 'info',
-      text: 'Your feedback is valid, but submission is not connected to a server yet - nothing was sent.',
+      text: t('about.notConnected'),
     });
   };
 
-  const selectedLabel =
-    feedbackTypes.find((type) => type.value === feedbackType)?.label ?? '';
+  const selectedType = feedbackTypes.find(
+    (type) => type.value === feedbackType
+  );
+  const selectedLabel = selectedType ? t(selectedType.labelKey) : '';
 
   return (
     <div className="mx-auto my-4 max-w-3xl px-4">
       <div className="rounded bg-white shadow-md">
         <div className="p-4">
-          <h1 className="mb-2 text-4xl">About This App</h1>
-          <p className="mb-4 text-base">
-            Welcome to the Verbs Pool app! This application is currently in beta
-            version and may contain potential mistakes in grammar or
-            definitions. We are continuously working to improve the app and
-            appreciate your understanding and feedback.
-          </p>
-          <p className="mb-4 text-base">
-            The Verbs Pool app aims to help users learn and practice verbs in
-            both English and Norwegian. You can explore different verb forms,
-            their meanings, and examples of usage in sentences.
-          </p>
-          <p className="mb-4 text-base">
-            If you encounter any issues or have suggestions for improvement,
-            please feel free to contact us. Your feedback is valuable in making
-            this app better for everyone.
-          </p>
+          <h1 className="mb-2 text-4xl">{t('about.title')}</h1>
+          <p className="mb-4 text-base">{t('about.beta')}</p>
+          <p className="mb-4 text-base">{t('about.purpose')}</p>
+          <p className="mb-4 text-base">{t('about.contact')}</p>
 
           <form onSubmit={handleSubmit} className="mt-8">
             <Field className="relative mb-4 block">
               <Listbox value={feedbackType} onChange={setFeedbackType}>
                 <Label className="mb-1 block text-sm text-black/60">
-                  Feedback Type
+                  {t('about.feedbackType')}
                 </Label>
                 <ListboxButton className="flex w-full items-center justify-between rounded border border-black/25 px-3 py-4 text-left transition-colors hover:border-black/60 focus:border-primary focus:outline-none">
                   <span>{selectedLabel || '\u00A0'}</span>
@@ -97,7 +88,7 @@ const AboutPage: React.FC = () => {
                       value={type.value}
                       className="cursor-pointer px-4 py-2 data-[focus]:bg-black/5 data-[selected]:font-semibold"
                     >
-                      {type.label}
+                      {t(type.labelKey)}
                     </ListboxOption>
                   ))}
                 </ListboxOptions>
@@ -109,7 +100,7 @@ const AboutPage: React.FC = () => {
                 htmlFor="message"
                 className="mb-1 block text-sm text-black/60"
               >
-                Message
+                {t('about.message')}
               </label>
               <textarea
                 id="message"
@@ -134,7 +125,7 @@ const AboutPage: React.FC = () => {
               type="submit"
               className="rounded bg-primary px-4 py-1.5 text-sm uppercase text-white shadow transition-colors hover:bg-primary/90"
             >
-              Submit Feedback
+              {t('about.submit')}
             </button>
           </form>
         </div>

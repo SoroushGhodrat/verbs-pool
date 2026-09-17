@@ -39,7 +39,7 @@ describe('Norwegian verbs table', () => {
 
     await user.click(screen.getByRole('button', { name: 'C' }));
 
-    expect(screen.getByText('table.emptyGroup')).toBeInTheDocument();
+    expect(screen.getByText('This group has no verb!')).toBeInTheDocument();
     expect(screen.queryByRole('table')).not.toBeInTheDocument();
   });
 
@@ -102,7 +102,9 @@ describe('English grammar page', () => {
       'Future Tense',
       'Future Perfect',
     ]) {
-      expect(screen.getByText(title)).toBeInTheDocument();
+      expect(
+        screen.getByRole('heading', { name: title, level: 2 })
+      ).toBeInTheDocument();
     }
   });
 
@@ -115,13 +117,14 @@ describe('English grammar page', () => {
 
   it('puts Farsi under the Farsi header, not the Norwegian one', () => {
     const { container } = renderWithProviders(<EnglishGrammarDescriptions />);
-    // Headers are: Type | Example in English | Example in Norwegian | Example in Farsi
-    // so the right-to-left cell must always be the 4th column.
+    // Each row is a <th scope="row"> for the type, then English, Norwegian
+    // and Farsi cells - so the right-to-left cell is always the last one.
     for (const row of container.querySelectorAll('tbody tr')) {
+      expect(row.querySelectorAll('th[scope="row"]')).toHaveLength(1);
       const cells = [...row.querySelectorAll('td')];
-      expect(cells).toHaveLength(4);
-      expect(cells[3].getAttribute('dir')).toBe('rtl');
-      expect(cells[2].getAttribute('dir')).toBeNull();
+      expect(cells).toHaveLength(3);
+      expect(cells[2].getAttribute('dir')).toBe('rtl');
+      expect(cells[1].getAttribute('dir')).toBeNull();
     }
   });
 });
@@ -153,7 +156,7 @@ describe('Navbar', () => {
       screen.getAllByRole('button', { name: 'Norwegian Verbs' }).length
     ).toBeGreaterThan(0);
     expect(
-      screen.getByRole('button', { name: 'open settings' })
+      screen.getByRole('button', { name: 'Open settings' })
     ).toBeInTheDocument();
   });
 });

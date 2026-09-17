@@ -1,8 +1,11 @@
 import { TenseSection } from '../types/types';
 
 /**
- * Tense reference content for the English Grammar page. Extracted verbatim
- * from the JSX that previously hardcoded it - this is data, not markup.
+ * Tense reference content for the English Grammar page.
+ *
+ * Example sentences are the teaching material and stay as they are; only
+ * labels and descriptions carry a Norwegian variant. UI chrome (headings,
+ * column names, the Formula/Signs labels) lives in the locale files.
  */
 export const tenseSections: TenseSection[] = [
   {
@@ -13,49 +16,50 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#78909c',
         lines: [
-          'Formula: Subject + base verb',
-          'Passive formula: Subject + am/is/are + past participle',
+          { kind: 'formula', value: 'Subject + base verb' },
+          { kind: 'passive', value: 'Subject + am/is/are + past participle' },
         ],
       },
       {
         label: 'Norsk',
         color: '#607d8b',
         lines: [
-          'Formula: Subjekt + verb (presens)',
-          'Passive formula: Subjekt + er + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + verb (presens)' },
+          { kind: 'passive', value: 'Subjekt + er + partisipp av verb' },
         ],
       },
     ],
     signs: {
       color: '#546e7a',
-      text: 'Signs: Habitual actions, routines, facts, general truths.',
+      en: 'Habitual actions, routines, facts, general truths.',
+      no: 'Vanehandlinger, rutiner, fakta og allmenne sannheter.',
     },
     tableHeadColor: '#263238',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She writes letters.', rtl: false },
-        { text: 'Hun skriver brev.', rtl: false },
-        { text: 'او نامه می‌نویسد.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She does not write letters.', rtl: false },
-        { text: 'Hun skriver ikke brev.', rtl: false },
-        { text: 'او نامه نمی‌نویسد.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Does she write letters?', rtl: false },
-        { text: 'Skriver hun brev?', rtl: false },
-        { text: 'آیا او نامه می‌نویسد؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'Letters are written by her.', rtl: false },
-        { text: 'Brevene skrives av henne.', rtl: false },
-        { text: 'نامه‌ها توسط او نوشته می‌شوند.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She writes letters.',
+        no: 'Hun skriver brev.',
+        fa: 'او نامه می‌نویسد.',
+      },
+      {
+        kind: 'negative',
+        en: 'She does not write letters.',
+        no: 'Hun skriver ikke brev.',
+        fa: 'او نامه نمی‌نویسد.',
+      },
+      {
+        kind: 'question',
+        en: 'Does she write letters?',
+        no: 'Skriver hun brev?',
+        fa: 'آیا او نامه می‌نویسد؟',
+      },
+      {
+        kind: 'passive',
+        en: 'Letters are written by her.',
+        no: 'Brevene skrives av henne.',
+        fa: 'نامه‌ها توسط او نوشته می‌شوند.',
+      },
     ],
   },
   {
@@ -66,49 +70,53 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#66bb6a',
         lines: [
-          'Formula: Subject + am/is/are + verb-ing',
-          'Passive formula: Subject + am/is/are + being + past participle',
+          { kind: 'formula', value: 'Subject + am/is/are + verb-ing' },
+          {
+            kind: 'passive',
+            value: 'Subject + am/is/are + being + past participle',
+          },
         ],
       },
       {
         label: 'Norsk',
         color: '#4caf50',
         lines: [
-          'Formula: Subjekt + er + verb-ing',
-          'Passive formula: Subjekt + er + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + er + verb-ing' },
+          { kind: 'passive', value: 'Subjekt + er + partisipp av verb' },
         ],
       },
     ],
     signs: {
       color: '#43a047',
-      text: 'Signs: Actions happening now or around the present moment.',
+      en: 'Actions happening now or around the present moment.',
+      no: 'Handlinger som skjer nå eller rundt nåtidspunktet.',
     },
     tableHeadColor: '#1b5e20',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She is writing letters.', rtl: false },
-        { text: 'Hun er skriver brev.', rtl: false },
-        { text: 'او در حال نوشتن نامه است.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She is not writing letters.', rtl: false },
-        { text: 'Hun er ikke skriver brev.', rtl: false },
-        { text: 'او در حال نوشتن نامه نیست.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Is she writing letters?', rtl: false },
-        { text: 'Er hun skriver brev?', rtl: false },
-        { text: 'آیا او در حال نوشتن نامه است؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'Letters are being written by her.', rtl: false },
-        { text: 'Brevene er skrives av henne.', rtl: false },
-        { text: 'نامه‌ها توسط او در حال نوشته شدن هستند.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She is writing letters.',
+        no: 'Hun er skriver brev.',
+        fa: 'او در حال نوشتن نامه است.',
+      },
+      {
+        kind: 'negative',
+        en: 'She is not writing letters.',
+        no: 'Hun er ikke skriver brev.',
+        fa: 'او در حال نوشتن نامه نیست.',
+      },
+      {
+        kind: 'question',
+        en: 'Is she writing letters?',
+        no: 'Er hun skriver brev?',
+        fa: 'آیا او در حال نوشتن نامه است؟',
+      },
+      {
+        kind: 'passive',
+        en: 'Letters are being written by her.',
+        no: 'Brevene er skrives av henne.',
+        fa: 'نامه‌ها توسط او در حال نوشته شدن هستند.',
+      },
     ],
   },
   {
@@ -119,49 +127,56 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#26c6da',
         lines: [
-          'Formula: Subject + has/have + past participle',
-          'Passive formula: Subject + has/have + been + past participle',
+          { kind: 'formula', value: 'Subject + has/have + past participle' },
+          {
+            kind: 'passive',
+            value: 'Subject + has/have + been + past participle',
+          },
         ],
       },
       {
         label: 'Norsk',
         color: '#00bcd4',
         lines: [
-          'Formula: Subjekt + har + partisipp av verb',
-          'Passive formula: Subjekt + har + blitt + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + har + partisipp av verb' },
+          {
+            kind: 'passive',
+            value: 'Subjekt + har + blitt + partisipp av verb',
+          },
         ],
       },
     ],
     signs: {
       color: '#00acc1',
-      text: 'Signs: Actions that have been completed at some point in the past but are relevant to the present. ',
+      en: 'Actions that have been completed at some point in the past but are relevant to the present.',
+      no: 'Handlinger som er fullført på et tidspunkt i fortiden, men som er relevante for nåtiden.',
     },
     tableHeadColor: '#006064',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She has written a letter.', rtl: false },
-        { text: 'Hun har skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای نوشته است.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She has not written a letter.', rtl: false },
-        { text: 'Hun har ikke skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای ننوشته است.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Has she written a letter?', rtl: false },
-        { text: 'Har hun skrevet et brev?', rtl: false },
-        { text: 'آیا او نامه‌ای نوشته است؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter has been written by her.', rtl: false },
-        { text: 'Et brev har blitt skrevet av henne.', rtl: false },
-        { text: 'نامه‌ای توسط او نوشته شده است.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She has written a letter.',
+        no: 'Hun har skrevet et brev.',
+        fa: 'او نامه‌ای نوشته است.',
+      },
+      {
+        kind: 'negative',
+        en: 'She has not written a letter.',
+        no: 'Hun har ikke skrevet et brev.',
+        fa: 'او نامه‌ای ننوشته است.',
+      },
+      {
+        kind: 'question',
+        en: 'Has she written a letter?',
+        no: 'Har hun skrevet et brev?',
+        fa: 'آیا او نامه‌ای نوشته است؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter has been written by her.',
+        no: 'Et brev har blitt skrevet av henne.',
+        fa: 'نامه‌ای توسط او نوشته شده است.',
+      },
     ],
   },
   {
@@ -172,49 +187,50 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#26a69a',
         lines: [
-          'Formula: Subject + past verb',
-          'Passive formula: Subject + was/were + past participle',
+          { kind: 'formula', value: 'Subject + past verb' },
+          { kind: 'passive', value: 'Subject + was/were + past participle' },
         ],
       },
       {
         label: 'Norsk',
         color: '#009688',
         lines: [
-          'Formula: Subjekt + verb (preteritum)',
-          'Passive formula: Subjekt + ble + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + verb (preteritum)' },
+          { kind: 'passive', value: 'Subjekt + ble + partisipp av verb' },
         ],
       },
     ],
     signs: {
       color: '#00897b',
-      text: 'Signs: Actions that were completed in the past.',
+      en: 'Actions that were completed in the past.',
+      no: 'Handlinger som ble fullført i fortiden.',
     },
     tableHeadColor: '#004d40',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She wrote a letter.', rtl: false },
-        { text: 'Hun skrev et brev.', rtl: false },
-        { text: 'او نامه‌ای نوشت.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She did not write a letter.', rtl: false },
-        { text: 'Hun skrev ikke et brev.', rtl: false },
-        { text: 'او نامه‌ای ننوشت.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Did she write a letter?', rtl: false },
-        { text: 'Skrev hun et brev?', rtl: false },
-        { text: 'آیا او نامه‌ای نوشت؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter was written by her.', rtl: false },
-        { text: 'Et brev ble skrevet av henne.', rtl: false },
-        { text: 'نامه‌ای توسط او نوشته شد.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She wrote a letter.',
+        no: 'Hun skrev et brev.',
+        fa: 'او نامه‌ای نوشت.',
+      },
+      {
+        kind: 'negative',
+        en: 'She did not write a letter.',
+        no: 'Hun skrev ikke et brev.',
+        fa: 'او نامه‌ای ننوشت.',
+      },
+      {
+        kind: 'question',
+        en: 'Did she write a letter?',
+        no: 'Skrev hun et brev?',
+        fa: 'آیا او نامه‌ای نوشت؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter was written by her.',
+        no: 'Et brev ble skrevet av henne.',
+        fa: 'نامه‌ای توسط او نوشته شد.',
+      },
     ],
   },
   {
@@ -225,46 +241,56 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#42a5f5',
         lines: [
-          'Formula: Subject + was/were + verb-ing',
-          'Passive formula: Subject + was/were + being + past participle',
+          { kind: 'formula', value: 'Subject + was/were + verb-ing' },
+          {
+            kind: 'passive',
+            value: 'Subject + was/were + being + past participle',
+          },
         ],
       },
       {
         label: 'Norsk',
         color: '#2196f3',
-        lines: ['Norwegian grammar does not have this tense.'],
+        lines: [
+          {
+            kind: 'note',
+            value: 'Norwegian grammar does not have this tense.',
+            valueNo: 'Norsk grammatikk har ikke denne tiden.',
+          },
+        ],
       },
     ],
     signs: {
       color: '#1e88e5',
-      text: 'Signs: Actions that were ongoing in the past.',
+      en: 'Actions that were ongoing in the past.',
+      no: 'Handlinger som pågikk i fortiden.',
     },
     tableHeadColor: '#0d47a1',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She was writing a letter.', rtl: false },
-        { text: 'Norwegian grammar does not have this tense.', rtl: false },
-        { text: 'او در حال نوشتن نامه بود.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She was not writing a letter.', rtl: false },
-        { text: 'Norwegian grammar does not have this tense.', rtl: false },
-        { text: 'او در حال نوشتن نامه نبود.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Was she writing a letter?', rtl: false },
-        { text: 'Norwegian grammar does not have this tense.', rtl: false },
-        { text: 'آیا او در حال نوشتن نامه بود؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter was being written by her.', rtl: false },
-        { text: 'Norwegian grammar does not have this tense.', rtl: false },
-        { text: 'نامه‌ای توسط او در حال نوشته شدن بود.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She was writing a letter.',
+        no: 'Norwegian grammar does not have this tense.',
+        fa: 'او در حال نوشتن نامه بود.',
+      },
+      {
+        kind: 'negative',
+        en: 'She was not writing a letter.',
+        no: 'Norwegian grammar does not have this tense.',
+        fa: 'او در حال نوشتن نامه نبود.',
+      },
+      {
+        kind: 'question',
+        en: 'Was she writing a letter?',
+        no: 'Norwegian grammar does not have this tense.',
+        fa: 'آیا او در حال نوشتن نامه بود؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter was being written by her.',
+        no: 'Norwegian grammar does not have this tense.',
+        fa: 'نامه‌ای توسط او در حال نوشته شدن بود.',
+      },
     ],
   },
   {
@@ -275,49 +301,53 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#7e57c2',
         lines: [
-          'Formula: Subject + had + past participle',
-          'Passive formula: Subject + had + been + past participle',
+          { kind: 'formula', value: 'Subject + had + past participle' },
+          { kind: 'passive', value: 'Subject + had + been + past participle' },
         ],
       },
       {
         label: 'Norsk',
         color: '#673ab7',
         lines: [
-          'Formula: Subjekt + hadde + partisipp av verb',
-          'Passive formula: Subjekt + hadde + blitt + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + hadde + partisipp av verb' },
+          {
+            kind: 'passive',
+            value: 'Subjekt + hadde + blitt + partisipp av verb',
+          },
         ],
       },
     ],
     signs: {
       color: '#5e35b1',
-      text: 'Signs: Actions that were completed before another action in the past.',
+      en: 'Actions that were completed before another action in the past.',
+      no: 'Handlinger som ble fullført før en annen handling i fortiden.',
     },
     tableHeadColor: '#311b92',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She had written a letter.', rtl: false },
-        { text: 'Hun hadde skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای نوشته بود.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She had not written a letter.', rtl: false },
-        { text: 'Hun hadde ikke skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای ننوشته بود.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Had she written a letter?', rtl: false },
-        { text: 'Hadde hun skrevet et brev?', rtl: false },
-        { text: 'آیا او نامه‌ای نوشته بود؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter had been written by her.', rtl: false },
-        { text: 'Et brev hadde blitt skrevet av henne.', rtl: false },
-        { text: 'نامه‌ای توسط او نوشته شده بود.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She had written a letter.',
+        no: 'Hun hadde skrevet et brev.',
+        fa: 'او نامه‌ای نوشته بود.',
+      },
+      {
+        kind: 'negative',
+        en: 'She had not written a letter.',
+        no: 'Hun hadde ikke skrevet et brev.',
+        fa: 'او نامه‌ای ننوشته بود.',
+      },
+      {
+        kind: 'question',
+        en: 'Had she written a letter?',
+        no: 'Hadde hun skrevet et brev?',
+        fa: 'آیا او نامه‌ای نوشته بود؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter had been written by her.',
+        no: 'Et brev hadde blitt skrevet av henne.',
+        fa: 'نامه‌ای توسط او نوشته شده بود.',
+      },
     ],
   },
   {
@@ -328,49 +358,53 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#ef5350',
         lines: [
-          'Formula: Subject + will + base verb',
-          'Passive formula: Subject + will + be + past participle',
+          { kind: 'formula', value: 'Subject + will + base verb' },
+          { kind: 'passive', value: 'Subject + will + be + past participle' },
         ],
       },
       {
         label: 'Norsk',
         color: '#f44336',
         lines: [
-          'Formula: Subjekt + skal + verb (infinitiv)',
-          'Passive formula: Subjekt + skal + bli + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + skal + verb (infinitiv)' },
+          {
+            kind: 'passive',
+            value: 'Subjekt + skal + bli + partisipp av verb',
+          },
         ],
       },
     ],
     signs: {
       color: '#e53935',
-      text: 'Signs: Actions that will happen in the future.',
+      en: 'Actions that will happen in the future.',
+      no: 'Handlinger som vil skje i framtiden.',
     },
     tableHeadColor: '#b71c1c',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She will write a letter.', rtl: false },
-        { text: 'Hun skal skrive et brev.', rtl: false },
-        { text: 'او نامه‌ای خواهد نوشت.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She will not write a letter.', rtl: false },
-        { text: 'Hun skal ikke skrive et brev.', rtl: false },
-        { text: 'او نامه‌ای نخواهد نوشت.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Will she write a letter?', rtl: false },
-        { text: 'Skal hun skrive et brev?', rtl: false },
-        { text: 'آیا او نامه‌ای خواهد نوشت؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter will be written by her.', rtl: false },
-        { text: 'Et brev skal skrives av henne.', rtl: false },
-        { text: 'نامه‌ای توسط او نوشته خواهد شد.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She will write a letter.',
+        no: 'Hun skal skrive et brev.',
+        fa: 'او نامه‌ای خواهد نوشت.',
+      },
+      {
+        kind: 'negative',
+        en: 'She will not write a letter.',
+        no: 'Hun skal ikke skrive et brev.',
+        fa: 'او نامه‌ای نخواهد نوشت.',
+      },
+      {
+        kind: 'question',
+        en: 'Will she write a letter?',
+        no: 'Skal hun skrive et brev?',
+        fa: 'آیا او نامه‌ای خواهد نوشت؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter will be written by her.',
+        no: 'Et brev skal skrives av henne.',
+        fa: 'نامه‌ای توسط او نوشته خواهد شد.',
+      },
     ],
   },
   {
@@ -381,49 +415,56 @@ export const tenseSections: TenseSection[] = [
         label: 'English',
         color: '#5c6bc0',
         lines: [
-          'Formula: Subject + will have + past participle',
-          'Passive formula: Subject + will have + been + past participle',
+          { kind: 'formula', value: 'Subject + will have + past participle' },
+          {
+            kind: 'passive',
+            value: 'Subject + will have + been + past participle',
+          },
         ],
       },
       {
         label: 'Norsk',
         color: '#3f51b5',
         lines: [
-          'Formula: Subjekt + skal ha + partisipp av verb',
-          'Passive formula: Subjekt + skal ha + blitt + partisipp av verb',
+          { kind: 'formula', value: 'Subjekt + skal ha + partisipp av verb' },
+          {
+            kind: 'passive',
+            value: 'Subjekt + skal ha + blitt + partisipp av verb',
+          },
         ],
       },
     ],
     signs: {
       color: '#3949ab',
-      text: 'Signs: Actions that will be completed before a specific point in the future.',
+      en: 'Actions that will be completed before a specific point in the future.',
+      no: 'Handlinger som vil være fullført før et bestemt tidspunkt i framtiden.',
     },
     tableHeadColor: '#1a237e',
     rows: [
-      [
-        { text: 'Normal Sentence', rtl: false },
-        { text: 'She will have written a letter.', rtl: false },
-        { text: 'Hun skal ha skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای نوشته خواهد بود.', rtl: true },
-      ],
-      [
-        { text: 'Negative Sentence', rtl: false },
-        { text: 'She will not have written a letter.', rtl: false },
-        { text: 'Hun skal ikke ha skrevet et brev.', rtl: false },
-        { text: 'او نامه‌ای ننوشته خواهد بود.', rtl: true },
-      ],
-      [
-        { text: 'Question', rtl: false },
-        { text: 'Will she have written a letter?', rtl: false },
-        { text: 'Skal hun ha skrevet et brev?', rtl: false },
-        { text: 'آیا او نامه‌ای نوشته خواهد بود؟', rtl: true },
-      ],
-      [
-        { text: 'Passive Form', rtl: false },
-        { text: 'A letter will have been written by her.', rtl: false },
-        { text: 'Et brev vil ha blitt skrevet av henne.', rtl: false },
-        { text: 'نامه‌ای توسط او نوشته خواهد شد.', rtl: true },
-      ],
+      {
+        kind: 'normal',
+        en: 'She will have written a letter.',
+        no: 'Hun skal ha skrevet et brev.',
+        fa: 'او نامه‌ای نوشته خواهد بود.',
+      },
+      {
+        kind: 'negative',
+        en: 'She will not have written a letter.',
+        no: 'Hun skal ikke ha skrevet et brev.',
+        fa: 'او نامه‌ای ننوشته خواهد بود.',
+      },
+      {
+        kind: 'question',
+        en: 'Will she have written a letter?',
+        no: 'Skal hun ha skrevet et brev?',
+        fa: 'آیا او نامه‌ای نوشته خواهد بود؟',
+      },
+      {
+        kind: 'passive',
+        en: 'A letter will have been written by her.',
+        no: 'Et brev vil ha blitt skrevet av henne.',
+        fa: 'نامه‌ای توسط او نوشته خواهد شد.',
+      },
     ],
   },
 ];

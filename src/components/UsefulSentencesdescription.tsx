@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Disclosure,
   DisclosureButton,
@@ -32,22 +33,21 @@ const opinionSentences: { no: string; en: string }[] = [
 ];
 
 const UsefulSentencesdescription: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="mx-auto my-2 max-w-3xl px-4 md:my-4">
       <div className="rounded bg-white p-1 shadow-md md:p-4">
         <div>
-          <h1 className="mb-2 text-center text-3xl">Useful Sentences</h1>
-          <p className="mb-4 text-base">
-            Here are some useful sentences to help you practice your English and
-            Norwegian skills in a variety of common situations.
-          </p>
+          <h1 className="mb-2 text-center text-3xl">{t('sentences.title')}</h1>
+          <p className="mb-4 text-base">{t('sentences.intro')}</p>
         </div>
 
         <Disclosure>
           {({ open, close }) => (
             <>
               <DisclosureButton className="flex w-full items-center justify-between bg-[#7FCDCD] px-4 py-3 text-left capitalize">
-                <span>Talk about opinions</span>
+                <span>{t('sentences.opinions')}</span>
                 <ExpandMoreIcon
                   className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
                 />
@@ -70,7 +70,7 @@ const UsefulSentencesdescription: React.FC = () => {
                     onClick={() => close()}
                     className="mt-4 rounded border border-primary px-4 py-1.5 text-sm uppercase text-primary transition-colors hover:bg-primary/5"
                   >
-                    Close
+                    {t('sentences.close')}
                   </button>
                 </div>
               </DisclosurePanel>

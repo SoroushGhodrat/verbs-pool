@@ -1,19 +1,22 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import icon from '../../assets/icon-128.png';
 import { useLanguage } from '../../context/LanguageContext';
 import { MenuIcon, SettingsSuggestIcon } from '../UI/icons';
 
+/** `key` drives navigation and stays stable; `labelKey` is what the user sees. */
 const pages = [
-  'Norwegian Verbs',
-  'English Verbs',
-  'English Grammar',
-  'Useful Sentences',
+  { key: 'Norwegian Verbs', labelKey: 'nav.norwegianVerbs' },
+  { key: 'English Verbs', labelKey: 'nav.englishVerbs' },
+  { key: 'English Grammar', labelKey: 'nav.englishGrammar' },
+  { key: 'Useful Sentences', labelKey: 'nav.usefulSentences' },
 ];
-const settings = ['About'];
+const settings = [{ key: 'About', labelKey: 'nav.about' }];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { setLanguage } = useLanguage();
 
   const handleNavigate = (page: string) => () => {
@@ -67,7 +70,7 @@ function ResponsiveAppBar() {
           <div className="flex grow md:hidden">
             <Menu as="div" className="relative">
               <MenuButton
-                aria-label="open navigation menu"
+                aria-label={t('nav.openMenu')}
                 className="rounded-full p-3 text-inherit transition-colors hover:bg-white/10"
               >
                 <MenuIcon />
@@ -77,13 +80,13 @@ function ResponsiveAppBar() {
                 className="z-50 mt-1 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
               >
                 {pages.map((page) => (
-                  <MenuItem key={page}>
+                  <MenuItem key={page.key}>
                     <button
                       type="button"
-                      onClick={handleNavigate(page)}
+                      onClick={handleNavigate(page.key)}
                       className={menuItemClass}
                     >
-                      {page}
+                      {t(page.labelKey)}
                     </button>
                   </MenuItem>
                 ))}
@@ -103,12 +106,12 @@ function ResponsiveAppBar() {
           <nav className="hidden grow md:flex">
             {pages.map((page) => (
               <button
-                key={page}
+                key={page.key}
                 type="button"
-                onClick={handleNavigate(page)}
+                onClick={handleNavigate(page.key)}
                 className="my-4 block rounded px-3 py-2 text-sm uppercase text-white transition-colors hover:bg-white/10"
               >
-                {page}
+                {t(page.labelKey)}
               </button>
             ))}
           </nav>
@@ -117,7 +120,7 @@ function ResponsiveAppBar() {
           <div className="shrink-0">
             <Menu as="div" className="relative">
               <MenuButton
-                aria-label="open settings"
+                aria-label={t('nav.openSettings')}
                 className="rounded-full p-1 transition-colors hover:bg-white/10"
               >
                 <SettingsSuggestIcon className="text-white" />
@@ -127,13 +130,13 @@ function ResponsiveAppBar() {
                 className="z-50 mt-3 min-w-40 rounded bg-white py-2 shadow-lg focus:outline-none"
               >
                 {settings.map((page) => (
-                  <MenuItem key={page}>
+                  <MenuItem key={page.key}>
                     <button
                       type="button"
-                      onClick={handleNavigate(page)}
+                      onClick={handleNavigate(page.key)}
                       className={menuItemClass}
                     >
-                      {page}
+                      {t(page.labelKey)}
                     </button>
                   </MenuItem>
                 ))}
