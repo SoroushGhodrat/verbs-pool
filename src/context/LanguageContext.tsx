@@ -5,7 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 type Language = 'Norsk' | 'English';
 
@@ -30,6 +30,11 @@ export const useLanguage = () => useContext(LanguageContext);
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   children,
 }) => {
+  // Use the instance supplied by I18nextProvider rather than the global
+  // i18next singleton, so the provider works against whichever instance is
+  // in scope (the app's, or a test's).
+  const { i18n } = useTranslation();
+
   const storedLanguage = localStorage.getItem('language');
   const [language, setLanguage] = useState<Language>(
     storedLanguage === 'Norsk' || storedLanguage === 'English'
@@ -40,7 +45,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   useEffect(() => {
     localStorage.setItem('language', language);
     i18n.changeLanguage(language === 'Norsk' ? 'no' : 'en');
-  }, [language]);
+  }, [language, i18n]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
