@@ -1,0 +1,4 @@
+# Normalize line endings to LF in the repository and in the working tree.
+# Without this, core.autocrlf=true gives Windows checkouts CRLF while CI
+# (Linux) gets LF, so `npm run format:check` disagrees between the two.
+* text=auto eol=lf
