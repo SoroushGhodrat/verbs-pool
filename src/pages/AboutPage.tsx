@@ -18,6 +18,10 @@ const feedbackTypes = [
 const AboutPage: React.FC = () => {
   const [feedbackType, setFeedbackType] = useState('');
   const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<{
+    kind: 'error' | 'info';
+    text: string;
+  } | null>(null);
 
   const handleMessageChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>
@@ -27,12 +31,25 @@ const AboutPage: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log('Feedback Type:', feedbackType);
-    console.log('Message:', message);
-    // Reset form
-    setFeedbackType('');
-    setMessage('');
+
+    if (!feedbackType) {
+      setStatus({ kind: 'error', text: 'Please choose a feedback type.' });
+      return;
+    }
+    if (message.trim().length < 10) {
+      setStatus({
+        kind: 'error',
+        text: 'Please write at least 10 characters so we can act on it.',
+      });
+      return;
+    }
+
+    // No submission endpoint is configured yet, so say so rather than
+    // claiming the feedback was sent.
+    setStatus({
+      kind: 'info',
+      text: 'Your feedback is valid, but submission is not connected to a server yet - nothing was sent.',
+    });
   };
 
   const selectedLabel =
@@ -102,6 +119,16 @@ const AboutPage: React.FC = () => {
                 className="w-full rounded border border-black/25 px-3 py-2 transition-colors hover:border-black/60 focus:border-primary focus:outline-none"
               />
             </div>
+
+            <p role="status" aria-live="polite" className="mb-2 text-sm">
+              {status ? (
+                <span
+                  className={status.kind === 'error' ? 'text-error' : undefined}
+                >
+                  {status.text}
+                </span>
+              ) : null}
+            </p>
 
             <button
               type="submit"

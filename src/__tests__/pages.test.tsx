@@ -31,6 +31,26 @@ describe('English verbs table', () => {
   });
 });
 
+describe('English verbs table regressions', () => {
+  it('does not double the auxiliary in the present perfect column', () => {
+    renderWithProviders(<EnglishVerbsDataTable />);
+    // presentPerfectForm used to hold "has abashed", which the "Have/Has "
+    // prefix then doubled into "Have/Has has abashed".
+    expect(screen.queryByText(/Have\/Has has /)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Had had /)).not.toBeInTheDocument();
+  });
+
+  it('only offers letter links that have a matching group anchor', () => {
+    const { container } = renderWithProviders(<EnglishVerbsDataTable />);
+    const links = [...container.querySelectorAll('a[href^="#"]')];
+    expect(links.length).toBeGreaterThan(0);
+    for (const link of links) {
+      const anchor = link.getAttribute('href')!.slice(1);
+      expect(container.querySelector(`[id="${anchor}"]`)).not.toBeNull();
+    }
+  });
+});
+
 describe('English grammar page', () => {
   it('renders every tense section', () => {
     renderWithProviders(<EnglishGrammarDescriptions />);

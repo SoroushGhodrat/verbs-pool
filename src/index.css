@@ -3,7 +3,7 @@
 /* Design tokens carried over from the MUI theme in src/hooks/useTheme.tsx,
    so the Tailwind build reproduces the existing palette exactly. */
 @theme {
-  --font-sans: 'Segoe UI Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, system-ui, sans-serif;
 
   --color-primary: #556cd6;
   --color-secondary: #19857b;

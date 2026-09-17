@@ -1,9 +1,18 @@
 {
-  "common english verbs": "common english verbs",
-  "press a letter to jump to the group": "Press a letter to jump to the group",
-  "what are you looking for?": "What are you looking for?",
-  "this group has no verb!": "This group has no verb!",
-  "group": "Group",
-  "clear search box": "Clear search box",
-  "scroll to top": "Scroll to top"
+  "alphabets": {
+    "title": "Common English verbs",
+    "hint": "Press a letter to jump to the group"
+  },
+  "search": {
+    "label": "What are you looking for?",
+    "clear": "Clear search box",
+    "resultsFound_one": "I found {{count}} result 🥳",
+    "resultsFound_other": "I found {{count}} results 🥳",
+    "noResultsFor": "I could not find anything for"
+  },
+  "table": {
+    "group": "Group",
+    "emptyGroup": "This group has no verb!",
+    "scrollTop": "Scroll to top"
+  }
 }

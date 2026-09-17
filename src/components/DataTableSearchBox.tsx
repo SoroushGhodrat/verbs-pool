@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { no_verbs } from '../data/no';
 import { en_verbs } from '../data/en';
 import Tooltip from './UI/Tooltip';
@@ -12,38 +12,52 @@ interface DataTableSearchBoxProps {
   onSearch: (filteredVerbs: UnionVerbs[], value: string) => void;
 }
 
+const DEBOUNCE_MS = 200;
+
+/**
+ * Lowercased haystack per verb, built once per language instead of on every
+ * keystroke - the English list alone is ~988 verbs with five fields each.
+ */
+const buildIndex = (verbs: UnionVerbs[]) =>
+  verbs.map((verb) => ({
+    verb,
+    haystack: Object.values(verb).join('\u0000').toLowerCase(),
+  }));
+
 const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const [searchValue, setSearchValue] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setSearchValue(value);
+  const index = useMemo(
+    () => buildIndex(language === 'Norsk' ? no_verbs : en_verbs),
+    [language]
+  );
 
-    const filtered =
-      language === 'Norsk'
-        ? no_verbs.filter((verb) => {
-            return Object.values(verb).some((val) =>
-              val.toLowerCase().includes(value.toLowerCase())
-            );
-          })
-        : en_verbs.filter((verb) => {
-            return Object.values(verb).some((val) =>
-              val.toLowerCase().includes(value.toLowerCase())
-            );
-          });
+  // Keep the latest callback without making the debounce effect re-run.
+  const onSearchRef = useRef(onSearch);
+  useEffect(() => {
+    onSearchRef.current = onSearch;
+  }, [onSearch]);
 
-    onSearch(filtered, value);
-  };
+  useEffect(() => {
+    if (searchValue === '') {
+      onSearchRef.current([], '');
+      return;
+    }
 
-  const handleClearInput = () => {
-    setSearchValue('');
+    const timer = setTimeout(() => {
+      const needle = searchValue.toLowerCase();
+      const filtered = index
+        .filter(({ haystack }) => haystack.includes(needle))
+        .map(({ verb }) => verb);
+      onSearchRef.current(filtered, searchValue);
+    }, DEBOUNCE_MS);
 
-    onSearch([], ''); // reset to all verbs when input is cleared
-  };
+    return () => clearTimeout(timer);
+  }, [searchValue, index]);
 
-  const label = `${t('what are you looking for?')} 🤔`;
+  const label = `${t('search.label')} 🤔`;
 
   return (
     <div className="relative">
@@ -55,17 +69,17 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
       </label>
       <input
         id="verb-search"
-        type="text"
+        type="search"
         value={searchValue}
-        onChange={handleInputChange}
+        onChange={(event) => setSearchValue(event.target.value)}
         className="w-full rounded border border-black/25 bg-transparent py-4 pl-3 pr-12 text-base outline-none transition-colors hover:border-black/60 focus:border-primary focus:ring-1 focus:ring-primary"
       />
       <div className="absolute right-2 top-1/2 -translate-y-1/2">
-        <Tooltip title={t('clear search box')} placement="left">
+        <Tooltip title={t('search.clear')} placement="left">
           <button
             type="button"
-            onClick={handleClearInput}
-            aria-label={t('clear search box')}
+            onClick={() => setSearchValue('')}
+            aria-label={t('search.clear')}
             className="rounded-full p-2 transition-colors hover:bg-black/5"
           >
             <CloseIcon className="h-5 w-5" />

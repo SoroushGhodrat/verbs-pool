@@ -9,15 +9,15 @@ i18n
   .use(initReactI18next)
   .init(
     {
-      lng: 'en',
+      // No `lng` here on purpose: setting it would override LanguageDetector
+      // and make the detector dead weight.
+      supportedLngs: ['en', 'no'],
+      fallbackLng: 'en',
       backend: {
         //translation file path
         loadPath: '/locales/{{lng}}/{{ns}}.json',
       },
-      //if any of languages not chosen, english will be chose as default
-      fallbackLng: 'en',
-      //allow to look at all the languages
-      debug: true,
+      debug: import.meta.env.DEV,
       ns: ['global'],
       defaultNS: 'global',
       interpolation: {
@@ -27,7 +27,7 @@ i18n
     },
     (error) => {
       if (error) {
-        return console.log('Loading i18n error', error);
+        return console.error('Loading i18n error', error);
       }
     }
   );

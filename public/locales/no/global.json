@@ -1,9 +1,18 @@
 {
-    "common english verbs": "Vanlige norske verbene",
-    "press a letter to jump to the group": "Trykk på et alfabet for å hoppe til gruppen",
-    "what are you looking for?": "Hva leter du etter?",
-    "This group has no verb!": "Denne gruppen har ingen verb!",
+  "alphabets": {
+    "title": "Vanlige norske verb",
+    "hint": "Trykk på en bokstav for å hoppe til gruppen"
+  },
+  "search": {
+    "label": "Hva leter du etter?",
+    "clear": "Tøm søkeboksen",
+    "resultsFound_one": "Jeg har funnet {{count}} resultat 🥳",
+    "resultsFound_other": "Jeg har funnet {{count}} resultater 🥳",
+    "noResultsFor": "Jeg fant ikke noe for"
+  },
+  "table": {
     "group": "Gruppe",
-    "clear search box": "Tøm søkeboksen",
-    "scroll to top": "Rull til toppen"
+    "emptyGroup": "Denne gruppen har ingen verb!",
+    "scrollTop": "Rull til toppen"
+  }
 }

@@ -5,7 +5,7 @@ import {
   DisclosurePanel,
 } from '@headlessui/react';
 import { UkFlag, NoFlag } from './styles/Flags';
-import { randonColor } from '../util/helper';
+import { randomColor } from '../util/helper';
 import { ExpandMoreIcon } from './UI/icons';
 
 interface FlagTextPairProps {
@@ -57,7 +57,7 @@ const UsefulSentencesdescription: React.FC = () => {
                   <div
                     key={sentence.no}
                     className={`rounded-2xl px-4 py-1 ${index > 0 ? 'mt-1' : ''}`}
-                    style={{ backgroundColor: randonColor() }}
+                    style={{ backgroundColor: randomColor() }}
                   >
                     <FlagTextPair FlagComponent={NoFlag} text={sentence.no} />
                     <FlagTextPair FlagComponent={UkFlag} text={sentence.en} />
@@ -73,22 +73,6 @@ const UsefulSentencesdescription: React.FC = () => {
                     Close
                   </button>
                 </div>
-              </DisclosurePanel>
-            </>
-          )}
-        </Disclosure>
-
-        <Disclosure>
-          {({ open }) => (
-            <>
-              <DisclosureButton className="flex w-full items-center justify-between border-t border-black/10 px-4 py-3 text-left">
-                <span>Accordion 2</span>
-                <ExpandMoreIcon
-                  className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-                />
-              </DisclosureButton>
-              <DisclosurePanel className="px-4 py-2">
-                Accordion 2
               </DisclosurePanel>
             </>
           )}

@@ -2,7 +2,6 @@ export interface VerbEN {
   baseForm: string;
   pastForm: string;
   pastParticipleForm: string;
-  presentPerfectForm: string;
   presentSimple3rdPersonSingular: string;
   presentParticiple: string;
 }
