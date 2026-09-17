@@ -19,6 +19,23 @@ testI18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 });
 
+// jsdom has no matchMedia; default to the desktop layout in tests unless a
+// test overrides it via setViewport().
+export const setViewport = (isDesktop: boolean) => {
+  window.matchMedia = ((query: string) => ({
+    matches: query.includes('min-width: 768px') ? isDesktop : false,
+    media: query,
+    onchange: null,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    addListener: () => {},
+    removeListener: () => {},
+    dispatchEvent: () => false,
+  })) as unknown as typeof window.matchMedia;
+};
+
+setViewport(true);
+
 const AllProviders = ({ children }: { children: ReactNode }) => (
   <I18nextProvider i18n={testI18n}>
     <LanguageProvider>

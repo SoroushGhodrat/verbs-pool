@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { renderWithProviders, screen } from '../test-utils';
+import { describe, it, expect, beforeEach } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { renderWithProviders, screen, setViewport } from '../test-utils';
 import NorwegianVerbsDataTable from '../components/NorwegianVerbsDataTable';
 import EnglishVerbsDataTable from '../components/EnglishVerbsDataTable';
 import EnglishGrammarDescriptions from '../components/EnglishGrammarDescriptions';
@@ -7,23 +8,55 @@ import UsefulSentencesdescription from '../components/UsefulSentencesdescription
 import AboutPage from '../pages/AboutPage';
 import Navbar from '../components/common/Navbar';
 
+beforeEach(() => setViewport(true));
+
 describe('Norwegian verbs table', () => {
-  it('renders verb data in a table', () => {
+  it('renders only the first letter group by default', () => {
     renderWithProviders(<NorwegianVerbsDataTable />);
+    // Group A is shown; a verb from a later group is not in the DOM at all.
     expect(screen.getByText('å adlyde')).toBeInTheDocument();
-    expect(screen.getAllByRole('table').length).toBeGreaterThan(0);
+    expect(screen.queryByText('å bedøve')).not.toBeInTheDocument();
+    expect(screen.getByRole('table')).toBeInTheDocument();
   });
 
-  it('shows an empty-state row for letters with no verbs', () => {
+  it('switches groups when a letter is chosen', async () => {
+    const user = userEvent.setup();
     renderWithProviders(<NorwegianVerbsDataTable />);
-    // Groups C, Q, W, X, Y and Z are empty arrays in the data.
-    expect(screen.getAllByText('table.emptyGroup')).toHaveLength(6);
+
+    await user.click(screen.getByRole('button', { name: 'B' }));
+
+    expect(screen.getByText('å bedøve')).toBeInTheDocument();
+    expect(screen.queryByText('å adlyde')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'B' })).toHaveAttribute(
+      'aria-current',
+      'true'
+    );
+  });
+
+  it('shows an empty state for a letter with no verbs', async () => {
+    const user = userEvent.setup();
+    renderWithProviders(<NorwegianVerbsDataTable />);
+
+    await user.click(screen.getByRole('button', { name: 'C' }));
+
+    expect(screen.getByText('table.emptyGroup')).toBeInTheDocument();
+    expect(screen.queryByRole('table')).not.toBeInTheDocument();
   });
 
   it('renders the Norwegian column headers', () => {
     renderWithProviders(<NorwegianVerbsDataTable />);
-    expect(screen.getAllByText('Infinitiv').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Preteritum').length).toBeGreaterThan(0);
+    expect(screen.getByText('Infinitiv')).toBeInTheDocument();
+    expect(screen.getByText('Preteritum')).toBeInTheDocument();
+  });
+
+  it('renders cards instead of a table on narrow screens', () => {
+    setViewport(false);
+    renderWithProviders(<NorwegianVerbsDataTable />);
+
+    expect(screen.queryByRole('table')).not.toBeInTheDocument();
+    expect(screen.getByText('å adlyde')).toBeInTheDocument();
+    // Detail labels come through as a description list on mobile.
+    expect(screen.getAllByText('Presens').length).toBeGreaterThan(0);
   });
 });
 
@@ -46,14 +79,13 @@ describe('English verbs table regressions', () => {
     expect(screen.queryByText(/Had had /)).not.toBeInTheDocument();
   });
 
-  it('only offers letter links that have a matching group anchor', () => {
-    const { container } = renderWithProviders(<EnglishVerbsDataTable />);
-    const links = [...container.querySelectorAll('a[href^="#"]')];
-    expect(links.length).toBeGreaterThan(0);
-    for (const link of links) {
-      const anchor = link.getAttribute('href')!.slice(1);
-      expect(container.querySelector(`[id="${anchor}"]`)).not.toBeNull();
+  it('offers a letter button for every group', () => {
+    renderWithProviders(<EnglishVerbsDataTable />);
+    for (const letter of ['A', 'B', 'Z']) {
+      expect(screen.getByRole('button', { name: letter })).toBeInTheDocument();
     }
+    // X has no English verbs and so must not be offered at all.
+    expect(screen.queryByRole('button', { name: 'X' })).not.toBeInTheDocument();
   });
 });
 

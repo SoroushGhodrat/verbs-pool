@@ -61,18 +61,16 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
 
   return (
     <div className="relative">
-      <label
-        htmlFor="verb-search"
-        className="absolute -top-2 left-3 z-10 bg-surface px-1 text-xs text-black/60"
-      >
+      <label htmlFor="verb-search" className="sr-only">
         {label}
       </label>
       <input
         id="verb-search"
         type="search"
         value={searchValue}
+        placeholder={label}
         onChange={(event) => setSearchValue(event.target.value)}
-        className="w-full rounded border border-black/25 bg-transparent py-4 pl-3 pr-12 text-base outline-none transition-colors hover:border-black/60 focus:border-primary focus:ring-1 focus:ring-primary"
+        className="w-full rounded-lg border border-black/20 bg-white py-2.5 pl-3 pr-12 text-base outline-none transition-colors hover:border-black/40 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
       />
       <div className="absolute right-2 top-1/2 -translate-y-1/2">
         <Tooltip title={t('search.clear')} placement="left">
@@ -92,7 +90,7 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
 
 const DataTableSearchBox: React.FC<DataTableSearchBoxProps> = (props) => {
   return (
-    <div className="my-10 pt-1">
+    <div className="mb-3">
       <SearchField {...props} />
     </div>
   );
