@@ -98,18 +98,9 @@ const B: VerbsNO = [
   {
     infinitivForm: 'å bedøve',
     presensForm: 'bedøver',
-    preteritumForm: 'bedøvet',
-    perfektumForm: 'har bedøvet',
-
-    betydning: 'Drug',
-  },
-  {
-    infinitivForm: 'å bedøve',
-    presensForm: 'bedøver',
-    preteritumForm: 'bedøvde',
-    perfektumForm: 'har bedøvd',
-
-    betydning: 'Anaesthetise',
+    preteritumForm: 'bedøvet / bedøvde',
+    perfektumForm: 'har bedøvet / har bedøvd',
+    betydning: 'Drug / Anaesthetise',
   },
   {
     infinitivForm: 'å begynne',
@@ -356,16 +347,7 @@ const B: VerbsNO = [
   },
 ];
 
-const C: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-
-    betydning: '',
-  },
-];
+const C: VerbsNO = [];
 
 const D: VerbsNO = [
   {
@@ -1774,16 +1756,7 @@ const P: VerbsNO = [
   },
 ];
 
-const Q: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-
-    betydning: '',
-  },
-];
+const Q: VerbsNO = [];
 
 const R: VerbsNO = [
   {
@@ -2987,45 +2960,13 @@ const V: VerbsNO = [
   },
 ];
 
-const W: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-    betydning: '',
-  },
-];
+const W: VerbsNO = [];
 
-const X: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-    betydning: '',
-  },
-];
+const X: VerbsNO = [];
 
-const Y: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-    betydning: '',
-  },
-];
+const Y: VerbsNO = [];
 
-const Z: VerbsNO = [
-  {
-    infinitivForm: '',
-    presensForm: '',
-    preteritumForm: '',
-    perfektumForm: '',
-    betydning: '',
-  },
-];
+const Z: VerbsNO = [];
 
 const Ø: VerbsNO = [
   {

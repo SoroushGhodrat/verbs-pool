@@ -14,6 +14,12 @@ describe('Norwegian verbs table', () => {
     expect(screen.getAllByRole('table').length).toBeGreaterThan(0);
   });
 
+  it('shows an empty-state row for letters with no verbs', () => {
+    renderWithProviders(<NorwegianVerbsDataTable />);
+    // Groups C, Q, W, X, Y and Z are empty arrays in the data.
+    expect(screen.getAllByText('table.emptyGroup')).toHaveLength(6);
+  });
+
   it('renders the Norwegian column headers', () => {
     renderWithProviders(<NorwegianVerbsDataTable />);
     expect(screen.getAllByText('Infinitiv').length).toBeGreaterThan(0);

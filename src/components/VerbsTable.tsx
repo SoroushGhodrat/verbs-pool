@@ -28,7 +28,7 @@ interface VerbsTableProps<T extends UnionVerbs> {
   columns: VerbColumn<T>[];
   /** Narrows the search box's union result to this table's verb type. */
   isOwnVerb: (verb: UnionVerbs) => verb is T;
-  /** The field that identifies a row; blank means "group has no verbs". */
+  /** The field that identifies a row, used for React keys. */
   identity: (verb: T) => string;
 }
 
@@ -88,16 +88,16 @@ const VerbsTable = <T extends UnionVerbs>({
             </thead>
 
             <tbody>
-              {verbs.map((row, index) =>
-                !identity(row) ? (
-                  <tr key={`empty-${index}`} className="odd:bg-black/[0.04]">
-                    <td colSpan={columns.length} className="px-4 py-4">
-                      <p className="text-center text-sm">
-                        {t('table.emptyGroup')}
-                      </p>
-                    </td>
-                  </tr>
-                ) : (
+              {verbs.length === 0 ? (
+                <tr>
+                  <td colSpan={columns.length} className="px-4 py-4">
+                    <p className="text-center text-sm">
+                      {t('table.emptyGroup')}
+                    </p>
+                  </td>
+                </tr>
+              ) : (
+                verbs.map((row, index) => (
                   <tr
                     key={`${identity(row)}-${index}`}
                     className="odd:bg-black/[0.04]"
@@ -111,7 +111,7 @@ const VerbsTable = <T extends UnionVerbs>({
                       </td>
                     ))}
                   </tr>
-                )
+                ))
               )}
             </tbody>
           </table>
