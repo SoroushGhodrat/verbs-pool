@@ -34,13 +34,11 @@ class ErrorBoundary extends Component<Props, State> {
     return (
       <div role="alert" className="mx-auto max-w-2xl px-4 py-16 text-center">
         <h1 className="mb-2 text-3xl">{i18n.t('error.title')}</h1>
-        <p className="mb-6 text-base text-black/60">
-          {this.state.error.message}
-        </p>
+        <p className="mb-6 text-base text-muted">{this.state.error.message}</p>
         <button
           type="button"
           onClick={this.handleReset}
-          className="rounded bg-primary px-4 py-2 text-sm uppercase text-white shadow transition-colors hover:bg-primary/90"
+          className="rounded bg-primary px-4 py-2 text-sm uppercase text-on-primary shadow transition-colors hover:bg-primary/90"
         >
           {i18n.t('error.retry')}
         </button>

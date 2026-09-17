@@ -25,7 +25,6 @@ export interface TenseLine {
 
 export interface TenseLanguageCard {
   label: string;
-  color: string;
   lines: TenseLine[];
 }
 
@@ -40,10 +39,8 @@ export interface TenseRow {
 
 export interface TenseSection {
   title: string;
-  sectionColor: string;
   languages: TenseLanguageCard[];
-  signs: { color: string; en: string; no: string };
-  tableHeadColor: string;
+  signs: { en: string; no: string };
   rows: TenseRow[];
 }
 

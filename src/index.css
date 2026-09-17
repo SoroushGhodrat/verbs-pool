@@ -1,26 +1,67 @@
 @import 'tailwindcss';
 
-/* Design tokens carried over from the MUI theme in src/hooks/useTheme.tsx,
-   so the Tailwind build reproduces the existing palette exactly. */
+/**
+ * A deliberately narrow palette: a five-step neutral spine plus one status
+ * colour. This is a reading app, so contrast and calm matter more than
+ * variety - every pair below meets WCAG AA, and body text meets AAA.
+ *
+ * The spine, light to dark:
+ *   #FFFFFF  #F2F3F5  #8D99AE  #5C6878  #2B2D42  #1A1A2E
+ *
+ * `#8D99AE` reads well on dark grounds but only reaches 2.9:1 on white, so
+ * light mode uses `#5C6878` for muted text and keeps `#8D99AE` for borders.
+ *
+ * The active theme is resolved to a `data-theme` attribute on <html> by the
+ * inline script in index.html, so there is a single dark block here rather
+ * than a mirror of every rule under prefers-color-scheme.
+ */
 @theme {
   --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, system-ui, sans-serif;
 
-  --color-primary: #556cd6;
-  --color-secondary: #19857b;
-  --color-error: #f44336;
-  --color-warning: #ff9800;
-  --color-info: #2196f3;
-  --color-success: #4caf50;
+  /* Surfaces. Neither end is pure: a pure-white reading surface at maximum
+     contrast causes halation, which readers with astigmatism feel most. */
+  --color-surface: #edeff3;
+  --color-card: #fafbfc;
 
-  /* Surface colours previously hardcoded across components */
-  --color-surface: #f5f5f5;
-  --color-ink: #333333;
-  --color-table-head: #7cb3da;
-  --color-alphabet-box: #d7e8f4;
-  --color-accent: #00bfff;
+  /* Text */
+  --color-ink: #2b2d42;
+  --color-muted: #5c6878;
+
+  /* Interactive */
+  --color-primary: #2b2d42;
+  --color-on-primary: #ffffff;
+
+  /* Lines and interaction */
+  --color-line: #dde1e6;
+  --color-hover: #e1e6ec;
+
+  /* The only status colour: validation and empty-result states. */
+  --color-error: #c62828;
+}
+
+:root[data-theme='dark'] {
+  --color-surface: #1a1a2e;
+  --color-card: #2b2d42;
+
+  --color-ink: #e8eaf0;
+  --color-muted: #8d99ae;
+
+  --color-primary: #8d99ae;
+  --color-on-primary: #1a1a2e;
+
+  --color-line: #3a3d52;
+  --color-hover: #343651;
+
+  --color-error: #ff8a80;
+
+  color-scheme: dark;
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -28,9 +69,7 @@
     background-color: var(--color-surface);
     color: var(--color-ink);
   }
-}
 
-@layer base {
   /* Respect users who ask the OS to reduce motion. */
   @media (prefers-reduced-motion: reduce) {
     *,

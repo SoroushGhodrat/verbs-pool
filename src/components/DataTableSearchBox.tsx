@@ -70,7 +70,7 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
         value={searchValue}
         placeholder={label}
         onChange={(event) => setSearchValue(event.target.value)}
-        className="w-full rounded-lg border border-black/20 bg-white py-2.5 pl-3 pr-12 text-base outline-none transition-colors hover:border-black/40 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
+        className="w-full rounded-lg border border-line bg-card py-2.5 pl-3 pr-12 text-base outline-none transition-colors hover:border-ink/40 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30"
       />
       <div className="absolute right-2 top-1/2 -translate-y-1/2">
         <Tooltip title={t('search.clear')} placement="left">
@@ -78,7 +78,7 @@ const SearchField: React.FC<DataTableSearchBoxProps> = ({ onSearch }) => {
             type="button"
             onClick={() => setSearchValue('')}
             aria-label={t('search.clear')}
-            className="rounded-full p-2 transition-colors hover:bg-black/5"
+            className="rounded-full p-2 transition-colors hover:bg-hover"
           >
             <CloseIcon className="h-5 w-5" />
           </button>

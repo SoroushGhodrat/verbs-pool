@@ -33,21 +33,17 @@ const TenseBlock = ({
 
   return (
     <div
-      className={`rounded p-1 md:p-4 ${isFirst ? '' : 'mt-8'}`}
-      style={{ backgroundColor: section.sectionColor }}
+      className={`rounded-lg bg-card p-4 shadow-sm ${isFirst ? '' : 'mt-8'}`}
     >
-      <h2 className="pb-8 text-center text-3xl text-[#263238]">
-        {section.title}
-      </h2>
+      <h2 className="pb-8 text-center text-3xl text-ink">{section.title}</h2>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {section.languages.map((card) => (
           <div
             key={card.label}
-            className="rounded-lg p-4 text-white shadow-md"
-            style={{ backgroundColor: card.color }}
+            className="rounded-lg border border-line bg-surface p-4"
           >
-            <h3 className="mb-2 text-xl">{card.label}</h3>
+            <h3 className="mb-2 text-xl font-semibold">{card.label}</h3>
             {card.lines.map((line) => (
               <p key={line.kind + line.value} className="text-base">
                 {lineText(line)}
@@ -59,10 +55,7 @@ const TenseBlock = ({
 
       {/* Signs Section */}
       <div className="py-4">
-        <div
-          className="rounded-lg p-4 text-white shadow-md"
-          style={{ backgroundColor: section.signs.color }}
-        >
+        <div className="rounded-lg border-l-4 border-primary bg-surface p-4">
           <p className="text-base">
             {t('grammar.signs')}:{' '}
             {isNorwegian ? section.signs.no : section.signs.en}
@@ -71,17 +64,17 @@ const TenseBlock = ({
       </div>
 
       {/* Table Section */}
-      <div className="rounded-lg bg-white shadow-md">
+      <div className="rounded-lg border border-line">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left">
             <caption className="sr-only">{section.title}</caption>
-            <thead style={{ backgroundColor: section.tableHeadColor }}>
+            <thead className="bg-surface">
               <tr>
                 {headers.map((header) => (
                   <th
                     key={header}
                     scope="col"
-                    className="px-4 py-4 font-medium text-white first:rounded-tl-lg last:rounded-tr-lg"
+                    className="border-b border-line px-4 py-3 text-sm font-semibold"
                   >
                     {header}
                   </th>
@@ -90,7 +83,7 @@ const TenseBlock = ({
             </thead>
             <tbody>
               {section.rows.map((row) => (
-                <tr key={row.kind} className="border-b border-black/10">
+                <tr key={row.kind} className="border-b border-line">
                   <th scope="row" className="px-4 py-4 text-left font-normal">
                     {t(`grammar.rowKinds.${row.kind}`)}
                   </th>
@@ -118,7 +111,7 @@ const EnglishGrammarDescriptions = () => {
       {/* Title Section */}
       <div className="py-8 text-center">
         <h1 className="mb-2 text-4xl">{t('grammar.title')}</h1>
-        <p className="text-base text-black/60">{t('grammar.subtitle')}</p>
+        <p className="text-base text-muted">{t('grammar.subtitle')}</p>
       </div>
 
       {tenseSections.map((section, index) => (
