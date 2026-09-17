@@ -1,10 +1,8 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { goToTop } from '../util/helper';
-import { ArrowUpwardIcon } from './UI/icons';
-import Tooltip from './UI/Tooltip';
-import DataTableAlphabetsBox from './DataTableAlphabetsBox';
+import LetterFilter from './LetterFilter';
 import DataTableSearchBox from './DataTableSearchBox';
+import { useIsDesktop } from '../hooks/useMediaQuery';
 import { VerbEN, VerbNO } from '../types/types';
 
 type UnionVerbs = VerbNO | VerbEN;
@@ -39,121 +37,137 @@ const VerbsTable = <T extends UnionVerbs>({
   identity,
 }: VerbsTableProps<T>) => {
   const { t } = useTranslation();
+  const isDesktop = useIsDesktop();
+  const [activeLetter, setActiveLetter] = useState(groups[0]?.label ?? '');
   const [filteredVerbs, setFilteredVerbs] = useState<T[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
+
+  const isSearching = searchValue.length > 0;
 
   const handleSearch = (filtered: UnionVerbs[], value: string) => {
     setFilteredVerbs(filtered.filter(isOwnVerb));
-    setInputValue(value);
+    setSearchValue(value);
   };
 
-  /** `anchor` is the bare letter, so the alphabet links (#A) keep working. */
-  const renderTable = (verbs: T[], heading: string, anchor?: string) => (
-    <div key={heading}>
-      {/* Letters group header */}
-      <div className="flex items-center justify-center gap-4">
-        <h2 id={anchor} className="mb-10 mt-10 text-center text-2xl">
-          {heading}
-        </h2>
-
-        {/* Go-to-top arrow icon */}
-        <Tooltip title={t('table.scrollTop')} placement="right">
-          <button
-            type="button"
-            onClick={goToTop}
-            aria-label={t('table.scrollTop')}
-            className="rounded-full p-2 transition-colors hover:bg-black/5"
-          >
-            <ArrowUpwardIcon className="h-6 w-6 transition-transform duration-500 hover:scale-110 hover:text-accent" />
-          </button>
-        </Tooltip>
-      </div>
-
-      <div className="overflow-hidden rounded bg-white shadow-md">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse text-left">
-            <caption className="sr-only">{heading}</caption>
-            <thead className="bg-table-head">
-              <tr>
-                {columns.map((column) => (
-                  <th
-                    key={column.id}
-                    scope="col"
-                    className="border-b border-black/10 px-4 py-4 text-xl font-medium"
-                  >
-                    {column.header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-
-            <tbody>
-              {verbs.length === 0 ? (
-                <tr>
-                  <td colSpan={columns.length} className="px-4 py-4">
-                    <p className="text-center text-sm">
-                      {t('table.emptyGroup')}
-                    </p>
-                  </td>
-                </tr>
-              ) : (
-                verbs.map((row, index) => (
-                  <tr
-                    key={`${identity(row)}-${index}`}
-                    className="odd:bg-black/[0.04]"
-                  >
-                    {columns.map(({ id, key, prefix }) => (
-                      <td
-                        key={id}
-                        className="border-b border-black/10 px-4 py-4 text-base capitalize last:border-0"
-                      >
-                        {prefix ? `${prefix} ${row[key]}` : String(row[key])}
-                      </td>
-                    ))}
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  const activeGroup = useMemo(
+    () => groups.find((group) => group.label === activeLetter),
+    [groups, activeLetter]
   );
 
-  const isSearching = inputValue.length !== 0;
+  // Only one group is rendered at a time, so the DOM holds tens of rows
+  // rather than the ~988 the English list would otherwise mount at once.
+  const visibleVerbs = isSearching ? filteredVerbs : (activeGroup?.data ?? []);
+
+  const heading = isSearching
+    ? t('search.resultsFound', { count: filteredVerbs.length })
+    : `${t('table.group')} ${activeLetter}`;
+
+  const [titleColumn, ...detailColumns] = columns;
+  const value = (row: T, column: VerbColumn<T>) =>
+    column.prefix
+      ? `${column.prefix} ${row[column.key]}`
+      : String(row[column.key]);
 
   return (
-    <div className="flex flex-col justify-center">
-      <div className="mb-10 flex justify-center">
-        <div className="w-11/12 sm:w-7/12">
-          <DataTableAlphabetsBox letters={groups.map((group) => group.label)} />
-          <DataTableSearchBox onSearch={handleSearch} />
+    <div className="mx-auto max-w-6xl px-4 pb-16">
+      <h1 className="py-6 text-center text-3xl font-semibold">
+        {t('alphabets.title')}
+      </h1>
 
-          {!isSearching &&
-            groups.map((group) =>
-              renderTable(
-                group.data,
-                `${t('table.group')} ${group.label}`,
-                group.label
-              )
-            )}
-
-          {isSearching &&
-            filteredVerbs.length > 0 &&
-            renderTable(
-              filteredVerbs,
-              t('search.resultsFound', { count: filteredVerbs.length })
-            )}
-
-          {isSearching && filteredVerbs.length === 0 && (
-            <p className="mb-10 mt-10 text-center text-2xl">
-              {t('search.noResultsFor')}
-              <span className="text-error"> &quot;{inputValue}&quot; </span>
-              🥸
-            </p>
-          )}
-        </div>
+      {/* Search and letters stay reachable while scrolling a long group. */}
+      <div className="sticky top-0 z-30 -mx-4 border-b border-black/10 bg-surface px-4 pb-3 pt-2">
+        <DataTableSearchBox onSearch={handleSearch} />
+        <LetterFilter
+          letters={groups.map((group) => group.label)}
+          active={isSearching ? null : activeLetter}
+          onSelect={setActiveLetter}
+        />
       </div>
+
+      <p aria-live="polite" className="py-6 text-center text-xl font-medium">
+        {isSearching && filteredVerbs.length === 0 ? (
+          <>
+            {t('search.noResultsFor')}
+            <span className="text-error"> &quot;{searchValue}&quot; </span>🥸
+          </>
+        ) : (
+          heading
+        )}
+      </p>
+
+      {visibleVerbs.length === 0 && !isSearching && (
+        <p className="rounded bg-white p-6 text-center text-sm shadow-sm">
+          {t('table.emptyGroup')}
+        </p>
+      )}
+
+      {visibleVerbs.length > 0 && (
+        <>
+          {/* Mobile: one card per verb. A six-column table is unreadable
+              at phone widths, so forms become a label/value list. */}
+          {!isDesktop && (
+            <ul className="flex flex-col gap-3">
+              {visibleVerbs.map((row, index) => (
+                <li
+                  key={`${identity(row)}-${index}`}
+                  className="rounded-lg bg-white p-4 shadow-sm"
+                >
+                  <h2 className="mb-3 text-lg font-semibold capitalize">
+                    {value(row, titleColumn)}
+                  </h2>
+                  <dl className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-x-4 gap-y-2 text-sm">
+                    {detailColumns.map((column) => (
+                      <div key={column.id} className="contents">
+                        <dt className="text-black/60">{column.header}</dt>
+                        <dd className="capitalize">{value(row, column)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Desktop: the table earns its place for comparing across rows. */}
+          {isDesktop && (
+            <div className="overflow-hidden rounded-lg bg-white shadow-sm">
+              <table className="w-full border-collapse text-left">
+                <caption className="sr-only">{heading}</caption>
+                <thead>
+                  <tr>
+                    {columns.map((column) => (
+                      <th
+                        key={column.id}
+                        scope="col"
+                        className="sticky top-[7.5rem] z-20 border-b border-black/10 bg-table-head px-4 py-3 text-sm font-semibold"
+                      >
+                        {column.header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleVerbs.map((row, index) => (
+                    <tr
+                      key={`${identity(row)}-${index}`}
+                      className="border-b border-black/5 transition-colors last:border-0 hover:bg-primary/5"
+                    >
+                      {columns.map((column) => (
+                        <td
+                          key={column.id}
+                          className="px-4 py-3 text-base capitalize"
+                        >
+                          {value(row, column)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };
