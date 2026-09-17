@@ -46,8 +46,27 @@
   "sentences": {
     "title": "Useful Sentences",
     "intro": "Here are some useful sentences to help you practice your English and Norwegian skills in a variety of common situations.",
-    "opinions": "Talk about opinions",
-    "close": "Close"
+    "close": "Close",
+    "categories": {
+      "greetings": "Greetings & politeness",
+      "personal": "Personal details & family",
+      "timeAndDate": "Time & dates",
+      "shopping": "Shopping & services",
+      "directions": "Travel & directions",
+      "housing": "Housing",
+      "weather": "Weather",
+      "health": "Health & the doctor",
+      "work": "Work & applications",
+      "opinions": "Opinions & feelings",
+      "agreement": "Agreeing & disagreeing",
+      "smallTalk": "Small talk"
+    },
+    "searchLabel": "Search sentences",
+    "searchClear": "Clear search",
+    "allLevels": "All levels",
+    "countLabel_one": "{{count}} sentence",
+    "countLabel_other": "{{count}} sentences",
+    "noMatches": "No sentences match your search."
   },
   "about": {
     "title": "About This App",
