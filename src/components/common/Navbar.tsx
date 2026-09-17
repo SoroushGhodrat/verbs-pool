@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Link, useNavigate } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import icon from '../../assets/icon-128.png';
 import { useLanguage } from '../../context/LanguageContext';
 import { MenuIcon, SettingsSuggestIcon } from '../UI/icons';
 

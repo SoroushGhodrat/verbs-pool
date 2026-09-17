@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {
+  Field,
+  Label,
   Listbox,
   ListboxButton,
   ListboxOption,
@@ -59,11 +61,11 @@ const AboutPage: React.FC = () => {
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8">
-            <Listbox value={feedbackType} onChange={setFeedbackType}>
-              <div className="relative mb-4">
-                <label className="mb-1 block text-sm text-black/60">
+            <Field className="relative mb-4 block">
+              <Listbox value={feedbackType} onChange={setFeedbackType}>
+                <Label className="mb-1 block text-sm text-black/60">
                   Feedback Type
-                </label>
+                </Label>
                 <ListboxButton className="flex w-full items-center justify-between rounded border border-black/25 px-3 py-4 text-left transition-colors hover:border-black/60 focus:border-primary focus:outline-none">
                   <span>{selectedLabel || '\u00A0'}</span>
                   <ExpandMoreIcon className="h-5 w-5" />
@@ -82,8 +84,8 @@ const AboutPage: React.FC = () => {
                     </ListboxOption>
                   ))}
                 </ListboxOptions>
-              </div>
-            </Listbox>
+              </Listbox>
+            </Field>
 
             <div className="mb-4">
               <label
