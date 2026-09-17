@@ -46,3 +46,19 @@ export interface TenseSection {
   tableHeadColor: string;
   rows: TenseRow[];
 }
+
+export type CefrLevel = 'A1' | 'A2' | 'B1';
+
+export interface SentencePair {
+  no: string;
+  en: string;
+  /** Optional usage note, e.g. register or a literal gloss. */
+  note?: string;
+}
+
+export interface SentenceCategory {
+  /** Matches a key under `sentences.categories` in the locale files. */
+  id: string;
+  level: CefrLevel;
+  sentences: SentencePair[];
+}

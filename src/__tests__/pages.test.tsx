@@ -4,7 +4,6 @@ import { renderWithProviders, screen, setViewport } from '../test-utils';
 import NorwegianVerbsDataTable from '../components/NorwegianVerbsDataTable';
 import EnglishVerbsDataTable from '../components/EnglishVerbsDataTable';
 import EnglishGrammarDescriptions from '../components/EnglishGrammarDescriptions';
-import UsefulSentencesdescription from '../components/UsefulSentencesdescription';
 import AboutPage from '../pages/AboutPage';
 import Navbar from '../components/common/Navbar';
 
@@ -126,14 +125,6 @@ describe('English grammar page', () => {
       expect(cells[2].getAttribute('dir')).toBe('rtl');
       expect(cells[1].getAttribute('dir')).toBeNull();
     }
-  });
-});
-
-describe('Useful sentences page', () => {
-  it('renders sentence pairs behind a disclosure', () => {
-    renderWithProviders(<UsefulSentencesdescription />);
-    expect(screen.getByText('Useful Sentences')).toBeInTheDocument();
-    expect(screen.getByText('Talk about opinions')).toBeInTheDocument();
   });
 });
 

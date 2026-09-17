@@ -46,8 +46,27 @@
   "sentences": {
     "title": "Nyttige setninger",
     "intro": "Her er noen nyttige setninger som hjelper deg å øve på engelsk og norsk i vanlige situasjoner.",
-    "opinions": "Snakk om meninger",
-    "close": "Lukk"
+    "close": "Lukk",
+    "categories": {
+      "greetings": "Hilsener og høflighet",
+      "personal": "Personalia og familie",
+      "timeAndDate": "Tid og dato",
+      "shopping": "Handel og tjenester",
+      "directions": "Reise og veibeskrivelse",
+      "housing": "Bolig",
+      "weather": "Vær",
+      "health": "Helse og lege",
+      "work": "Arbeid og søknad",
+      "opinions": "Meninger og følelser",
+      "agreement": "Enighet og uenighet",
+      "smallTalk": "Småprat"
+    },
+    "searchLabel": "Søk i setninger",
+    "searchClear": "Tøm søket",
+    "allLevels": "Alle nivåer",
+    "countLabel_one": "{{count}} setning",
+    "countLabel_other": "{{count}} setninger",
+    "noMatches": "Ingen setninger passer med søket."
   },
   "about": {
     "title": "Om denne appen",
