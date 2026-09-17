@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import ArrowUpward from '@mui/icons-material/ArrowUpward';
 import { goToTop } from '../util/helper';
 import { useTheme } from '@mui/material/styles';
 import { StyledTableRow } from '../styled/Styled';
-import _ from 'lodash';
 
 import {
   Table,
@@ -181,7 +179,7 @@ const EnglishVerbsDataTable = () => {
                 {/* Table headers present, past, ... */}
                 <TableRow>
                   {tableHeader?.map((header: string) => (
-                    <TableCell key={uuidv4()}>
+                    <TableCell key={header}>
                       <Typography variant="h6">{header}</Typography>
                     </TableCell>
                   ))}
@@ -189,9 +187,9 @@ const EnglishVerbsDataTable = () => {
               </TableHead>
 
               <TableBody>
-                {verbs.map((row: any) =>
-                  _.isEmpty(row.baseForm) ? (
-                    <StyledTableRow key={uuidv4()}>
+                {verbs.map((row: VerbEN, index: number) =>
+                  !row.baseForm ? (
+                    <StyledTableRow key={`empty-${index}`}>
                       <TableCell colSpan={5}>
                         <Typography
                           variant="body2"
@@ -203,7 +201,7 @@ const EnglishVerbsDataTable = () => {
                       </TableCell>
                     </StyledTableRow>
                   ) : (
-                    <StyledTableRow key={uuidv4()}>
+                    <StyledTableRow key={`${row.baseForm}-${index}`}>
                       {tableCells.map(({ key }) => (
                         <TableCell key={key}>
                           <Typography
